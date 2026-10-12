@@ -1,0 +1,83 @@
+---
+/**
+ * Career — the role / period list.
+ *
+ * A description list, because that is what this is: each role is a term and
+ * its period the description. Screen readers announce the pairing.
+ */
+interface Props {
+	roles: Array<Record<string, any>>;
+	heading?: string;
+}
+
+const { roles, heading = "Career history & Roles" } = Astro.props;
+---
+
+{
+	roles.length > 0 && (
+		<div class="career">
+			<h3 class="career-heading">{heading}</h3>
+			<dl class="career-list">
+				{roles.map((role) => (
+					<div class="career-row">
+						<dt>
+							{role.data.role}
+							{role.data.company && <span class="company"> · {role.data.company}</span>}
+						</dt>
+						<dd>{role.data.period}</dd>
+					</div>
+				))}
+			</dl>
+		</div>
+	)
+}
+
+<style>
+	.career-heading {
+		font-size: var(--text-sm);
+		font-weight: var(--weight-medium);
+		color: var(--color-muted);
+		margin-bottom: var(--space-5);
+	}
+
+	.career-list {
+		display: grid;
+	}
+
+	.career-row {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: baseline;
+		justify-content: space-between;
+		gap: var(--space-4);
+		padding-block: var(--space-5);
+	}
+
+	.career-row:first-child {
+		padding-block-start: 0;
+	}
+
+	.career-row:last-child {
+		padding-block-end: 0;
+	}
+
+	.career-row + .career-row {
+		border-top: 1px solid var(--color-border);
+	}
+
+	dt {
+		font-size: var(--text-lead);
+		font-weight: var(--weight-medium);
+	}
+
+	.company {
+		color: var(--color-muted);
+		font-weight: var(--weight-regular);
+	}
+
+	dd {
+		font-size: var(--text-base);
+		color: var(--color-muted);
+		font-variant-numeric: tabular-nums;
+	}
+</style>

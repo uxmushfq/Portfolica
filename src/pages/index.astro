@@ -1,19 +1,29 @@
 ---
-/**
- * Homepage — Phase 2 scaffold.
- *
- * This renders every seeded collection so the data layer is proven end to
- * end. Phase 3 replaces the markup below with the real Portfolica sections
- * (hero, work strip, intro card, career, stats ticker, testimonials,
- * projects grid, process, services, FAQ, contact) built 1:1 with the design.
- */
+import ContactForm from "../components/blocks/ContactForm.astro";
+import Faq from "../components/blocks/Faq.astro";
+import Hero from "../components/blocks/Hero.astro";
+import IntroCard from "../components/blocks/IntroCard.astro";
+import Process from "../components/blocks/Process.astro";
+import ProjectsGrid from "../components/blocks/ProjectsGrid.astro";
+import Services from "../components/blocks/Services.astro";
+import StatsTicker from "../components/blocks/StatsTicker.astro";
+import Testimonials from "../components/blocks/Testimonials.astro";
+import WorkStrip from "../components/blocks/WorkStrip.astro";
+import Section from "../components/primitives/Section.astro";
 import Base from "../layouts/Base.astro";
-import { getProjects, getSection, getSiteOptions, useCacheHint } from "../lib/queries";
+import {
+	getPage,
+	getProjects,
+	getSection,
+	getSiteOptions,
+	useCacheHint,
+} from "../lib/queries";
 
-const [options, projects, experience, stats, services, process, testimonials, faqs] =
+const [options, featured, all, experience, stats, services, process, testimonials, faqs] =
 	await Promise.all([
 		getSiteOptions(),
 		getProjects({ featuredOnly: true, limit: 4 }),
+		getProjects({ limit: 8 }),
 		getSection("experience"),
 		getSection("stats"),
 		getSection("services"),
@@ -22,10 +32,13 @@ const [options, projects, experience, stats, services, process, testimonials, fa
 		getSection("faqs"),
 	]);
 
+const { entry: about } = await getPage("about");
+
 useCacheHint(
 	Astro,
 	options.cacheHint,
-	projects.cacheHint,
+	featured.cacheHint,
+	all.cacheHint,
 	experience.cacheHint,
 	stats.cacheHint,
 	services.cacheHint,
@@ -37,207 +50,48 @@ useCacheHint(
 const o = options.options;
 ---
 
-<Base title={o?.hero_name_line_1 ? undefined : "Home"} description={o?.hero_tagline}>
-	<section class="container-page hero">
-		<h1 class="hero-title">
-			{o?.hero_name_line_1}{o?.hero_name_line_2 && <><br />{o.hero_name_line_2}</>}
-		</h1>
-		{o?.availability_badge && <p class="badge">{o.availability_badge}</p>}
-		{o?.hero_tagline && <p class="hero-tagline">{o.hero_tagline}</p>}
-	</section>
+<Base description={o?.hero_tagline}>
+	<Hero options={o} />
 
-	<section class="container-page stack">
-		<h2 class="section-heading">Selected work</h2>
-		<ul class="plain grid-2">
-			{
-				projects.projects.map((p) => (
-					<li class="card">
-						<a href={`/project-details/${p.id}`}>
-							<span class="chip">{p.data.category} · {p.data.year}</span>
-							<h3>{p.data.title}</h3>
-							<p class="muted">{p.data.summary}</p>
-						</a>
-					</li>
-				))
-			}
-		</ul>
-	</section>
+	<WorkStrip projects={all.projects} />
 
-	<section class="container-page stack">
-		<h2 class="section-heading">Career</h2>
-		<ul class="plain rows">
-			{
-				experience.items.map((e) => (
-					<li class="row">
-						<span>{e.data.role}</span>
-						<span class="muted">{e.data.period}</span>
-					</li>
-				))
-			}
-		</ul>
-	</section>
+	<Section heading="Mindset, methods, & experience">
+		<IntroCard
+			intro={about?.data.intro}
+			content={about?.data.content}
+			roles={experience.items}
+		/>
+	</Section>
 
-	<section class="container-page stack">
-		<ul class="plain grid-4">
-			{
-				stats.items.map((s) => (
-					<li class="card">
-						<strong class="stat-value">{s.data.value}</strong>
-						<span class="muted">{s.data.label}</span>
-					</li>
-				))
-			}
-		</ul>
-	</section>
+	<Section flush>
+		<StatsTicker stats={stats.items} />
+	</Section>
 
-	<section class="container-page stack">
-		<h2 class="section-heading">Good work gets noticed</h2>
-		<ul class="plain grid-2">
-			{
-				testimonials.items.map((t) => (
-					<li class="card">
-						{t.data.rating && <span class="chip">{t.data.rating}</span>}
-						<p>{t.data.quote}</p>
-					</li>
-				))
-			}
-		</ul>
-	</section>
+	<Section eyebrow="Testimonials" heading="Good work gets noticed">
+		<Testimonials testimonials={testimonials.items} />
+	</Section>
 
-	<section class="container-page stack">
-		<h2 class="section-heading">How things get built together</h2>
-		<ul class="plain rows">
-			{
-				process.items.map((s) => (
-					<li class="row">
-						<span class="chip">{s.data.step_number}</span>
-						<span><strong>{s.data.title}</strong> — {s.data.description}</span>
-					</li>
-				))
-			}
-		</ul>
-	</section>
+	<Section heading="Designed, Built, & Shipped">
+		<ProjectsGrid
+			projects={featured.projects}
+			caption="Selected projects that reflect my approach to design, development, and execution."
+			showArchiveLink
+		/>
+	</Section>
 
-	<section class="container-page stack">
-		<h2 class="section-heading">End-to-end design services</h2>
-		<ul class="plain grid-2">
-			{
-				services.items.map((s) => (
-					<li class="card">
-						<h3>{s.data.title}</h3>
-						<p class="muted">{s.data.description}</p>
-					</li>
-				))
-			}
-		</ul>
-	</section>
+	<Section heading="How things get built together">
+		<Process steps={process.items} />
+	</Section>
 
-	<section class="container-page stack">
-		<h2 class="section-heading">Before you ask</h2>
-		<ul class="plain rows">
-			{
-				faqs.items.map((f) => (
-					<li class="row">
-						<span>{f.data.question}</span>
-					</li>
-				))
-			}
-		</ul>
-	</section>
+	<Section heading="End-to-end design services">
+		<Services services={services.items} />
+	</Section>
+
+	<Section heading="Before you ask">
+		<Faq faqs={faqs.items} />
+	</Section>
+
+	<Section flush>
+		<ContactForm email={o?.contact_email} />
+	</Section>
 </Base>
-
-<style>
-	.hero {
-		padding-block: var(--space-20) var(--space-10);
-	}
-
-	.hero-title {
-		font-size: var(--text-display);
-		line-height: var(--leading-display);
-		font-weight: var(--weight-medium);
-	}
-
-	.hero-tagline {
-		margin-top: var(--space-5);
-		max-width: var(--width-prose);
-		color: var(--color-text-soft);
-	}
-
-	.badge {
-		display: inline-block;
-		margin-top: var(--space-5);
-		padding: var(--space-1) var(--space-3);
-		border-radius: var(--radius-pill);
-		background: var(--color-surface);
-		font-size: var(--text-sm);
-		color: var(--color-muted);
-	}
-
-	.stack {
-		padding-block: var(--space-section);
-	}
-
-	.section-heading {
-		font-size: var(--text-heading);
-		line-height: var(--leading-heading);
-		margin-bottom: var(--space-8);
-	}
-
-	.plain {
-		list-style: none;
-	}
-
-	.grid-2,
-	.grid-4 {
-		display: grid;
-		gap: var(--space-2);
-	}
-
-	.card {
-		background: var(--color-surface);
-		border-radius: var(--radius-md);
-		padding: var(--space-6);
-	}
-
-	.chip {
-		display: inline-block;
-		font-size: var(--text-sm);
-		color: var(--color-muted);
-		margin-bottom: var(--space-2);
-	}
-
-	.stat-value {
-		display: block;
-		font-size: var(--text-heading);
-		font-weight: var(--weight-medium);
-		line-height: var(--leading-heading);
-	}
-
-	.rows {
-		display: grid;
-		gap: var(--space-2);
-	}
-
-	.row {
-		display: flex;
-		justify-content: space-between;
-		gap: var(--space-5);
-		background: var(--color-surface);
-		border-radius: var(--radius-md);
-		padding: var(--space-5) var(--space-6);
-	}
-
-	.muted {
-		color: var(--color-muted);
-	}
-
-	@media (min-width: 810px) {
-		.grid-2 {
-			grid-template-columns: repeat(2, 1fr);
-		}
-
-		.grid-4 {
-			grid-template-columns: repeat(4, 1fr);
-		}
-	}
-</style>

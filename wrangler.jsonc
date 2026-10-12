@@ -1,24 +1,39 @@
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
-	"name": "my-portfolio-site",
+
+	// Rename this to your own project before deploying — it becomes the
+	// *.workers.dev subdomain.
+	"name": "portfolica",
+
 	"main": "./src/worker.ts",
 	"compatibility_date": "2026-02-24",
 	"compatibility_flags": ["nodejs_compat"],
+
+	// D1 holds all content. Create it with:
+	//   npx wrangler d1 create portfolica
+	// then paste the returned database_id below.
 	"d1_databases": [
 		{
 			"binding": "DB",
-			"database_name": "my-portfolio-site",
+			"database_name": "portfolica",
 		},
 	],
+
+	// R2 holds uploaded media. Create it with:
+	//   npx wrangler r2 bucket create portfolica-media
 	"r2_buckets": [
 		{
 			"binding": "MEDIA",
-			"bucket_name": "my-portfolio-media",
+			"bucket_name": "portfolica-media",
 		},
 	],
-	// Sandboxed plugins require Worker Loader, available on Workers paid plans. Uncomment to enable:
+
+	// Sandboxed plugins require Worker Loader, which is a paid-plan feature.
+	// Portfolica does not use them, so this stays commented out and the
+	// template runs entirely on the Workers free plan.
 	// "worker_loaders": [{ "binding": "LOADER" }],
-	// General maintenance cron trigger
+
+	// Scheduled publishing and routine maintenance.
 	"triggers": {
 		"crons": ["* * * * *"],
 	},

@@ -1,0 +1,125 @@
+---
+/**
+ * Faq — the accordion.
+ *
+ * Built on <details>/<summary>, so it opens and closes with no JavaScript,
+ * is keyboard operable and announces its state to screen readers for free.
+ * The `name` attribute makes the group exclusive (opening one closes the
+ * others) natively; browsers without it simply allow several open at once,
+ * which is a fine fallback.
+ */
+import { PortableText } from "emdash/ui";
+
+interface Props {
+	faqs: Array<Record<string, any>>;
+}
+
+const { faqs } = Astro.props;
+---
+
+{
+	faqs.length > 0 && (
+		<div class="faq">
+			{faqs.map((faq) => (
+				<details class="faq-item" name="portfolica-faq">
+					<summary class="faq-q">
+						<span>{faq.data.question}</span>
+						<span class="faq-mark" aria-hidden="true" />
+					</summary>
+					<div class="faq-a">
+						{faq.data.answer ? (
+							<PortableText value={faq.data.answer} />
+						) : null}
+					</div>
+				</details>
+			))}
+		</div>
+	)
+}
+
+<style>
+	.faq {
+		display: grid;
+		gap: var(--space-2);
+	}
+
+	.faq-item {
+		background: var(--color-surface);
+		border-radius: var(--radius-md);
+		overflow: clip;
+	}
+
+	.faq-q {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: var(--space-5);
+		padding: var(--space-5) var(--space-6);
+		font-size: var(--text-md);
+		line-height: var(--leading-relaxed);
+		font-weight: var(--weight-medium);
+		cursor: pointer;
+		list-style: none;
+	}
+
+	/* Safari still paints the disclosure triangle without this. */
+	.faq-q::-webkit-details-marker {
+		display: none;
+	}
+
+	/* A plus that becomes a minus when open — two bars, one rotated. */
+	.faq-mark {
+		position: relative;
+		flex: 0 0 auto;
+		width: 1rem;
+		height: 1rem;
+		color: var(--color-accent);
+	}
+
+	.faq-mark::before,
+	.faq-mark::after {
+		content: "";
+		position: absolute;
+		inset: 50% 0 auto 0;
+		height: 1.75px;
+		background: currentColor;
+		border-radius: 2px;
+		translate: 0 -50%;
+		transition: rotate var(--dur-base) var(--ease-ui);
+	}
+
+	.faq-mark::after {
+		rotate: 90deg;
+	}
+
+	.faq-item[open] .faq-mark::after {
+		rotate: 0deg;
+	}
+
+	.faq-a {
+		padding: 0 var(--space-6) var(--space-6);
+		max-width: 68ch;
+		color: var(--color-muted);
+		font-size: var(--text-base);
+		line-height: var(--leading-prose);
+	}
+
+	.faq-a :global(p + p) {
+		margin-top: var(--space-4);
+	}
+
+	/* Browsers that support it animate the open/close; others just snap. */
+	@supports (interpolate-size: allow-keywords) {
+		.faq-item::details-content {
+			block-size: 0;
+			overflow: hidden;
+			transition:
+				block-size var(--dur-base) var(--ease-ui),
+				content-visibility var(--dur-base) allow-discrete;
+		}
+
+		.faq-item[open]::details-content {
+			block-size: auto;
+		}
+	}
+</style>

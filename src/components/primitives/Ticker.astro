@@ -1,0 +1,85 @@
+---
+/**
+ * Ticker — a seamless horizontal marquee, in pure CSS.
+ *
+ * The original drives this with JavaScript. Here the track is duplicated and
+ * translated by exactly -50%, so the second copy lands where the first began
+ * and the loop is invisible. No library, no script, no layout thrash.
+ *
+ * The duplicate is aria-hidden, so screen readers read the content once.
+ *
+ * Pausing on hover is deliberate: a permanently moving strip is hard to read
+ * and WCAG 2.2.2 expects a way to stop motion. `prefers-reduced-motion`
+ * stops it outright via the shared token block in global.css.
+ */
+interface Props {
+	/** Seconds for one full pass. Longer is slower. */
+	duration?: number;
+	class?: string;
+}
+
+const { duration = 40, class: className } = Astro.props;
+---
+
+<div
+	class:list={["ticker", className]}
+	style={`--ticker-duration:${duration}s`}
+	data-ticker
+>
+	<div class="ticker-track">
+		<div class="ticker-group"><slot /></div>
+		<div class="ticker-group" aria-hidden="true"><slot /></div>
+	</div>
+</div>
+
+<style>
+	.ticker {
+		overflow: hidden;
+		/* Fade the strip into the page at both edges rather than cutting it. */
+		mask-image: linear-gradient(
+			to right,
+			transparent,
+			#000 6%,
+			#000 94%,
+			transparent
+		);
+	}
+
+	.ticker-track {
+		display: flex;
+		width: max-content;
+		animation: ticker-scroll var(--ticker-duration, 40s) linear infinite;
+	}
+
+	.ticker:hover .ticker-track,
+	.ticker:focus-within .ticker-track {
+		animation-play-state: paused;
+	}
+
+	.ticker-group {
+		display: flex;
+		align-items: stretch;
+		gap: var(--space-2);
+		padding-right: var(--space-2);
+		flex: 0 0 auto;
+	}
+
+	@keyframes ticker-scroll {
+		to {
+			transform: translateX(-50%);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.ticker-track {
+			animation: none;
+		}
+
+		/* With motion off the strip no longer scrolls, so let the reader
+		   scroll it themselves instead of hiding the overflow. */
+		.ticker {
+			overflow-x: auto;
+			mask-image: none;
+		}
+	}
+</style>

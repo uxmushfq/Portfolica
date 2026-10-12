@@ -1,0 +1,92 @@
+---
+/**
+ * ProjectsGrid — the two-column work grid, with an optional caption and link
+ * to the full archive underneath.
+ */
+import Button from "../primitives/Button.astro";
+import Icon from "../primitives/Icon.astro";
+import ProjectCard from "../cards/ProjectCard.astro";
+
+interface Props {
+	projects: Array<Record<string, any>>;
+	caption?: string;
+	showArchiveLink?: boolean;
+}
+
+const { projects, caption, showArchiveLink = false } = Astro.props;
+---
+
+{
+	projects.length > 0 ? (
+		<>
+			<ul class="grid">
+				{projects.map((project, i) => (
+					<li>
+						<ProjectCard project={project} priority={i === 0} />
+					</li>
+				))}
+			</ul>
+
+			{(caption || showArchiveLink) && (
+				<div class="grid-foot">
+					{caption && <p class="caption">{caption}</p>}
+					{showArchiveLink && (
+						<Button href="/all-projects" variant="surface">
+							View All Projects
+							<Icon name="arrow" size={16} />
+						</Button>
+					)}
+				</div>
+			)}
+		</>
+	) : (
+		<p class="empty">
+			No projects yet. Add one in the admin under <strong>Projects</strong>.
+		</p>
+	)
+}
+
+<style>
+	.grid {
+		display: grid;
+		gap: var(--space-2);
+		list-style: none;
+	}
+
+	.grid > li {
+		display: flex;
+	}
+
+	.grid > li > :global(*) {
+		width: 100%;
+	}
+
+	.grid-foot {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		gap: var(--space-5);
+		margin-top: var(--space-8);
+	}
+
+	.caption {
+		font-size: var(--text-base);
+		color: var(--color-muted);
+		max-width: 48ch;
+	}
+
+	.empty {
+		padding: var(--space-10);
+		border-radius: var(--radius-md);
+		background: var(--color-surface);
+		color: var(--color-muted);
+		text-align: center;
+	}
+
+	@media (min-width: 810px) {
+		.grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+</style>

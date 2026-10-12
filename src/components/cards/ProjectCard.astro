@@ -1,0 +1,119 @@
+---
+/**
+ * ProjectCard — one project in the work grid.
+ *
+ * The whole card is one link, so the hit area is the card rather than the
+ * title alone. The image scales on hover inside a clipped container, which
+ * is how the original behaves.
+ */
+import { Image } from "emdash/ui";
+
+interface Props {
+	project: Record<string, any>;
+	/** The first card on a page carries the LCP image. */
+	priority?: boolean;
+}
+
+const { project, priority = false } = Astro.props;
+const { data } = project;
+const meta = [data.category, data.year].filter(Boolean).join(" · ");
+---
+
+<article class="card">
+	<a href={`/project-details/${project.id}`} class="card-link">
+		<div class="card-media">
+			{
+				data.featured_image ? (
+					<Image
+						image={data.featured_image}
+						alt={data.featured_image.alt || data.title}
+						width={760}
+						height={570}
+						class="card-img"
+						priority={priority}
+					/>
+				) : (
+					<div class="card-img card-img-empty" aria-hidden="true" />
+				)
+			}
+			{meta && <p class="chip">{meta}</p>}
+		</div>
+
+		<div class="card-body">
+			<h3 class="card-title">{data.title}</h3>
+			{data.summary && <p class="card-summary">{data.summary}</p>}
+		</div>
+	</a>
+</article>
+
+<style>
+	.card {
+		background: var(--color-surface);
+		border-radius: var(--radius-md);
+		overflow: clip;
+	}
+
+	.card-link {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+	}
+
+	.card-media {
+		position: relative;
+		overflow: clip;
+		border-radius: var(--radius-md);
+		background: var(--color-bg);
+		margin: var(--space-2);
+	}
+
+	.card-img {
+		width: 100%;
+		aspect-ratio: 4 / 3;
+		object-fit: cover;
+		transition: transform var(--dur-slow) var(--ease-out);
+	}
+
+	.card-img-empty {
+		background: linear-gradient(
+			135deg,
+			var(--color-border) 0%,
+			var(--color-surface-alt) 100%
+		);
+	}
+
+	.card-link:hover .card-img {
+		transform: scale(1.03);
+	}
+
+	.chip {
+		position: absolute;
+		left: var(--space-3);
+		bottom: var(--space-3);
+		padding: var(--space-1) var(--space-3);
+		border-radius: var(--radius-pill);
+		background: var(--color-surface);
+		font-size: var(--text-sm);
+		font-weight: var(--weight-medium);
+		color: var(--color-text-soft);
+	}
+
+	.card-body {
+		padding: var(--space-4) var(--space-6) var(--space-6);
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-2);
+	}
+
+	.card-title {
+		font-size: var(--text-lead);
+		line-height: var(--leading-normal);
+		font-weight: var(--weight-medium);
+	}
+
+	.card-summary {
+		font-size: var(--text-base);
+		line-height: var(--leading-normal);
+		color: var(--color-muted);
+	}
+</style>

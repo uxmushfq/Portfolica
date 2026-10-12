@@ -1,0 +1,96 @@
+---
+/**
+ * Button — renders an <a> when `href` is set, otherwise a <button>.
+ *
+ * The hover transition is the one measured on the original design:
+ * background + box-shadow over 300ms on cubic-bezier(.44, 0, .56, 1).
+ */
+interface Props {
+	href?: string;
+	variant?: "accent" | "surface" | "ghost";
+	type?: "button" | "submit";
+	target?: string;
+	class?: string;
+	"aria-label"?: string;
+}
+
+const {
+	href,
+	variant = "accent",
+	type = "button",
+	target,
+	class: className,
+	...rest
+} = Astro.props;
+
+const classes = ["btn", `btn-${variant}`, className].filter(Boolean).join(" ");
+const external = target === "_blank";
+---
+
+{
+	href ? (
+		<a
+			href={href}
+			class={classes}
+			target={target}
+			rel={external ? "noopener noreferrer" : undefined}
+			{...rest}
+		>
+			<slot />
+		</a>
+	) : (
+		<button type={type} class={classes} {...rest}>
+			<slot />
+		</button>
+	)
+}
+
+<style>
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: var(--space-2);
+		padding: var(--space-3) var(--space-5);
+		border: 0;
+		border-radius: var(--radius-pill);
+		font-size: var(--text-sm);
+		font-weight: var(--weight-semibold);
+		letter-spacing: var(--tracking-button);
+		cursor: pointer;
+		white-space: nowrap;
+		transition:
+			background var(--dur-base) var(--ease-ui),
+			box-shadow var(--dur-base) var(--ease-ui);
+	}
+
+	.btn-accent {
+		background: var(--color-accent);
+		color: var(--color-on-accent);
+	}
+
+	.btn-accent:hover {
+		background: var(--color-accent-hover);
+		box-shadow: 0 0 0 4px var(--color-accent-ring);
+	}
+
+	.btn-surface {
+		background: var(--color-surface);
+		color: var(--color-text);
+	}
+
+	.btn-surface:hover {
+		background: var(--color-surface-alt);
+		box-shadow: 0 0 0 4px var(--color-border);
+	}
+
+	.btn-ghost {
+		background: transparent;
+		color: var(--color-text);
+		box-shadow: inset 0 0 0 1px var(--color-border-strong);
+	}
+
+	.btn-ghost:hover {
+		background: var(--color-surface);
+	}
+</style>

@@ -1,0 +1,175 @@
+---
+/**
+ * ContactForm — name, email and project details.
+ *
+ * Delivery is `mailto:`: it costs nothing, needs no account or backend, and
+ * works for every buyer the moment they deploy. The address is a CMS field,
+ * never a constant, so a template sold in volume never ships one fixed inbox.
+ *
+ * The form composes a prefilled message and hands it to the visitor's mail
+ * client. Because that depends on a mail client being configured, the address
+ * is also shown as plain selectable text — if the button does nothing, the
+ * visitor can still copy it.
+ *
+ * To switch to real server-side submissions, point `action` at a form service
+ * (Formspree, Web3Forms) and delete the inline script. See README.
+ */
+import Button from "../primitives/Button.astro";
+
+interface Props {
+	email?: string | null;
+	heading?: string;
+	/** On the contact page this block is the page's main heading. */
+	as?: "h1" | "h2";
+}
+
+const { email, heading = "Have a project in mind?", as: Heading = "h2" } = Astro.props;
+---
+
+<div class="contact">
+	<div class="contact-intro">
+		<Heading class="contact-heading">{heading}</Heading>
+		{
+			email && (
+				<p class="contact-direct">
+					Or email directly: <a href={`mailto:${email}`}>{email}</a>
+				</p>
+			)
+		}
+	</div>
+
+	<form class="contact-form" data-contact-form data-email={email ?? ""}>
+		<div class="field">
+			<label for="contact-name">Name</label>
+			<input id="contact-name" name="name" type="text" autocomplete="name" required />
+		</div>
+
+		<div class="field">
+			<label for="contact-email">Email</label>
+			<input id="contact-email" name="email" type="email" autocomplete="email" required />
+		</div>
+
+		<div class="field">
+			<label for="contact-message">Project information</label>
+			<textarea id="contact-message" name="message" rows="4" required></textarea>
+		</div>
+
+		<Button type="submit" variant="accent" class="contact-submit">Submit</Button>
+
+		<p class="contact-note" data-contact-note role="status">
+			This opens your email app with the message ready to send.
+		</p>
+	</form>
+</div>
+
+<script>
+	// Compose a mailto: from the form fields. Kept deliberately small — this
+	// is the only script on a public page.
+	const form = document.querySelector<HTMLFormElement>("[data-contact-form]");
+
+	form?.addEventListener("submit", (event) => {
+		event.preventDefault();
+
+		const to = form.dataset.email;
+		if (!to) return;
+
+		const data = new FormData(form);
+		const name = String(data.get("name") ?? "");
+		const email = String(data.get("email") ?? "");
+		const message = String(data.get("message") ?? "");
+
+		const subject = `New project enquiry from ${name}`;
+		const body = `${message}\n\n—\n${name}\n${email}`;
+
+		window.location.href =
+			`mailto:${to}?subject=${encodeURIComponent(subject)}` +
+			`&body=${encodeURIComponent(body)}`;
+	});
+</script>
+
+<style>
+	.contact {
+		display: grid;
+		gap: var(--space-10);
+		padding: var(--space-8);
+		background: var(--color-surface);
+		border-radius: var(--radius-md);
+	}
+
+	.contact-heading {
+		font-size: var(--text-heading);
+		line-height: var(--leading-heading);
+		font-weight: var(--weight-medium);
+		max-width: 14ch;
+	}
+
+	.contact-direct {
+		margin-top: var(--space-5);
+		font-size: var(--text-base);
+		color: var(--color-muted);
+	}
+
+	.contact-direct a {
+		color: var(--color-accent);
+		text-decoration: underline;
+		text-underline-offset: 3px;
+	}
+
+	.contact-form {
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+		gap: var(--space-4);
+	}
+
+	.field {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-2);
+	}
+
+	label {
+		font-size: var(--text-sm);
+		font-weight: var(--weight-medium);
+		color: var(--color-muted);
+	}
+
+	input,
+	textarea {
+		padding: var(--space-3) var(--space-4);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-sm);
+		background: var(--color-bg);
+		font-size: var(--text-base);
+		color: var(--color-text);
+		transition: border-color var(--dur-base) var(--ease-ui);
+	}
+
+	input:hover,
+	textarea:hover {
+		border-color: var(--color-border-strong);
+	}
+
+	textarea {
+		resize: vertical;
+		min-height: 7rem;
+	}
+
+	.contact-submit {
+		align-self: flex-start;
+	}
+
+	.contact-note {
+		font-size: var(--text-sm);
+		color: var(--color-subtle);
+	}
+
+	@media (min-width: 1200px) {
+		.contact {
+			grid-template-columns: 1fr 1fr;
+			gap: var(--space-20);
+			padding: var(--space-12);
+			align-items: start;
+		}
+	}
+</style>

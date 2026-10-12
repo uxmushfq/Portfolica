@@ -1,0 +1,71 @@
+---
+/**
+ * Section — the page's vertical rhythm and content width in one place.
+ *
+ * Every band on every page uses this, so the 80px/100px section spacing and
+ * the 1200px content width are defined once rather than per component.
+ */
+interface Props {
+	/** Optional eyebrow label above the heading, e.g. "Testimonials". */
+	eyebrow?: string;
+	/** Section heading. Omit for an unlabelled band. */
+	heading?: string;
+	/** Heading level — keep one <h1> per page. */
+	as?: "h1" | "h2";
+	id?: string;
+	class?: string;
+	/** Removes the default top padding, for bands that butt against the one above. */
+	flush?: boolean;
+}
+
+const {
+	eyebrow,
+	heading,
+	as: Heading = "h2",
+	id,
+	class: className,
+	flush = false,
+} = Astro.props;
+---
+
+<section id={id} class:list={["section", { flush }, className]}>
+	<div class="container-page">
+		{
+			(eyebrow || heading) && (
+				<header class="section-head">
+					{eyebrow && <p class="eyebrow">{eyebrow}</p>}
+					{heading && <Heading class="section-heading">{heading}</Heading>}
+				</header>
+			)
+		}
+		<slot />
+	</div>
+</section>
+
+<style>
+	.section {
+		padding-block: var(--space-section);
+	}
+
+	.section.flush {
+		padding-block-start: 0;
+	}
+
+	.section-head {
+		margin-bottom: var(--space-10);
+	}
+
+	.eyebrow {
+		font-size: var(--text-sm);
+		font-weight: var(--weight-medium);
+		color: var(--color-muted);
+		margin-bottom: var(--space-4);
+	}
+
+	.section-heading {
+		font-size: var(--text-heading);
+		line-height: var(--leading-heading);
+		font-weight: var(--weight-medium);
+		max-width: 20ch;
+	}
+</style>

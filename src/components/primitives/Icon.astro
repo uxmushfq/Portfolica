@@ -1,0 +1,53 @@
+---
+/**
+ * Icon — the template's whole icon set, as inline SVG.
+ *
+ * Inline rather than an icon font or sprite: four icons do not justify a
+ * dependency, and inline SVG inherits `currentColor` and adds no request.
+ *
+ * To add one: add a key to PATHS, then allow its name in the `icon` field
+ * options in seed/seed.json so editors can select it.
+ */
+interface Props {
+	name: string;
+	size?: number;
+	class?: string;
+}
+
+const { name, size = 24, class: className } = Astro.props;
+
+const PATHS: Record<string, string> = {
+	// service icons
+	sparkle: "M12 3l1.9 5.6L19.5 10l-5.6 1.9L12 17.5l-1.9-5.6L4.5 10l5.6-1.4L12 3z",
+	code: "M8.5 8.5 5 12l3.5 3.5M15.5 8.5 19 12l-3.5 3.5M13.5 5.5l-3 13",
+	palette:
+		"M12 3a9 9 0 1 0 0 18c1.1 0 1.8-.9 1.8-1.8 0-.5-.2-.9-.5-1.2-.3-.3-.5-.7-.5-1.2 0-1 .8-1.8 1.8-1.8H16a5 5 0 0 0 5-5c0-3.9-4-7-9-7z",
+	compass: "M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zm3.5 5.5-2 4.5-4.5 2 2-4.5 4.5-2z",
+	// ui
+	plus: "M12 6v12M6 12h12",
+	arrow: "M5 12h13M13 6.5 18.5 12 13 17.5",
+	mail: "M3 7l8.2 5.6a1.5 1.5 0 0 0 1.6 0L21 7",
+	star: "M12 3.5l2.6 5.3 5.9.9-4.2 4.1 1 5.8-5.3-2.8-5.3 2.8 1-5.8-4.2-4.1 5.9-.9L12 3.5z",
+};
+
+const d = PATHS[name] ?? PATHS.sparkle;
+const isMail = name === "mail";
+const filled = name === "star";
+---
+
+<svg
+	viewBox="0 0 24 24"
+	width={size}
+	height={size}
+	fill={filled ? "currentColor" : "none"}
+	stroke="currentColor"
+	stroke-width={filled ? 0 : 1.75}
+	stroke-linecap="round"
+	stroke-linejoin="round"
+	class={className}
+	aria-hidden="true"
+	focusable="false"
+>
+	{isMail && <rect x="2.5" y="4.5" width="19" height="15" rx="3" />}
+	<path d={d} />
+</svg>

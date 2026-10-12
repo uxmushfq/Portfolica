@@ -1,0 +1,96 @@
+---
+/**
+ * IntroCard — the labelled prose panel: About me, Background, My Approach,
+ * with the career list alongside.
+ *
+ * The three paragraphs come from the About page's Portable Text content, so
+ * one edit updates both this panel and /about.
+ */
+import { PortableText } from "emdash/ui";
+import Career from "./Career.astro";
+
+interface Props {
+	intro?: string | null;
+	content?: unknown;
+	roles: Array<Record<string, any>>;
+}
+
+const { intro, content, roles } = Astro.props;
+---
+
+<div class="intro">
+	<div class="intro-prose">
+		{
+			intro && (
+				<div class="intro-row">
+					<p class="intro-label">About me</p>
+					<p class="intro-text">{intro}</p>
+				</div>
+			)
+		}
+		{
+			content ? (
+				<div class="intro-row">
+					<p class="intro-label">Background</p>
+					<div class="intro-text">
+						<PortableText value={content} />
+					</div>
+				</div>
+			) : null
+		}
+	</div>
+
+	<Career roles={roles} />
+</div>
+
+<style>
+	.intro {
+		display: grid;
+		gap: var(--space-10);
+		padding: var(--space-8);
+		background: var(--color-surface);
+		border-radius: var(--radius-md);
+	}
+
+	.intro-prose {
+		display: grid;
+		gap: var(--space-6);
+	}
+
+	.intro-row {
+		display: grid;
+		gap: var(--space-2);
+		padding-block-end: var(--space-6);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.intro-row:last-child {
+		padding-block-end: 0;
+		border-bottom: 0;
+	}
+
+	.intro-label {
+		font-size: var(--text-sm);
+		font-weight: var(--weight-medium);
+		color: var(--color-muted);
+	}
+
+	.intro-text {
+		font-size: var(--text-lead);
+		line-height: var(--leading-normal);
+		color: var(--color-text-soft);
+		max-width: 60ch;
+	}
+
+	.intro-text :global(p + p) {
+		margin-top: var(--space-4);
+	}
+
+	@media (min-width: 1200px) {
+		.intro {
+			grid-template-columns: 1.2fr 1fr;
+			gap: var(--space-20);
+			padding: var(--space-12);
+		}
+	}
+</style>

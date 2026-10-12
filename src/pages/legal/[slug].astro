@@ -1,0 +1,74 @@
+---
+/**
+ * Legal pages — privacy policy, terms, and anything else a buyer adds.
+ *
+ * These read from the same `pages` collection as About, so a buyer creates a
+ * new legal page in the admin without adding a route file.
+ */
+import { decodeSlug } from "emdash";
+import { PortableText } from "emdash/ui";
+import Section from "../../components/primitives/Section.astro";
+import Base from "../../layouts/Base.astro";
+import { getPage, useCacheHint } from "../../lib/queries";
+
+const slug = decodeSlug(Astro.params.slug);
+if (!slug) return Astro.rewrite("/404");
+
+const { entry: page, error, cacheHint } = await getPage(slug);
+if (error) return new Response("Could not load the page", { status: 500 });
+if (!page) return Astro.rewrite("/404");
+
+useCacheHint(Astro, cacheHint);
+
+const d = page.data;
+---
+
+<Base
+	title={d.title}
+	description={d.intro}
+	content={{ collection: "pages", id: d.id, slug: d.slug }}
+>
+	<Section as="h1" heading={d.title} class="legal">
+		{d.intro && <p class="lede">{d.intro}</p>}
+		{
+			d.content ? (
+				<div class="prose">
+					<PortableText value={d.content} />
+				</div>
+			) : null
+		}
+	</Section>
+</Base>
+
+<style>
+	.legal {
+		padding-block-start: var(--space-10);
+	}
+
+	.lede {
+		max-width: 60ch;
+		margin-top: calc(var(--space-10) * -1);
+		margin-bottom: var(--space-6);
+		font-size: var(--text-lead);
+		color: var(--color-text-soft);
+	}
+
+	.prose {
+		max-width: 66ch;
+		font-size: var(--text-body);
+		line-height: var(--leading-prose);
+		color: var(--color-text-soft);
+	}
+
+	.prose :global(p + p),
+	.prose :global(h2),
+	.prose :global(h3) {
+		margin-top: var(--space-6);
+	}
+
+	.prose :global(h2),
+	.prose :global(h3) {
+		color: var(--color-text);
+		font-size: var(--text-lead);
+	}
+</style>

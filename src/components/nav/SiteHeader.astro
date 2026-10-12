@@ -1,10 +1,15 @@
 ---
 /**
  * SiteHeader — avatar, primary navigation, booking CTA, email link.
- * Every value is CMS-driven: the menu comes from the `primary` menu and the
- * rest from site options.
+ *
+ * Every value is CMS-driven: the links come from the `primary` menu, the rest
+ * from site options.
+ *
+ * Below 810px the links collapse into a <details> disclosure. That is a real
+ * button to assistive tech, opens on keyboard, and needs no JavaScript.
  */
 import { Image } from "emdash/ui";
+import Icon from "../primitives/Icon.astro";
 
 interface Props {
 	menu?: { items: Array<{ label?: string; url?: string; target?: string }> } | null;
@@ -19,6 +24,8 @@ const siteTitle = settings?.title || "Portfolica";
 const avatar = options?.avatar ?? settings?.logo ?? null;
 const bookingUrl = options?.booking_url;
 const email = options?.contact_email;
+const items = menu?.items ?? [];
+const path = Astro.url.pathname;
 ---
 
 <header class="site-header">
@@ -26,21 +33,21 @@ const email = options?.contact_email;
 		<a href="/" class="brand" aria-label={`${siteTitle} — home`}>
 			{
 				avatar ? (
-					<Image image={avatar} alt={siteTitle} width={40} height={40} class="brand-avatar" />
+					<Image image={avatar} alt="" width={40} height={40} class="brand-avatar" />
 				) : (
 					<span class="brand-fallback" aria-hidden="true" />
 				)
 			}
 		</a>
 
-		<nav class="nav" aria-label="Primary">
+		<nav class="nav nav-desktop" aria-label="Primary">
 			{
-				menu?.items?.map((item) => (
+				items.map((item) => (
 					<a
 						href={item.url}
 						target={item.target}
 						rel={item.target === "_blank" ? "noopener noreferrer" : undefined}
-						aria-current={Astro.url.pathname === item.url ? "page" : undefined}
+						aria-current={path === item.url ? "page" : undefined}
 					>
 						{item.label}
 					</a>
@@ -52,7 +59,7 @@ const email = options?.contact_email;
 		<div class="header-actions">
 			{
 				bookingUrl && (
-					<a href={bookingUrl} class="btn btn-accent" target="_blank" rel="noopener noreferrer">
+					<a href={bookingUrl} class="btn-book" target="_blank" rel="noopener noreferrer">
 						Book a 30 min call
 					</a>
 				)
@@ -60,13 +67,31 @@ const email = options?.contact_email;
 			{
 				email && (
 					<a href={`mailto:${email}`} class="icon-btn" aria-label={`Email ${siteTitle}`}>
-						<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
-							<rect x="2.5" y="4.5" width="19" height="15" rx="3" />
-							<path d="m3 7 8.2 5.6a1.5 1.5 0 0 0 1.6 0L21 7" />
-						</svg>
+						<Icon name="mail" size={18} />
 					</a>
 				)
 			}
+
+			<details class="menu">
+				<summary class="icon-btn menu-toggle" aria-label="Menu">
+					<span class="bars" aria-hidden="true"></span>
+				</summary>
+				<nav class="menu-panel" aria-label="Primary">
+					{
+						items.map((item) => (
+							<a
+								href={item.url}
+								target={item.target}
+								rel={item.target === "_blank" ? "noopener noreferrer" : undefined}
+								aria-current={path === item.url ? "page" : undefined}
+							>
+								{item.label}
+							</a>
+						))
+					}
+					{isLoggedIn && <a href="/_emdash/admin">Admin</a>}
+				</nav>
+			</details>
 		</div>
 	</div>
 </header>
@@ -105,20 +130,20 @@ const email = options?.contact_email;
 		background: var(--color-accent);
 	}
 
-	.nav {
+	.nav-desktop {
 		display: none;
 		gap: var(--space-6);
 		font-size: var(--text-base);
 		font-weight: var(--weight-medium);
 	}
 
-	.nav a {
+	.nav-desktop a {
 		color: var(--color-muted);
 		transition: color var(--dur-fast) var(--ease-ui);
 	}
 
-	.nav a:hover,
-	.nav a[aria-current="page"] {
+	.nav-desktop a:hover,
+	.nav-desktop a[aria-current="page"] {
 		color: var(--color-text);
 	}
 
@@ -132,27 +157,23 @@ const email = options?.contact_email;
 		gap: var(--space-2);
 	}
 
-	.btn {
-		display: inline-flex;
+	.btn-book {
+		display: none;
 		align-items: center;
-		justify-content: center;
 		padding: var(--space-3) var(--space-5);
 		border-radius: var(--radius-pill);
+		background: var(--color-accent);
+		color: var(--color-on-accent);
 		font-size: var(--text-sm);
 		font-weight: var(--weight-semibold);
 		letter-spacing: var(--tracking-button);
-		/* The one transition measured on the original. */
+		white-space: nowrap;
 		transition:
 			background var(--dur-base) var(--ease-ui),
 			box-shadow var(--dur-base) var(--ease-ui);
 	}
 
-	.btn-accent {
-		background: var(--color-accent);
-		color: var(--color-on-accent);
-	}
-
-	.btn-accent:hover {
+	.btn-book:hover {
 		background: var(--color-accent-hover);
 		box-shadow: 0 0 0 4px var(--color-accent-ring);
 	}
@@ -166,6 +187,7 @@ const email = options?.contact_email;
 		border-radius: var(--radius-full);
 		background: var(--color-surface);
 		color: var(--color-text);
+		cursor: pointer;
 		transition:
 			background var(--dur-base) var(--ease-ui),
 			box-shadow var(--dur-base) var(--ease-ui);
@@ -175,9 +197,79 @@ const email = options?.contact_email;
 		box-shadow: 0 0 0 4px var(--color-accent-ring);
 	}
 
+	/* --- mobile disclosure --- */
+	.menu {
+		position: relative;
+	}
+
+	.menu-toggle {
+		list-style: none;
+	}
+
+	.menu-toggle::-webkit-details-marker {
+		display: none;
+	}
+
+	.bars,
+	.bars::before,
+	.bars::after {
+		display: block;
+		width: 16px;
+		height: 1.75px;
+		background: currentColor;
+		border-radius: 2px;
+	}
+
+	.bars::before,
+	.bars::after {
+		content: "";
+		position: relative;
+	}
+
+	.bars::before {
+		top: -5px;
+	}
+
+	.bars::after {
+		top: 3.25px;
+	}
+
+	.menu-panel {
+		position: absolute;
+		right: 0;
+		top: calc(100% + var(--space-2));
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-1);
+		min-width: 12rem;
+		padding: var(--space-3);
+		background: var(--color-surface);
+		border-radius: var(--radius-md);
+		box-shadow: 0 12px 32px color-mix(in srgb, var(--color-text) 12%, transparent);
+	}
+
+	.menu-panel a {
+		padding: var(--space-3) var(--space-4);
+		border-radius: var(--radius-sm);
+		font-size: var(--text-base);
+		font-weight: var(--weight-medium);
+		color: var(--color-text-soft);
+	}
+
+	.menu-panel a:hover,
+	.menu-panel a[aria-current="page"] {
+		background: var(--color-bg);
+		color: var(--color-text);
+	}
+
 	@media (min-width: 810px) {
-		.nav {
+		.nav-desktop,
+		.btn-book {
 			display: flex;
+		}
+
+		.menu {
+			display: none;
 		}
 	}
 </style>

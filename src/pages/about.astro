@@ -1,0 +1,147 @@
+---
+import Career from "../components/blocks/Career.astro";
+import ContactForm from "../components/blocks/ContactForm.astro";
+import Testimonials from "../components/blocks/Testimonials.astro";
+import Section from "../components/primitives/Section.astro";
+import Base from "../layouts/Base.astro";
+import { getPage, getSection, getSiteOptions, useCacheHint } from "../lib/queries";
+import { PortableText } from "emdash/ui";
+
+const [options, experience, skills, testimonials] = await Promise.all([
+	getSiteOptions(),
+	getSection("experience"),
+	getSection("skills"),
+	getSection("testimonials"),
+]);
+
+const { entry: page, cacheHint: pageHint } = await getPage("about");
+
+useCacheHint(
+	Astro,
+	options.cacheHint,
+	experience.cacheHint,
+	skills.cacheHint,
+	testimonials.cacheHint,
+	pageHint,
+);
+
+const o = options.options;
+
+// Group skills by their stored group, preserving sort order within each.
+const grouped = skills.items.reduce<Record<string, string[]>>((acc, skill) => {
+	const group = skill.data.group || "Skills";
+	(acc[group] ??= []).push(skill.data.name);
+	return acc;
+}, {});
+---
+
+<Base
+	title={page?.data.title ?? "About"}
+	description={page?.data.intro}
+	content={page ? { collection: "pages", id: page.data.id, slug: page.data.slug } : undefined}
+>
+	<Section as="h1" heading={page?.data.title ?? "About"}>
+		{page?.data.intro && <p class="lede">{page.data.intro}</p>}
+		{
+			page?.data.content ? (
+				<div class="prose">
+					<PortableText value={page.data.content} />
+				</div>
+			) : null
+		}
+	</Section>
+
+	<Section heading="Career history & Roles">
+		<div class="panel">
+			<Career roles={experience.items} heading="Roles" />
+		</div>
+	</Section>
+
+	{
+		Object.keys(grouped).length > 0 && (
+			<Section heading="Technical & creative skills">
+				<div class="panel skills">
+					{Object.entries(grouped).map(([group, names]) => (
+						<div class="skill-group">
+							<h3 class="skill-group-title">{group}</h3>
+							<ul class="skill-list">
+								{names.map((name) => (
+									<li class="skill">{name}</li>
+								))}
+							</ul>
+						</div>
+					))}
+				</div>
+			</Section>
+		)
+	}
+
+	<Section eyebrow="Testimonials" heading="Good work gets noticed">
+		<Testimonials testimonials={testimonials.items} />
+	</Section>
+
+	<Section flush>
+		<ContactForm email={o?.contact_email} />
+	</Section>
+</Base>
+
+<style>
+	.lede {
+		max-width: 46ch;
+		margin-top: calc(var(--space-10) * -1);
+		margin-bottom: var(--space-6);
+		font-size: var(--text-lead);
+		line-height: var(--leading-normal);
+		color: var(--color-text-soft);
+	}
+
+	.prose {
+		max-width: 66ch;
+		font-size: var(--text-body);
+		line-height: var(--leading-prose);
+		color: var(--color-text-soft);
+	}
+
+	.prose :global(p + p) {
+		margin-top: var(--space-5);
+	}
+
+	.panel {
+		padding: var(--space-8);
+		background: var(--color-surface);
+		border-radius: var(--radius-md);
+	}
+
+	.skills {
+		display: grid;
+		gap: var(--space-8);
+	}
+
+	.skill-group-title {
+		font-size: var(--text-sm);
+		font-weight: var(--weight-medium);
+		color: var(--color-muted);
+		margin-bottom: var(--space-4);
+	}
+
+	.skill-list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-2);
+		list-style: none;
+	}
+
+	.skill {
+		padding: var(--space-2) var(--space-4);
+		border-radius: var(--radius-pill);
+		background: var(--color-bg);
+		font-size: var(--text-base);
+		color: var(--color-text-soft);
+	}
+
+	@media (min-width: 810px) {
+		.skills {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+</style>

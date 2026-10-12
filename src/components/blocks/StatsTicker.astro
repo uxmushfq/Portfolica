@@ -1,0 +1,54 @@
+---
+/**
+ * StatsTicker — the figures strip, scrolling as one continuous band.
+ */
+import Ticker from "../primitives/Ticker.astro";
+
+interface Props {
+	stats: Array<Record<string, any>>;
+}
+
+const { stats } = Astro.props;
+---
+
+{
+	stats.length > 0 && (
+		<Ticker duration={38} class="stats">
+			{stats.map((stat) => (
+				<div class="stat">
+					<strong class="stat-value">{stat.data.value}</strong>
+					<span class="stat-label">{stat.data.label}</span>
+				</div>
+			))}
+		</Ticker>
+	)
+}
+
+<style>
+	.stats {
+		background: var(--color-surface);
+		border-radius: var(--radius-pill);
+		padding: var(--space-6) 0;
+	}
+
+	.stat {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-1);
+		padding-inline: var(--space-10);
+		border-right: 1px solid var(--color-border);
+		white-space: nowrap;
+	}
+
+	.stat-value {
+		font-size: var(--text-heading);
+		line-height: var(--leading-heading);
+		font-weight: var(--weight-medium);
+		font-variant-numeric: tabular-nums;
+	}
+
+	.stat-label {
+		font-size: var(--text-base);
+		color: var(--color-muted);
+	}
+</style>

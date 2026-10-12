@@ -1,0 +1,129 @@
+---
+/**
+ * Testimonials — client quotes with a rating and optional photo.
+ *
+ * The original shows photo + rating + quote and no attribution. The name and
+ * role fields exist in the CMS and render only when filled, so a buyer can
+ * add attribution without touching this file.
+ */
+import { Image } from "emdash/ui";
+import Icon from "../primitives/Icon.astro";
+
+interface Props {
+	testimonials: Array<Record<string, any>>;
+}
+
+const { testimonials } = Astro.props;
+---
+
+{
+	testimonials.length > 0 && (
+		<ul class="grid">
+			{testimonials.map((item) => {
+				const d = item.data;
+				return (
+					<li>
+						<figure class="quote-card">
+							<div class="quote-head">
+								{d.avatar && (
+									<Image
+										image={d.avatar}
+										alt={d.author_name ? `${d.author_name}` : ""}
+										width={88}
+										height={88}
+										class="avatar"
+									/>
+								)}
+								{d.rating && (
+									<p class="rating">
+										<Icon name="star" size={14} />
+										<span>{d.rating}</span>
+									</p>
+								)}
+							</div>
+
+							<blockquote class="quote">{d.quote}</blockquote>
+
+							{(d.author_name || d.author_role) && (
+								<figcaption class="attribution">
+									{d.author_name && <span class="name">{d.author_name}</span>}
+									{d.author_role && <span class="role">{d.author_role}</span>}
+								</figcaption>
+							)}
+						</figure>
+					</li>
+				);
+			})}
+		</ul>
+	)
+}
+
+<style>
+	.grid {
+		display: grid;
+		gap: var(--space-2);
+		list-style: none;
+	}
+
+	.quote-card {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-5);
+		height: 100%;
+		padding: var(--space-6);
+		background: var(--color-surface);
+		border-radius: var(--radius-md);
+	}
+
+	.quote-head {
+		display: flex;
+		align-items: center;
+		gap: var(--space-4);
+	}
+
+	.avatar {
+		width: 2.75rem;
+		height: 2.75rem;
+		border-radius: var(--radius-full);
+		object-fit: cover;
+		flex: 0 0 auto;
+	}
+
+	.rating {
+		display: inline-flex;
+		align-items: center;
+		gap: var(--space-1);
+		font-size: var(--text-sm);
+		font-weight: var(--weight-medium);
+		color: var(--color-accent);
+		font-variant-numeric: tabular-nums;
+	}
+
+	.quote {
+		font-size: var(--text-body);
+		line-height: var(--leading-normal);
+		color: var(--color-text-soft);
+	}
+
+	.attribution {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-2);
+		margin-top: auto;
+		font-size: var(--text-sm);
+	}
+
+	.name {
+		font-weight: var(--weight-medium);
+	}
+
+	.role {
+		color: var(--color-muted);
+	}
+
+	@media (min-width: 810px) {
+		.grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+</style>

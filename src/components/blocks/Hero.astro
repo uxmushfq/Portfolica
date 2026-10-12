@@ -1,0 +1,155 @@
+---
+/**
+ * Hero — the name set large, with the availability badge, tagline and the
+ * two calls to action beside it.
+ *
+ * Every string is CMS-driven from `site_options`.
+ */
+import { Image } from "emdash/ui";
+import Button from "../primitives/Button.astro";
+import Icon from "../primitives/Icon.astro";
+
+interface Props {
+	options: Record<string, any> | null;
+}
+
+const { options: o } = Astro.props;
+---
+
+<section class="hero">
+	<div class="container-page hero-inner">
+		<h1 class="hero-name">
+			<span class="hero-line">
+				{o?.hero_name_line_1}
+				{
+					o?.avatar && (
+						<Image
+							image={o.avatar}
+							alt=""
+							width={96}
+							height={96}
+							class="hero-avatar"
+							priority
+						/>
+					)
+				}
+			</span>
+			{o?.hero_name_line_2 && <span class="hero-line">{o.hero_name_line_2}</span>}
+		</h1>
+
+		<div class="hero-aside">
+			{
+				o?.availability_badge && (
+					<p class="badge">
+						<span class="badge-dot" aria-hidden="true" />
+						{o.availability_badge}
+					</p>
+				)
+			}
+
+			{o?.hero_tagline && <p class="hero-tagline">{o.hero_tagline}</p>}
+
+			<div class="hero-actions">
+				{
+					o?.cta_primary_label && (
+						<Button href={o.cta_primary_url || "/contact"} variant="accent">
+							{o.cta_primary_label}
+							<Icon name="arrow" size={16} />
+						</Button>
+					)
+				}
+				{
+					o?.cta_secondary_label && (
+						<Button href={o.cta_secondary_url || "/all-projects"} variant="surface">
+							{o.cta_secondary_label}
+						</Button>
+					)
+				}
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.hero {
+		padding-block: var(--space-10) var(--space-20);
+	}
+
+	.hero-inner {
+		display: grid;
+		gap: var(--space-10);
+		align-items: end;
+	}
+
+	.hero-name {
+		font-size: var(--text-display);
+		line-height: var(--leading-display);
+		font-weight: var(--weight-medium);
+		letter-spacing: -0.02em;
+		text-wrap: nowrap;
+	}
+
+	.hero-line {
+		display: flex;
+		align-items: center;
+		gap: 0.15em;
+	}
+
+	.hero-avatar {
+		width: 0.72em;
+		height: 0.72em;
+		border-radius: var(--radius-full);
+		object-fit: cover;
+		flex: 0 0 auto;
+	}
+
+	.hero-aside {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: var(--space-5);
+		max-width: 46ch;
+	}
+
+	.badge {
+		display: inline-flex;
+		align-items: center;
+		gap: var(--space-2);
+		padding: var(--space-1) var(--space-4);
+		border-radius: var(--radius-pill);
+		background: var(--color-surface);
+		font-size: var(--text-sm);
+		font-weight: var(--weight-medium);
+		color: var(--color-text-soft);
+	}
+
+	.badge-dot {
+		width: 0.5rem;
+		height: 0.5rem;
+		border-radius: var(--radius-full);
+		background: var(--color-accent);
+	}
+
+	.hero-tagline {
+		font-size: var(--text-body);
+		line-height: var(--leading-normal);
+		color: var(--color-text-soft);
+	}
+
+	.hero-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-2);
+	}
+
+	@media (min-width: 1200px) {
+		.hero-inner {
+			grid-template-columns: auto 1fr;
+			gap: var(--space-20);
+		}
+
+		.hero-aside {
+			padding-bottom: var(--space-4);
+		}
+	}
+</style>

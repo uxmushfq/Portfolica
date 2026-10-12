@@ -1,0 +1,60 @@
+---
+import ContactForm from "../components/blocks/ContactForm.astro";
+import Faq from "../components/blocks/Faq.astro";
+import ProjectsGrid from "../components/blocks/ProjectsGrid.astro";
+import Services from "../components/blocks/Services.astro";
+import Section from "../components/primitives/Section.astro";
+import Base from "../layouts/Base.astro";
+import { getProjects, getSection, getSiteOptions, useCacheHint } from "../lib/queries";
+
+const [options, projects, services, faqs] = await Promise.all([
+	getSiteOptions(),
+	getProjects({ limit: 50 }),
+	getSection("services"),
+	getSection("faqs"),
+]);
+
+useCacheHint(
+	Astro,
+	options.cacheHint,
+	projects.cacheHint,
+	services.cacheHint,
+	faqs.cacheHint,
+);
+
+const o = options.options;
+const description =
+	"Selected projects and case studies in product design, brand identity and web.";
+---
+
+<Base title="Projects & case studies" description={description}>
+	<Section heading="Projects & case studies" as="h1">
+		<p class="lede">
+			I'm open to projects & alliances. Feel free to reach out & share what
+			you're building, even if it's just an idea.
+		</p>
+		<ProjectsGrid projects={projects.projects} />
+	</Section>
+
+	<Section heading="End-to-end design services">
+		<Services services={services.items} />
+	</Section>
+
+	<Section heading="Before you ask">
+		<Faq faqs={faqs.items} />
+	</Section>
+
+	<Section flush>
+		<ContactForm email={o?.contact_email} />
+	</Section>
+</Base>
+
+<style>
+	.lede {
+		max-width: 52ch;
+		margin-bottom: var(--space-10);
+		margin-top: calc(var(--space-10) * -1);
+		font-size: var(--text-body);
+		color: var(--color-text-soft);
+	}
+</style>

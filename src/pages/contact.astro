@@ -1,0 +1,32 @@
+---
+import ContactForm from "../components/blocks/ContactForm.astro";
+import Faq from "../components/blocks/Faq.astro";
+import Section from "../components/primitives/Section.astro";
+import Base from "../layouts/Base.astro";
+import { getSection, getSiteOptions, useCacheHint } from "../lib/queries";
+
+const [options, faqs] = await Promise.all([getSiteOptions(), getSection("faqs")]);
+
+useCacheHint(Astro, options.cacheHint, faqs.cacheHint);
+
+const o = options.options;
+---
+
+<Base
+	title="Contact"
+	description="Start a project, or just say hello."
+>
+	<Section flush class="top">
+		<ContactForm email={o?.contact_email} heading="Have a project in mind?" as="h1" />
+	</Section>
+
+	<Section heading="Before you ask">
+		<Faq faqs={faqs.items} />
+	</Section>
+</Base>
+
+<style>
+	.top {
+		padding-block-start: var(--space-10);
+	}
+</style>

@@ -1,0 +1,258 @@
+---
+/**
+ * Project detail.
+ *
+ * No getStaticPaths: EmDash content is dynamic and the site is
+ * output: "server". The edge cache, not static generation, is what keeps
+ * this fast.
+ */
+import { decodeSlug } from "emdash";
+import { Image, PortableText } from "emdash/ui";
+import ContactForm from "../../components/blocks/ContactForm.astro";
+import ProjectsGrid from "../../components/blocks/ProjectsGrid.astro";
+import Section from "../../components/primitives/Section.astro";
+import Base from "../../layouts/Base.astro";
+import { getProject, getProjects, getSiteOptions, useCacheHint } from "../../lib/queries";
+
+const slug = decodeSlug(Astro.params.slug);
+if (!slug) return Astro.rewrite("/404");
+
+const { entry: project, error, cacheHint } = await getProject(slug);
+if (error) return new Response("Could not load the project", { status: 500 });
+if (!project) return Astro.rewrite("/404");
+
+const [options, all] = await Promise.all([
+	getSiteOptions(),
+	getProjects({ limit: 20 }),
+]);
+
+useCacheHint(Astro, cacheHint, options.cacheHint, all.cacheHint);
+
+const d = project.data;
+const meta = [d.category, d.year].filter(Boolean);
+const related = all.projects.filter((p) => p.id !== project.id).slice(0, 2);
+const gallery = (d.gallery ?? []) as Array<{ image: any; caption?: string | null }>;
+---
+
+<Base
+	title={d.title}
+	description={d.summary}
+	type="article"
+	content={{ collection: "projects", id: d.id, slug: d.slug }}
+>
+	<article>
+		<Section flush class="head">
+			{
+				meta.length > 0 && (
+					<p class="meta">
+						{meta.map((part) => (
+							<span>{part}</span>
+						))}
+					</p>
+				)
+			}
+			<h1 class="title">{d.title}</h1>
+			{d.summary && <p class="summary">{d.summary}</p>}
+
+			{
+				d.url && (
+					<p class="visit">
+						<a href={d.url} target="_blank" rel="noopener noreferrer">
+							Visit live site
+						</a>
+					</p>
+				)
+			}
+		</Section>
+
+		{
+			d.featured_image && (
+				<Section flush>
+					<Image
+						image={d.featured_image}
+						alt={d.featured_image.alt || d.title}
+						width={1200}
+						height={760}
+						class="cover"
+						priority
+					/>
+				</Section>
+			)
+		}
+
+		{
+			(d.challenge || d.approach) && (
+				<Section>
+					<div class="columns">
+						{d.challenge && (
+							<div class="column">
+								<h2 class="column-title">Challenge</h2>
+								<div class="prose">
+									<PortableText value={d.challenge} />
+								</div>
+							</div>
+						)}
+						{d.approach && (
+							<div class="column">
+								<h2 class="column-title">Approach</h2>
+								<div class="prose">
+									<PortableText value={d.approach} />
+								</div>
+							</div>
+						)}
+					</div>
+				</Section>
+			)
+		}
+
+		{
+			gallery.length > 0 && (
+				<Section flush>
+					<ul class="gallery">
+						{gallery.map((row, i) => (
+							<li>
+								<figure>
+									<Image
+										image={row.image}
+										alt={row.image?.alt || ""}
+										width={i === 0 ? 1200 : 600}
+										height={i === 0 ? 800 : 400}
+										class="gallery-img"
+									/>
+									{row.caption && <figcaption>{row.caption}</figcaption>}
+								</figure>
+							</li>
+						))}
+					</ul>
+				</Section>
+			)
+		}
+	</article>
+
+	{
+		related.length > 0 && (
+			<Section heading="Explore more like this one">
+				<ProjectsGrid projects={related} showArchiveLink />
+			</Section>
+		)
+	}
+
+	<Section flush>
+		<ContactForm email={options.options?.contact_email} />
+	</Section>
+</Base>
+
+<style>
+	.head {
+		padding-block-start: var(--space-10);
+	}
+
+	.meta {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-4);
+		font-size: var(--text-sm);
+		font-weight: var(--weight-medium);
+		color: var(--color-muted);
+		margin-bottom: var(--space-5);
+	}
+
+	.meta span + span::before {
+		content: "·";
+		margin-right: var(--space-4);
+	}
+
+	.title {
+		font-size: var(--text-heading);
+		line-height: var(--leading-heading);
+		font-weight: var(--weight-medium);
+	}
+
+	.summary {
+		max-width: 60ch;
+		margin-top: var(--space-5);
+		font-size: var(--text-lead);
+		line-height: var(--leading-normal);
+		color: var(--color-text-soft);
+	}
+
+	.visit {
+		margin-top: var(--space-5);
+		font-size: var(--text-base);
+	}
+
+	.visit a {
+		color: var(--color-accent);
+		text-decoration: underline;
+		text-underline-offset: 3px;
+	}
+
+	.cover {
+		width: 100%;
+		aspect-ratio: 16 / 10;
+		object-fit: cover;
+		border-radius: var(--radius-md);
+	}
+
+	.columns {
+		display: grid;
+		gap: var(--space-10);
+	}
+
+	.column-title {
+		font-size: var(--text-lead);
+		font-weight: var(--weight-medium);
+		margin-bottom: var(--space-4);
+	}
+
+	.prose {
+		max-width: 60ch;
+		font-size: var(--text-body);
+		line-height: var(--leading-prose);
+		color: var(--color-text-soft);
+	}
+
+	.prose :global(p + p) {
+		margin-top: var(--space-5);
+	}
+
+	/*
+	 * The original runs a full-bleed cover first, then the detail shots at
+	 * half width beside each other. The first item spans both columns so the
+	 * pattern holds for any number of gallery rows.
+	 */
+	.gallery {
+		display: grid;
+		gap: var(--space-2);
+		list-style: none;
+	}
+
+	.gallery-img {
+		width: 100%;
+		border-radius: var(--radius-md);
+		background: var(--color-surface);
+	}
+
+	@media (min-width: 810px) {
+		.gallery {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		.gallery > li:first-child {
+			grid-column: 1 / -1;
+		}
+	}
+
+	figcaption {
+		margin-top: var(--space-3);
+		font-size: var(--text-sm);
+		color: var(--color-muted);
+	}
+
+	@media (min-width: 810px) {
+		.columns {
+			grid-template-columns: repeat(2, 1fr);
+			gap: var(--space-20);
+		}
+	}
+</style>
