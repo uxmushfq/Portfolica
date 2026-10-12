@@ -171,11 +171,20 @@
 	}
 }
 
+/*
+ * The content box, measured from the original:
+ *   1440px viewport -> box 120..1320 (1200 wide, no inner padding)
+ *   1000px viewport -> box  30..970  ( 940 wide, 30px gutters)
+ *    390px viewport -> box  15..375  ( 360 wide, 15px gutters)
+ *
+ * So the gutter is a minimum margin, not padding inside the cap: once the
+ * viewport is wide enough the box stops at 1200 and the surplus becomes
+ * margin. `min()` expresses exactly that, and keeps the side gutter at
+ * every width.
+ */
 @utility container-page {
-	width: 100%;
-	max-width: var(--width-content);
+	width: min(100% - (2 * var(--gutter)), var(--width-content));
 	margin-inline: auto;
-	padding-inline: var(--gutter);
 }
 
 /*

@@ -173,6 +173,8 @@ export interface SiteOption {
   copyright_line?: string;
   notfound_heading?: string;
   notfound_body?: string;
+  booking_label?: string;
+  booking_label_short?: string;
   createdAt: Date;
   updatedAt: Date;
   publishedAt: Date | null;

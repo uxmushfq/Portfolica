@@ -509,6 +509,22 @@
           }
         },
         {
+          "slug": "booking_label",
+          "label": "Booking button label",
+          "type": "string",
+          "ui": {
+            "helpText": "Shown on wide screens, e.g. \"Book a 30 min call\"."
+          }
+        },
+        {
+          "slug": "booking_label_short",
+          "label": "Booking label (short)",
+          "type": "string",
+          "ui": {
+            "helpText": "Shown on narrow screens, e.g. \"Book a call\"."
+          }
+        },
+        {
           "slug": "contact_email",
           "label": "Contact email",
           "type": "string",
@@ -691,7 +707,9 @@
               "filename": "GLrXdyCPhNqdGXFCIVsn5gnaXvE.png",
               "alt": "Alex Morgan"
             }
-          }
+          },
+          "booking_label": "Book a 30 min call",
+          "booking_label_short": "Book a call"
         }
       }
     ],

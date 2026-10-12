@@ -1,15 +1,22 @@
 ---
 /**
- * SiteHeader — avatar, primary navigation, booking CTA, email link.
+ * SiteHeader — rebuilt 1:1 against the original, from measured geometry.
  *
- * Every value is CMS-driven: the links come from the `primary` menu, the rest
- * from site options.
+ * Measured from portfolica.framer.website (computed styles, 3 breakpoints):
  *
- * Below 810px the links collapse into a <details> disclosure. That is a real
- * button to assistive tech, opens on keyboard, and needs no JavaScript.
+ *   bar            sticky, 10px from the top, 56px tall
+ *   left pill      white, radius 50px, padding 8px 60px 8px 8px, gap 48px
+ *   avatar         40x40 circle
+ *   nav links      16px / weight 500 / #27272a, 48px apart
+ *   book button    white pill, 56 tall, radius 50px, padding-inline 30px
+ *   mail button    white circle 56x56, 24px icon in the accent orange
+ *   right group    flush right, no gap between the two buttons
+ *   mobile         the avatar is replaced by a 56x56 menu button, radius 20px
+ *
+ * Note the buttons are white, not orange: the only orange in the header is
+ * the avatar and the mail icon.
  */
 import { Image } from "emdash/ui";
-import Icon from "../primitives/Icon.astro";
 
 interface Props {
 	menu?: { items: Array<{ label?: string; url?: string; target?: string }> } | null;
@@ -23,6 +30,8 @@ const { menu, settings, options, isLoggedIn = false } = Astro.props;
 const siteTitle = settings?.title || "Portfolica";
 const avatar = options?.avatar ?? settings?.logo ?? null;
 const bookingUrl = options?.booking_url;
+const bookingLabel = options?.booking_label || "Book a 30 min call";
+const bookingLabelShort = options?.booking_label_short || "Book a call";
 const email = options?.contact_email;
 const items = menu?.items ?? [];
 const path = Astro.url.pathname;
@@ -30,68 +39,87 @@ const path = Astro.url.pathname;
 
 <header class="site-header">
 	<div class="container-page header-inner">
-		<a href="/" class="brand" aria-label={`${siteTitle} — home`}>
-			{
-				avatar ? (
-					<Image image={avatar} alt="" width={40} height={40} class="brand-avatar" />
-				) : (
-					<span class="brand-fallback" aria-hidden="true" />
-				)
-			}
-		</a>
+		<!-- Left: avatar + links in one pill (tablet and up) -->
+		<div class="navpill">
+			<a href="/" class="brand" aria-label={`${siteTitle} — home`}>
+				{
+					avatar ? (
+						<Image image={avatar} alt="" width={40} height={40} class="brand-avatar" />
+					) : (
+						<span class="brand-fallback" aria-hidden="true" />
+					)
+				}
+			</a>
 
-		<nav class="nav nav-desktop" aria-label="Primary">
-			{
-				items.map((item) => (
-					<a
-						href={item.url}
-						target={item.target}
-						rel={item.target === "_blank" ? "noopener noreferrer" : undefined}
-						aria-current={path === item.url ? "page" : undefined}
-					>
-						{item.label}
-					</a>
-				))
-			}
-			{isLoggedIn && <a href="/_emdash/admin" class="nav-admin">Admin</a>}
-		</nav>
+			<nav class="nav" aria-label="Primary">
+				{
+					items.map((item) => (
+						<a
+							href={item.url}
+							target={item.target}
+							rel={item.target === "_blank" ? "noopener noreferrer" : undefined}
+							aria-current={path === item.url ? "page" : undefined}
+						>
+							{item.label}
+						</a>
+					))
+				}
+				{isLoggedIn && <a href="/_emdash/admin" class="nav-admin">Admin</a>}
+			</nav>
+		</div>
 
-		<div class="header-actions">
+		<!-- Left on mobile: the same links behind a disclosure -->
+		<details class="menu">
+			<summary class="menu-toggle" aria-label="Menu">
+				<span class="bars" aria-hidden="true"></span>
+			</summary>
+			<nav class="menu-panel" aria-label="Primary">
+				{
+					items.map((item) => (
+						<a
+							href={item.url}
+							target={item.target}
+							rel={item.target === "_blank" ? "noopener noreferrer" : undefined}
+							aria-current={path === item.url ? "page" : undefined}
+						>
+							{item.label}
+						</a>
+					))
+				}
+				{isLoggedIn && <a href="/_emdash/admin">Admin</a>}
+			</nav>
+		</details>
+
+		<!-- Right: booking pill + mail, flush to the edge -->
+		<div class="actions">
 			{
 				bookingUrl && (
-					<a href={bookingUrl} class="btn-book" target="_blank" rel="noopener noreferrer">
-						Book a 30 min call
+					<a href={bookingUrl} class="book" target="_blank" rel="noopener noreferrer">
+						<span class="book-long">{bookingLabel}</span>
+						<span class="book-short">{bookingLabelShort}</span>
 					</a>
 				)
 			}
 			{
 				email && (
-					<a href={`mailto:${email}`} class="icon-btn" aria-label={`Email ${siteTitle}`}>
-						<Icon name="mail" size={18} />
+					<a href={`mailto:${email}`} class="mail" aria-label={`Email ${siteTitle}`}>
+						<svg
+							viewBox="0 0 24 24"
+							width="24"
+							height="24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="1.75"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							aria-hidden="true"
+						>
+							<rect x="2.5" y="5" width="19" height="14" rx="3.5" />
+							<path d="m3.5 8 7.6 5.1a1.6 1.6 0 0 0 1.8 0L20.5 8" />
+						</svg>
 					</a>
 				)
 			}
-
-			<details class="menu">
-				<summary class="icon-btn menu-toggle" aria-label="Menu">
-					<span class="bars" aria-hidden="true"></span>
-				</summary>
-				<nav class="menu-panel" aria-label="Primary">
-					{
-						items.map((item) => (
-							<a
-								href={item.url}
-								target={item.target}
-								rel={item.target === "_blank" ? "noopener noreferrer" : undefined}
-								aria-current={path === item.url ? "page" : undefined}
-							>
-								{item.label}
-							</a>
-						))
-					}
-					{isLoggedIn && <a href="/_emdash/admin">Admin</a>}
-				</nav>
-			</details>
 		</div>
 	</div>
 </header>
@@ -101,9 +129,7 @@ const path = Astro.url.pathname;
 		position: sticky;
 		top: 0;
 		z-index: 50;
-		padding-block: var(--space-4);
-		background: color-mix(in srgb, var(--color-bg) 85%, transparent);
-		backdrop-filter: blur(12px);
+		padding-block: 10px;
 	}
 
 	.header-inner {
@@ -111,6 +137,17 @@ const path = Astro.url.pathname;
 		align-items: center;
 		justify-content: space-between;
 		gap: var(--space-4);
+	}
+
+	/* --- left pill: avatar + links ------------------------------------- */
+	.navpill {
+		display: none;
+		align-items: center;
+		gap: 48px;
+		height: 56px;
+		padding: 8px 60px 8px 8px;
+		background: var(--color-surface);
+		border-radius: 50px;
 	}
 
 	.brand {
@@ -130,79 +167,99 @@ const path = Astro.url.pathname;
 		background: var(--color-accent);
 	}
 
-	.nav-desktop {
-		display: none;
-		gap: var(--space-6);
+	.nav {
+		display: flex;
+		align-items: center;
+		gap: 48px;
+	}
+
+	.nav a {
 		font-size: var(--text-base);
 		font-weight: var(--weight-medium);
-	}
-
-	.nav-desktop a {
-		color: var(--color-muted);
-		transition: color var(--dur-fast) var(--ease-ui);
-	}
-
-	.nav-desktop a:hover,
-	.nav-desktop a[aria-current="page"] {
+		line-height: var(--leading-normal);
 		color: var(--color-text);
+		transition: color var(--dur-base) var(--ease-ui);
+	}
+
+	.nav a:hover {
+		color: var(--color-accent);
+	}
+
+	.nav a[aria-current="page"] {
+		color: var(--color-muted);
 	}
 
 	.nav-admin {
 		opacity: 0.6;
 	}
 
-	.header-actions {
+	/* --- right: booking + mail, touching ------------------------------- */
+	.actions {
 		display: flex;
 		align-items: center;
-		gap: var(--space-2);
+		gap: 0;
+		flex: 0 0 auto;
 	}
 
-	.btn-book {
-		display: none;
+	.book {
+		display: inline-flex;
 		align-items: center;
-		padding: var(--space-3) var(--space-5);
-		border-radius: var(--radius-pill);
-		background: var(--color-accent);
-		color: var(--color-on-accent);
-		font-size: var(--text-sm);
-		font-weight: var(--weight-semibold);
-		letter-spacing: var(--tracking-button);
+		height: 56px;
+		padding-inline: 30px;
+		border-radius: 50px;
+		background: var(--color-surface);
+		font-size: var(--text-base);
+		font-weight: var(--weight-medium);
+		color: var(--color-text);
 		white-space: nowrap;
 		transition:
 			background var(--dur-base) var(--ease-ui),
-			box-shadow var(--dur-base) var(--ease-ui);
+			color var(--dur-base) var(--ease-ui);
 	}
 
-	.btn-book:hover {
-		background: var(--color-accent-hover);
-		box-shadow: 0 0 0 4px var(--color-accent-ring);
+	.book:hover {
+		background: var(--color-accent);
+		color: var(--color-on-accent);
 	}
 
-	.icon-btn {
+	.book-long {
+		display: none;
+	}
+
+	.mail {
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		width: 40px;
-		height: 40px;
-		border-radius: var(--radius-full);
+		width: 56px;
+		height: 56px;
+		border-radius: 50px;
 		background: var(--color-surface);
-		color: var(--color-text);
-		cursor: pointer;
-		transition:
-			background var(--dur-base) var(--ease-ui),
-			box-shadow var(--dur-base) var(--ease-ui);
+		color: var(--color-accent);
+		flex: 0 0 auto;
+		transition: background var(--dur-base) var(--ease-ui);
 	}
 
-	.icon-btn:hover {
-		box-shadow: 0 0 0 4px var(--color-accent-ring);
+	.mail:hover {
+		background: var(--color-accent);
+		color: var(--color-on-accent);
 	}
 
-	/* --- mobile disclosure --- */
+	/* --- mobile disclosure --------------------------------------------- */
 	.menu {
 		position: relative;
+		flex: 0 0 auto;
 	}
 
 	.menu-toggle {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 56px;
+		height: 56px;
+		border-radius: 20px;
+		background: var(--color-surface);
+		color: var(--color-text);
+		cursor: pointer;
 		list-style: none;
 	}
 
@@ -210,38 +267,30 @@ const path = Astro.url.pathname;
 		display: none;
 	}
 
-	.bars,
-	.bars::before,
-	.bars::after {
-		display: block;
-		width: 16px;
-		height: 1.75px;
-		background: currentColor;
-		border-radius: 2px;
+	/* Two bars, as on the original — not the usual three. */
+	.bars {
+		display: grid;
+		gap: 6px;
 	}
 
 	.bars::before,
 	.bars::after {
 		content: "";
-		position: relative;
-	}
-
-	.bars::before {
-		top: -5px;
-	}
-
-	.bars::after {
-		top: 3.25px;
+		display: block;
+		width: 20px;
+		height: 2px;
+		background: currentColor;
+		border-radius: 2px;
 	}
 
 	.menu-panel {
 		position: absolute;
-		right: 0;
+		left: 0;
 		top: calc(100% + var(--space-2));
 		display: flex;
 		flex-direction: column;
 		gap: var(--space-1);
-		min-width: 12rem;
+		min-width: 13rem;
 		padding: var(--space-3);
 		background: var(--color-surface);
 		border-radius: var(--radius-md);
@@ -253,22 +302,32 @@ const path = Astro.url.pathname;
 		border-radius: var(--radius-sm);
 		font-size: var(--text-base);
 		font-weight: var(--weight-medium);
-		color: var(--color-text-soft);
+		color: var(--color-text);
 	}
 
 	.menu-panel a:hover,
 	.menu-panel a[aria-current="page"] {
 		background: var(--color-bg);
-		color: var(--color-text);
 	}
 
+	/* Tablet and up: the pill replaces the disclosure. */
 	@media (min-width: 810px) {
-		.nav-desktop,
-		.btn-book {
+		.navpill {
 			display: flex;
 		}
 
 		.menu {
+			display: none;
+		}
+	}
+
+	/* The long booking label only fits on the widest layout. */
+	@media (min-width: 1200px) {
+		.book-long {
+			display: inline;
+		}
+
+		.book-short {
 			display: none;
 		}
 	}
