@@ -1,0 +1,500 @@
+{
+  "home": {
+    "found": true,
+    "sectionHeight": 573,
+    "texts": [
+      {
+        "text": "Testimonials",
+        "tag": "p",
+        "size": "14px",
+        "weight": "500",
+        "color": "rgb(63, 63, 70)"
+      },
+      {
+        "text": "G",
+        "tag": "span",
+        "size": "64px",
+        "weight": "500",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "o",
+        "tag": "span",
+        "size": "64px",
+        "weight": "500",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "o",
+        "tag": "span",
+        "size": "64px",
+        "weight": "500",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "d",
+        "tag": "span",
+        "size": "64px",
+        "weight": "500",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "w",
+        "tag": "span",
+        "size": "64px",
+        "weight": "500",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "o",
+        "tag": "span",
+        "size": "64px",
+        "weight": "500",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "r",
+        "tag": "span",
+        "size": "64px",
+        "weight": "500",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "k",
+        "tag": "span",
+        "size": "64px",
+        "weight": "500",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "g",
+        "tag": "span",
+        "size": "64px",
+        "weight": "500",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "e",
+        "tag": "span",
+        "size": "64px",
+        "weight": "500",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "t",
+        "tag": "span",
+        "size": "64px",
+        "weight": "500",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "s",
+        "tag": "span",
+        "size": "64px",
+        "weight": "500",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "n",
+        "tag": "span",
+        "size": "64px",
+        "weight": "500",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "o",
+        "tag": "span",
+        "size": "64px",
+        "weight": "500",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "t",
+        "tag": "span",
+        "size": "64px",
+        "weight": "500",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "i",
+        "tag": "span",
+        "size": "64px",
+        "weight": "500",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "c",
+        "tag": "span",
+        "size": "64px",
+        "weight": "500",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "e",
+        "tag": "span",
+        "size": "64px",
+        "weight": "500",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "d",
+        "tag": "span",
+        "size": "64px",
+        "weight": "500",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "4.9",
+        "tag": "p",
+        "size": "14px",
+        "weight": "500",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "Alex truly understood my vision & turned it into impactful designs, results went beyond my expectations!",
+        "tag": "p",
+        "size": "20px",
+        "weight": "400",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "5.0",
+        "tag": "p",
+        "size": "14px",
+        "weight": "500",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "Alex truly understood my vision and turned it into impactful designs, the results went beyond my expectations!",
+        "tag": "p",
+        "size": "20px",
+        "weight": "400",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "4.6",
+        "tag": "p",
+        "size": "14px",
+        "weight": "500",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "As a small business owner, I appreciated how stress-free Alex Morgan made the process.",
+        "tag": "p",
+        "size": "20px",
+        "weight": "400",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "5.0",
+        "tag": "p",
+        "size": "14px",
+        "weight": "500",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "As a small business owner, the entire process felt effortless thanks to Alex’s clear guidance & Excellence.",
+        "tag": "p",
+        "size": "20px",
+        "weight": "400",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "4.8",
+        "tag": "p",
+        "size": "14px",
+        "weight": "500",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "Running a small business is challenging, but Alex Morgan made this experience smooth and completely hassle-free.",
+        "tag": "p",
+        "size": "20px",
+        "weight": "400",
+        "color": "rgb(39, 39, 42)"
+      }
+    ],
+    "images": [
+      {
+        "alt": "Client Image",
+        "w": 500,
+        "h": 500,
+        "src": "https://framerusercontent.com/images/U6LYFUlpwl6DZlVCnizvp0DCT7U.png?width=500&height=500"
+      },
+      {
+        "alt": "Client Image",
+        "w": 240,
+        "h": 240,
+        "src": "https://framerusercontent.com/images/pQYKtFQFc1cdJruaC7Ir770KFc.png?width=240&height=240"
+      },
+      {
+        "alt": "Client Image",
+        "w": 180,
+        "h": 180,
+        "src": "https://framerusercontent.com/images/fYH8lmTBIgyJdcgtTAv9uuT9Xo.png?width=180&height=180"
+      },
+      {
+        "alt": "Client Image",
+        "w": 500,
+        "h": 500,
+        "src": "https://framerusercontent.com/images/h3LSZQrzv3sC9S7xKWlQesYrYk.png?width=500&height=500"
+      },
+      {
+        "alt": "Client Image",
+        "w": 240,
+        "h": 240,
+        "src": "https://framerusercontent.com/images/C5JEZM3Q2De1KeV9iBE8mB7wlRY.png?width=240&height=240"
+      }
+    ],
+    "html": 23188
+  },
+  "about": {
+    "found": true,
+    "sectionHeight": 573,
+    "texts": [
+      {
+        "text": "Testimonials",
+        "tag": "p",
+        "size": "14px",
+        "weight": "500",
+        "color": "rgb(63, 63, 70)"
+      },
+      {
+        "text": "G",
+        "tag": "span",
+        "size": "64px",
+        "weight": "500",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "o",
+        "tag": "span",
+        "size": "64px",
+        "weight": "500",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "o",
+        "tag": "span",
+        "size": "64px",
+        "weight": "500",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "d",
+        "tag": "span",
+        "size": "64px",
+        "weight": "500",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "w",
+        "tag": "span",
+        "size": "64px",
+        "weight": "500",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "o",
+        "tag": "span",
+        "size": "64px",
+        "weight": "500",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "r",
+        "tag": "span",
+        "size": "64px",
+        "weight": "500",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "k",
+        "tag": "span",
+        "size": "64px",
+        "weight": "500",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "g",
+        "tag": "span",
+        "size": "64px",
+        "weight": "500",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "e",
+        "tag": "span",
+        "size": "64px",
+        "weight": "500",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "t",
+        "tag": "span",
+        "size": "64px",
+        "weight": "500",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "s",
+        "tag": "span",
+        "size": "64px",
+        "weight": "500",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "n",
+        "tag": "span",
+        "size": "64px",
+        "weight": "500",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "o",
+        "tag": "span",
+        "size": "64px",
+        "weight": "500",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "t",
+        "tag": "span",
+        "size": "64px",
+        "weight": "500",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "i",
+        "tag": "span",
+        "size": "64px",
+        "weight": "500",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "c",
+        "tag": "span",
+        "size": "64px",
+        "weight": "500",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "e",
+        "tag": "span",
+        "size": "64px",
+        "weight": "500",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "d",
+        "tag": "span",
+        "size": "64px",
+        "weight": "500",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "4.9",
+        "tag": "p",
+        "size": "14px",
+        "weight": "500",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "Alex truly understood my vision & turned it into impactful designs, results went beyond my expectations!",
+        "tag": "p",
+        "size": "20px",
+        "weight": "400",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "5.0",
+        "tag": "p",
+        "size": "14px",
+        "weight": "500",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "Alex truly understood my vision and turned it into impactful designs, the results went beyond my expectations!",
+        "tag": "p",
+        "size": "20px",
+        "weight": "400",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "4.6",
+        "tag": "p",
+        "size": "14px",
+        "weight": "500",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "As a small business owner, I appreciated how stress-free Alex Morgan made the process.",
+        "tag": "p",
+        "size": "20px",
+        "weight": "400",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "5.0",
+        "tag": "p",
+        "size": "14px",
+        "weight": "500",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "As a small business owner, the entire process felt effortless thanks to Alex’s clear guidance & Excellence.",
+        "tag": "p",
+        "size": "20px",
+        "weight": "400",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "4.8",
+        "tag": "p",
+        "size": "14px",
+        "weight": "500",
+        "color": "rgb(39, 39, 42)"
+      },
+      {
+        "text": "Running a small business is challenging, but Alex Morgan made this experience smooth and completely hassle-free.",
+        "tag": "p",
+        "size": "20px",
+        "weight": "400",
+        "color": "rgb(39, 39, 42)"
+      }
+    ],
+    "images": [
+      {
+        "alt": "Client Image",
+        "w": 500,
+        "h": 500,
+        "src": "https://framerusercontent.com/images/U6LYFUlpwl6DZlVCnizvp0DCT7U.png?width=500&height=500"
+      },
+      {
+        "alt": "Client Image",
+        "w": 240,
+        "h": 240,
+        "src": "https://framerusercontent.com/images/pQYKtFQFc1cdJruaC7Ir770KFc.png?width=240&height=240"
+      },
+      {
+        "alt": "Client Image",
+        "w": 180,
+        "h": 180,
+        "src": "https://framerusercontent.com/images/fYH8lmTBIgyJdcgtTAv9uuT9Xo.png?width=180&height=180"
+      },
+      {
+        "alt": "Client Image",
+        "w": 500,
+        "h": 500,
+        "src": "https://framerusercontent.com/images/h3LSZQrzv3sC9S7xKWlQesYrYk.png?width=500&height=500"
+      },
+      {
+        "alt": "Client Image",
+        "w": 240,
+        "h": 240,
+        "src": "https://framerusercontent.com/images/C5JEZM3Q2De1KeV9iBE8mB7wlRY.png?width=240&height=240"
+      }
+    ],
+    "html": 23188
+  }
+}

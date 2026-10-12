@@ -152,7 +152,7 @@ Six seeded projects: `connecto`, `edunova`, `medilink`, `paynest`, `shopora`, `t
 | 4 | Intro card | About me / Background / My Approach — 3 labelled blocks | block fields |
 | 5 | Career | 4 roles with date ranges | `experience` |
 | 6 | Stats ticker | 100% Client Satisfaction · 50+ Projects Completed · 4X Client Growth · 7+ Years of Experience | `stats` |
-| 7 | Awards | "Good work gets noticed" | `awards` |
+| 7 | Testimonials | eyebrow "Testimonials" · heading "Good work gets noticed" (per-character reveal) · 5 cards, each avatar + rating + quote | `testimonials` |
 | 8 | Projects | 2×2 grid, chips showing name + year, caption, "View All Projects" | `projects` |
 | 9 | Process | "How things get built together" — steps 01–04 | `process_steps` |
 | 10 | Services | 2×2 grid, icon + title + description ×4 | `services` |
@@ -267,8 +267,15 @@ Collection `supports`: `drafts` `revisions` `preview` `scheduling` `search` `seo
 | `process_steps` | `step_number`, `title` ✓, `description`, `sort_order` | 4 |
 | `stats` | `value` ✓, `label` ✓, `sort_order` | 4 |
 | `faqs` | `question` ✓, `answer` (portableText), `sort_order` | 5 |
-| `awards` | `title` ✓, `issuer`, `year`, `url`, `sort_order` | — |
+| `testimonials` | `quote` ✓ (text), `rating` (string, e.g. `4.9`), `avatar` (image), `sort_order` | 5 |
 | `skills` | `name` ✓, `group`, `sort_order` | about page |
+
+The testimonial cards show **avatar + rating + quote only** — no name, role or company in the original. Kept 1:1.
+Optional `author_name` / `author_role` fields are documented in `AGENTS.md` as a one-line extension that renders
+only when filled, so a buyer can add attribution without touching layout.
+
+Measured ratings and quotes: `4.9`, `5.0`, `4.6`, `5.0`, `4.8`. The same section renders on both Home and About,
+confirming it as a reusable block rather than a page-specific layout.
 
 ### `pages` — `/[slug]` · `content: blocks`
 Covers About, Privacy policy, Terms & conditions, and any page a buyer adds.
@@ -289,7 +296,7 @@ representable. So socials become a custom field here:
 `primary` (About, All Projects, Contact, 404) · `footer` · `legal`
 
 ### Block types (homepage composition, D5)
-`hero` · `work_strip` · `intro_card` · `career` · `stats_ticker` · `awards` · `projects_grid` ·
+`hero` · `work_strip` · `intro_card` · `career` · `stats_ticker` · `testimonials` · `projects_grid` ·
 `process` · `services` · `faq` · `contact_form`
 
 ### Static by choice
@@ -308,6 +315,7 @@ Framer drives motion with springs via JS, not CSS easing. The appear-animation c
 | Large section | `opacity 0.001`, `y 140` | spring, duration 1.5s, bounce 0, delay 0.5s |
 | Late element | `opacity 0.001`, `y 50` | spring, stiffness 300, damping 50, mass 1, delay 2s |
 | Scroll reveal | `opacity 0`, `y 20–30` | runtime, same spring language |
+| Testimonial heading | split into one element **per character** | staggered per-letter reveal |
 | Button hover | — | `background, box-shadow` **0.3s `cubic-bezier(0.44, 0, 0.56, 1)`** |
 
 Only one CSS transition is declared on the whole site — the button hover above. Everything else is JS.
@@ -317,6 +325,7 @@ Only one CSS transition is declared on the whole site — the button hover above
 | Interaction | Technique | JS |
 | --- | --- | --- |
 | Scroll reveal (fade + rise 20–30px) | `animation-timeline: view()` | none |
+| Per-letter heading reveal | characters wrapped at build time, `--i` index → `animation-delay` | none |
 | Hero / section entrances | CSS keyframes + `animation-delay` | none |
 | Stats & awards tickers | CSS keyframes on a duplicated track | none |
 | Work strip | same ticker pattern | none |
@@ -446,13 +455,34 @@ cache-hint handling lives in one place; `tokens.css` is off-limits and `theme.cs
 
 ---
 
-## 12. Open questions
+## 12. Resolved decisions
 
-1. **Awards section** — "Good work gets noticed" renders via a runtime ticker I couldn't read statically. Is it
-   award names, publication logos, or client logos? Affects the `awards` field list.
-2. **Contact form delivery** — the form posts Name / Email / Project Information. Options: `mailto:`
-   (zero-config, free, works everywhere), or EmDash's email integration (needs a provider). Faithful + free
-   points at `mailto:` with the form as progressive enhancement. Confirm?
-3. **The 404 nav item** — the original lists "404" in the primary menu, which is a template-demo convention.
-   Keep it for faithfulness, or drop it as buyers would?
-4. **LICENSE terms** — send when ready; third-party notices are handled either way.
+| # | Question | Decision |
+| --- | --- | --- |
+| 1 | "Good work gets noticed" | **Testimonials.** Collection added (§6); content measured from the runtime DOM. |
+| 2 | Contact delivery | **`mailto:`**, address from the CMS (see below). |
+| 3 | `404` nav item | **Kept.** 1:1 with the original. |
+| 4 | Scope | **Faithful 1:1.** No blog, team or extra sections. |
+| 5 | LICENSE terms | Pending from owner; third-party notices handled regardless. |
+
+### Contact form — how it works and why
+
+The form collects Name, Email and Project Information, then opens the visitor's mail client with a prefilled
+message. No backend, no account, no recurring cost, and it works for every buyer the moment they deploy. This
+matches the first-party EmDash portfolio template, which states: *"The contact page sends visitors to their email
+app instead of accepting a form submission."*
+
+Honest trade-off: `mailto:` depends on the visitor having a mail client configured. Some desktop webmail users get
+nothing. Documented in the README with two upgrade paths a buyer can take in one file:
+
+- a free form service (Formspree / Web3Forms free tiers) — change the form `action`
+- EmDash's email integration with a provider such as Resend (free tier) — for server-side delivery and
+  notification emails
+
+**The address is a CMS field, never hardcoded.** `site_options.contact_email` drives both the form and the header
+email icon. The shipped seed uses a neutral placeholder (`hello@example.com`); the owner sets their own address in
+the admin on their own deployment.
+
+> This matters commercially. Baking a real address into a template that sells hundreds of copies means every
+> buyer's site mails that address until they change it, and publishes it on every deployed copy for scrapers to
+> harvest. A CMS field costs nothing and avoids both.
