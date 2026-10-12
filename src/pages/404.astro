@@ -1,0 +1,67 @@
+---
+import Base from "../layouts/Base.astro";
+import { getSiteOptions, useCacheHint } from "../lib/queries";
+
+const { options, cacheHint } = await getSiteOptions();
+useCacheHint(Astro, cacheHint);
+
+const heading = options?.notfound_heading || "This page took a detour";
+const body =
+	options?.notfound_body ||
+	"The page you are looking for does not exist or has been moved.";
+---
+
+<Base title="Page not found" description={body} robots="noindex, follow">
+	<section class="container-page notfound">
+		<p class="code">404</p>
+		<h1>{heading}</h1>
+		<p class="body">{body}</p>
+		<a href="/" class="btn">Back to home</a>
+	</section>
+</Base>
+
+<style>
+	.notfound {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: var(--space-5);
+		padding-block: var(--space-25);
+		max-width: var(--width-prose);
+	}
+
+	.code {
+		font-size: var(--text-sm);
+		font-weight: var(--weight-semibold);
+		color: var(--color-accent);
+	}
+
+	h1 {
+		font-size: var(--text-heading);
+		line-height: var(--leading-heading);
+	}
+
+	.body {
+		color: var(--color-text-soft);
+	}
+
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		padding: var(--space-3) var(--space-5);
+		border-radius: var(--radius-pill);
+		background: var(--color-accent);
+		color: var(--color-on-accent);
+		font-size: var(--text-sm);
+		font-weight: var(--weight-semibold);
+		letter-spacing: var(--tracking-button);
+		transition:
+			background var(--dur-base) var(--ease-ui),
+			box-shadow var(--dur-base) var(--ease-ui);
+	}
+
+	.btn:hover {
+		background: var(--color-accent-hover);
+		box-shadow: 0 0 0 4px var(--color-accent-ring);
+	}
+</style>

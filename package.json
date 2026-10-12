@@ -1,0 +1,39 @@
+{
+  "name": "portfolica",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Portfolica — a personal portfolio template for Astro + EmDash CMS on Cloudflare Workers.",
+  "emdash": {
+    "seed": "seed/seed.json"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "deploy": "astro build && wrangler deploy",
+    "typecheck": "astro check",
+    "seed": "emdash seed",
+    "bootstrap": "emdash seed seed/seed.json --content"
+  },
+  "dependencies": {
+    "@astrojs/cloudflare": "^14.3.4",
+    "@astrojs/react": "^7.0.1",
+    "@emdash-cms/cloudflare": "1.2.0",
+    "astro": "^7.3.8",
+    "emdash": "1.2.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@cloudflare/workers-types": "^5.20261012.1",
+    "@tailwindcss/vite": "^4.3.3",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^5.9.0",
+    "wrangler": "^4.149.0"
+  },
+  "engines": {
+    "node": ">=22.16"
+  }
+}

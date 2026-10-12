@@ -1,0 +1,213 @@
+/*
+  global.css — the single stylesheet the layout imports.
+
+  Order matters:
+    1. Tailwind
+    2. tokens.css      — the design tokens (@layer base defaults)
+    3. @theme inline   — exposes those tokens to Tailwind as utilities
+    4. base element styles
+    5. theme.css       — unlayered buyer overrides, so they always win
+
+  Because @theme reads the SAME custom properties tokens.css defines,
+  there is exactly one source of truth. Overriding --color-accent in
+  theme.css changes both `var(--color-accent)` and Tailwind's
+  `bg-accent` utility at once; nothing can drift out of sync.
+*/
+
+@import "tailwindcss";
+@import "./tokens.css";
+
+@theme inline {
+	/* Colour */
+	--color-bg: var(--color-bg);
+	--color-surface: var(--color-surface);
+	--color-surface-alt: var(--color-surface-alt);
+	--color-text: var(--color-text);
+	--color-text-soft: var(--color-text-soft);
+	--color-muted: var(--color-muted);
+	--color-subtle: var(--color-subtle);
+	--color-border: var(--color-border);
+	--color-border-strong: var(--color-border-strong);
+	--color-accent: var(--color-accent);
+	--color-accent-hover: var(--color-accent-hover);
+	--color-on-accent: var(--color-on-accent);
+	--color-info: var(--color-info);
+	--color-info-soft: var(--color-info-soft);
+
+	/* Typography */
+	--font-sans: var(--font-body);
+	--font-heading: var(--font-heading);
+
+	--text-display: var(--text-display);
+	--text-display--line-height: var(--leading-display);
+	--text-heading: var(--text-heading);
+	--text-heading--line-height: var(--leading-heading);
+	--text-lead: var(--text-lead);
+	--text-lead--line-height: var(--leading-normal);
+	--text-body: var(--text-body);
+	--text-body--line-height: var(--leading-normal);
+	--text-md: var(--text-md);
+	--text-md--line-height: var(--leading-relaxed);
+	--text-base: var(--text-base);
+	--text-base--line-height: var(--leading-normal);
+	--text-sm: var(--text-sm);
+	--text-sm--line-height: var(--leading-snug);
+	--text-xs: var(--text-xs);
+
+	/* Spacing */
+	--spacing-1: var(--space-1);
+	--spacing-2: var(--space-2);
+	--spacing-3: var(--space-3);
+	--spacing-4: var(--space-4);
+	--spacing-5: var(--space-5);
+	--spacing-6: var(--space-6);
+	--spacing-7: var(--space-7);
+	--spacing-8: var(--space-8);
+	--spacing-10: var(--space-10);
+	--spacing-12: var(--space-12);
+	--spacing-20: var(--space-20);
+	--spacing-25: var(--space-25);
+	--spacing-30: var(--space-30);
+	--spacing-section: var(--space-section);
+
+	/* Radii */
+	--radius-sm: var(--radius-sm);
+	--radius-md: var(--radius-md);
+	--radius-lg: var(--radius-lg);
+	--radius-pill: var(--radius-pill);
+
+	/* Breakpoints — the original's three tiers */
+	--breakpoint-md: 810px;
+	--breakpoint-lg: 1200px;
+
+	/* Motion */
+	--ease-ui: var(--ease-ui);
+	--ease-out: var(--ease-out);
+	--ease-spring: var(--ease-spring);
+}
+
+@layer base {
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+	}
+
+	html {
+		scroll-behavior: smooth;
+		-webkit-text-size-adjust: 100%;
+	}
+
+	body {
+		font-family: var(--font-body);
+		font-size: var(--text-body);
+		line-height: var(--leading-normal);
+		font-weight: var(--weight-regular);
+		color: var(--color-text);
+		background: var(--color-bg);
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		min-height: 100svh;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-family: var(--font-heading);
+		font-weight: var(--weight-medium);
+		line-height: var(--leading-heading);
+		text-wrap: balance;
+	}
+
+	a {
+		color: currentColor;
+		text-decoration: none;
+	}
+
+	img,
+	picture,
+	video,
+	canvas,
+	svg {
+		display: block;
+		max-width: 100%;
+		height: auto;
+	}
+
+	input,
+	textarea,
+	button,
+	select {
+		font: inherit;
+		color: inherit;
+	}
+
+	/* A visible focus ring everywhere, in the brand colour. */
+	:focus-visible {
+		outline: 2px solid var(--color-accent);
+		outline-offset: 3px;
+		border-radius: var(--radius-sm);
+	}
+
+	/* Skip link — visible only once focused. */
+	.skip-link {
+		position: absolute;
+		left: -9999px;
+		top: 0;
+		z-index: 100;
+		padding: var(--space-3) var(--space-5);
+		background: var(--color-accent);
+		color: var(--color-on-accent);
+		border-radius: 0 0 var(--radius-sm) 0;
+	}
+
+	.skip-link:focus {
+		left: 0;
+	}
+}
+
+@utility container-page {
+	width: 100%;
+	max-width: var(--width-content);
+	margin-inline: auto;
+	padding-inline: var(--gutter);
+}
+
+/*
+  One switch disables every animation on the site. Components read the
+  motion tokens, so zeroing them here is enough — no component needs its
+  own reduced-motion branch.
+*/
+@media (prefers-reduced-motion: reduce) {
+	:root {
+		--dur-fast: 0ms;
+		--dur-base: 0ms;
+		--dur-slow: 0ms;
+		--rise-sm: 0px;
+		--rise-md: 0px;
+		--rise-lg: 0px;
+		--rise-hero: 0px;
+		--stagger: 0ms;
+		--delay-base: 0ms;
+		--delay-late: 0ms;
+	}
+
+	html {
+		scroll-behavior: auto;
+	}
+
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
+}
+
+@import "./theme.css";

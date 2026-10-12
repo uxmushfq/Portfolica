@@ -1,0 +1,470 @@
+{
+  "$schema": "https://emdashcms.com/seed.schema.json",
+  "version": "1",
+  "meta": {
+    "name": "Portfolica",
+    "description": "A personal portfolio template for designers, studios and freelancers.",
+    "author": "Muzency"
+  },
+  "settings": {
+    "title": "Alex Morgan",
+    "tagline": "Visual designer who builds digital experiences that drive real growth",
+    "postsPerPage": 12,
+    "dateFormat": "MMM D, YYYY",
+    "timezone": "UTC"
+  },
+  "collections": [
+    {
+      "slug": "projects",
+      "label": "Projects",
+      "labelSingular": "Project",
+      "description": "Case studies shown in the work grid and on their own detail pages.",
+      "supports": ["drafts", "revisions", "preview", "search", "seo"],
+      "urlPattern": "/project-details/{slug}",
+      "titleField": "title",
+      "sortOrder": 1,
+      "fields": [
+        { "slug": "title", "label": "Title", "type": "string", "required": true, "searchable": true },
+        { "slug": "featured_image", "label": "Featured image", "type": "image", "required": true },
+        { "slug": "category", "label": "Category", "type": "string", "ui": { "helpText": "Shown on the project card chip, e.g. \"Mobile App\"." } },
+        { "slug": "year", "label": "Year", "type": "string", "ui": { "helpText": "Shown next to the category, e.g. \"2024\"." } },
+        { "slug": "summary", "label": "Summary", "type": "text", "searchable": true, "ui": { "rows": 3 } },
+        { "slug": "challenge", "label": "Challenge", "type": "portableText", "searchable": true },
+        { "slug": "approach", "label": "Approach", "type": "portableText", "searchable": true },
+        {
+          "slug": "gallery",
+          "label": "Gallery",
+          "type": "repeater",
+          "validation": {
+            "maxItems": 24,
+            "subFields": [
+              { "slug": "image", "label": "Image", "type": "image", "required": true },
+              { "slug": "caption", "label": "Caption", "type": "text" }
+            ]
+          }
+        },
+        { "slug": "url", "label": "Live URL", "type": "url" },
+        { "slug": "featured", "label": "Show on homepage", "type": "boolean", "defaultValue": true },
+        { "slug": "sort_order", "label": "Order", "type": "integer", "defaultValue": 0, "indexed": true }
+      ]
+    },
+    {
+      "slug": "pages",
+      "label": "Pages",
+      "labelSingular": "Page",
+      "description": "Standalone pages such as About and the legal pages.",
+      "supports": ["drafts", "revisions", "preview", "search", "seo"],
+      "titleField": "title",
+      "sortOrder": 2,
+      "fields": [
+        { "slug": "title", "label": "Title", "type": "string", "required": true, "searchable": true },
+        { "slug": "intro", "label": "Intro", "type": "text", "ui": { "rows": 3 } },
+        { "slug": "content", "label": "Content", "type": "portableText", "searchable": true }
+      ]
+    },
+    {
+      "slug": "services",
+      "label": "Services",
+      "labelSingular": "Service",
+      "routable": false,
+      "group": "Sections",
+      "sortOrder": 3,
+      "titleField": "title",
+      "fields": [
+        { "slug": "title", "label": "Title", "type": "string", "required": true },
+        { "slug": "description", "label": "Description", "type": "text", "ui": { "rows": 3 } },
+        {
+          "slug": "icon",
+          "label": "Icon",
+          "type": "select",
+          "defaultValue": "sparkle",
+          "validation": { "options": ["sparkle", "code", "palette", "compass"] },
+          "ui": { "helpText": "Maps to an icon component. See AGENTS.md to add more." }
+        },
+        { "slug": "sort_order", "label": "Order", "type": "integer", "defaultValue": 0, "indexed": true }
+      ]
+    },
+    {
+      "slug": "experience",
+      "label": "Career history",
+      "labelSingular": "Role",
+      "routable": false,
+      "group": "Sections",
+      "sortOrder": 4,
+      "titleField": "role",
+      "fields": [
+        { "slug": "role", "label": "Role", "type": "string", "required": true },
+        { "slug": "company", "label": "Company", "type": "string" },
+        { "slug": "period", "label": "Period", "type": "string", "required": true, "ui": { "helpText": "Free text, e.g. \"2025 - Now\"." } },
+        { "slug": "sort_order", "label": "Order", "type": "integer", "defaultValue": 0, "indexed": true }
+      ]
+    },
+    {
+      "slug": "process_steps",
+      "label": "Process steps",
+      "labelSingular": "Step",
+      "routable": false,
+      "group": "Sections",
+      "sortOrder": 5,
+      "titleField": "title",
+      "fields": [
+        { "slug": "step_number", "label": "Number", "type": "string", "ui": { "helpText": "Displayed as-is, e.g. \"01\"." } },
+        { "slug": "title", "label": "Title", "type": "string", "required": true },
+        { "slug": "description", "label": "Description", "type": "text", "ui": { "rows": 3 } },
+        { "slug": "sort_order", "label": "Order", "type": "integer", "defaultValue": 0, "indexed": true }
+      ]
+    },
+    {
+      "slug": "stats",
+      "label": "Stats",
+      "labelSingular": "Stat",
+      "routable": false,
+      "group": "Sections",
+      "sortOrder": 6,
+      "titleField": "label",
+      "fields": [
+        { "slug": "value", "label": "Value", "type": "string", "required": true, "ui": { "helpText": "e.g. \"100%\", \"50+\", \"4X\"." } },
+        { "slug": "label", "label": "Label", "type": "string", "required": true },
+        { "slug": "sort_order", "label": "Order", "type": "integer", "defaultValue": 0, "indexed": true }
+      ]
+    },
+    {
+      "slug": "testimonials",
+      "label": "Testimonials",
+      "labelSingular": "Testimonial",
+      "routable": false,
+      "group": "Sections",
+      "sortOrder": 7,
+      "titleField": "quote",
+      "fields": [
+        { "slug": "quote", "label": "Quote", "type": "text", "required": true, "ui": { "rows": 3 } },
+        { "slug": "rating", "label": "Rating", "type": "string", "ui": { "helpText": "e.g. \"4.9\". Leave empty to hide." } },
+        { "slug": "avatar", "label": "Client photo", "type": "image" },
+        { "slug": "author_name", "label": "Name", "type": "string", "ui": { "helpText": "Optional. Renders only when filled — the original design shows none." } },
+        { "slug": "author_role", "label": "Role / company", "type": "string", "ui": { "helpText": "Optional. Renders only when filled." } },
+        { "slug": "sort_order", "label": "Order", "type": "integer", "defaultValue": 0, "indexed": true }
+      ]
+    },
+    {
+      "slug": "faqs",
+      "label": "FAQs",
+      "labelSingular": "FAQ",
+      "routable": false,
+      "group": "Sections",
+      "sortOrder": 8,
+      "titleField": "question",
+      "fields": [
+        { "slug": "question", "label": "Question", "type": "string", "required": true, "searchable": true },
+        { "slug": "answer", "label": "Answer", "type": "portableText", "searchable": true },
+        { "slug": "sort_order", "label": "Order", "type": "integer", "defaultValue": 0, "indexed": true }
+      ]
+    },
+    {
+      "slug": "skills",
+      "label": "Skills",
+      "labelSingular": "Skill",
+      "routable": false,
+      "group": "Sections",
+      "sortOrder": 9,
+      "titleField": "name",
+      "fields": [
+        { "slug": "name", "label": "Name", "type": "string", "required": true },
+        { "slug": "group", "label": "Group", "type": "string", "ui": { "helpText": "e.g. \"Technical\" or \"Creative\"." } },
+        { "slug": "sort_order", "label": "Order", "type": "integer", "defaultValue": 0, "indexed": true }
+      ]
+    },
+    {
+      "slug": "site_options",
+      "label": "Site options",
+      "labelSingular": "Site options",
+      "description": "Global values that do not belong to any one page.",
+      "routable": false,
+      "hidden": false,
+      "sortOrder": 10,
+      "titleField": "hero_name_line_1",
+      "fields": [
+        { "slug": "hero_name_line_1", "label": "Hero line 1", "type": "string", "required": true },
+        { "slug": "hero_name_line_2", "label": "Hero line 2", "type": "string" },
+        { "slug": "hero_tagline", "label": "Hero tagline", "type": "text", "ui": { "rows": 3 } },
+        { "slug": "avatar", "label": "Avatar", "type": "image" },
+        { "slug": "availability_badge", "label": "Availability badge", "type": "string", "ui": { "helpText": "Small pill next to the hero, e.g. \"Available for work\"." } },
+        { "slug": "cta_primary_label", "label": "Primary button label", "type": "string" },
+        { "slug": "cta_primary_url", "label": "Primary button URL", "type": "string" },
+        { "slug": "cta_secondary_label", "label": "Secondary button label", "type": "string" },
+        { "slug": "cta_secondary_url", "label": "Secondary button URL", "type": "string" },
+        { "slug": "booking_url", "label": "Booking URL", "type": "url", "ui": { "helpText": "The \"Book a 30 min call\" link in the header." } },
+        { "slug": "contact_email", "label": "Contact email", "type": "string", "required": true, "validation": { "format": "email" }, "ui": { "helpText": "Receives the contact form. Change this before you publish." } },
+        {
+          "slug": "socials",
+          "label": "Social links",
+          "type": "repeater",
+          "validation": {
+            "maxItems": 10,
+            "subFields": [
+              {
+                "slug": "platform",
+                "label": "Platform",
+                "type": "select",
+                "required": true,
+                "validation": { "options": ["behance", "dribbble", "x", "figma", "instagram", "linkedin", "github", "youtube"] }
+              },
+              { "slug": "url", "label": "URL", "type": "url", "required": true }
+            ]
+          }
+        },
+        { "slug": "copyright_line", "label": "Copyright line", "type": "string" },
+        { "slug": "notfound_heading", "label": "404 heading", "type": "string" },
+        { "slug": "notfound_body", "label": "404 body", "type": "text", "ui": { "rows": 2 } }
+      ]
+    }
+  ],
+  "taxonomies": [
+    {
+      "name": "tag",
+      "label": "Tags",
+      "labelSingular": "Tag",
+      "hierarchical": false,
+      "collections": ["projects"],
+      "terms": [
+        { "slug": "mobile-app", "label": "Mobile App" },
+        { "slug": "web-design", "label": "Web Design" },
+        { "slug": "branding", "label": "Branding" },
+        { "slug": "product-design", "label": "Product Design" }
+      ]
+    }
+  ],
+  "menus": [
+    {
+      "name": "primary",
+      "label": "Primary navigation",
+      "items": [
+        { "type": "custom", "label": "About", "url": "/about" },
+        { "type": "custom", "label": "All Projects", "url": "/all-projects" },
+        { "type": "custom", "label": "Contact", "url": "/contact" },
+        { "type": "custom", "label": "404", "url": "/404" }
+      ]
+    },
+    {
+      "name": "legal",
+      "label": "Legal links",
+      "items": [
+        { "type": "custom", "label": "Privacy Policy", "url": "/legal/privacy-policy" },
+        { "type": "custom", "label": "Terms & Conditions", "url": "/legal/terms-conditions" }
+      ]
+    }
+  ],
+  "content": {
+    "site_options": [
+      {
+        "id": "site-options",
+        "status": "published",
+        "data": {
+          "hero_name_line_1": "Alex",
+          "hero_name_line_2": "Morgan",
+          "hero_tagline": "I build digital experiences that drive real growth for your business. Let's partner to create work that gets results.",
+          "availability_badge": "Available for work",
+          "cta_primary_label": "Book a Project",
+          "cta_primary_url": "/contact",
+          "cta_secondary_label": "See Projects",
+          "cta_secondary_url": "/all-projects",
+          "booking_url": "https://cal.com",
+          "contact_email": "hello@example.com",
+          "socials": [
+            { "platform": "behance", "url": "https://behance.net" },
+            { "platform": "dribbble", "url": "https://dribbble.com" },
+            { "platform": "x", "url": "https://x.com" },
+            { "platform": "figma", "url": "https://figma.com" }
+          ],
+          "copyright_line": "© 2026 Alex Morgan. All rights reserved.",
+          "notfound_heading": "This page took a detour",
+          "notfound_body": "The page you are looking for does not exist or has been moved."
+        }
+      }
+    ],
+    "experience": [
+      { "id": "exp-1", "status": "published", "data": { "role": "Design Director", "period": "2025 - Now", "sort_order": 1 } },
+      { "id": "exp-2", "status": "published", "data": { "role": "Sr. Product Designer", "period": "2024 - 2025", "sort_order": 2 } },
+      { "id": "exp-3", "status": "published", "data": { "role": "Product Designer", "period": "2015 - 2024", "sort_order": 3 } },
+      { "id": "exp-4", "status": "published", "data": { "role": "UI/UX Designer", "period": "2012 - 2015", "sort_order": 4 } }
+    ],
+    "stats": [
+      { "id": "stat-1", "status": "published", "data": { "value": "100%", "label": "Client Satisfaction Rate", "sort_order": 1 } },
+      { "id": "stat-2", "status": "published", "data": { "value": "50+", "label": "Projects Completed", "sort_order": 2 } },
+      { "id": "stat-3", "status": "published", "data": { "value": "4X", "label": "Client Growth", "sort_order": 3 } },
+      { "id": "stat-4", "status": "published", "data": { "value": "7+", "label": "Years of Experience", "sort_order": 4 } }
+    ],
+    "services": [
+      { "id": "svc-1", "status": "published", "data": { "title": "UX-UI & Creative", "description": "Crafting clean, user-friendly sites that reflect your brand & deliver a seamless experience.", "icon": "sparkle", "sort_order": 1 } },
+      { "id": "svc-2", "status": "published", "data": { "title": "Web Development", "description": "Building fast, no-code websites that are easy to manage and optimized for every device.", "icon": "code", "sort_order": 2 } },
+      { "id": "svc-3", "status": "published", "data": { "title": "Brand Identity", "description": "Cohesive visual systems — from logos to colors — make your brand instantly recognizable.", "icon": "palette", "sort_order": 3 } },
+      { "id": "svc-4", "status": "published", "data": { "title": "Design Consultation", "description": "Offering strategic guidance to help you plan, refine, and execute your design ideas effectively.", "icon": "compass", "sort_order": 4 } }
+    ],
+    "process_steps": [
+      { "id": "step-1", "status": "published", "data": { "step_number": "01", "title": "Discover", "description": "Every great design starts with empathy. I dive deep into the problem to uncover insights that shape the foundation.", "sort_order": 1 } },
+      { "id": "step-2", "status": "published", "data": { "step_number": "02", "title": "Design", "description": "I blend strategy, usability, and visual storytelling to design experiences that feel intuitive and look distinct.", "sort_order": 2 } },
+      { "id": "step-3", "status": "published", "data": { "step_number": "03", "title": "Refine", "description": "Through feedback, testing, and iteration, I ensure the design works in the real world — not just on Figma.", "sort_order": 3 } },
+      { "id": "step-4", "status": "published", "data": { "step_number": "04", "title": "Deliver", "description": "I guide projects from concept to launch, helping teams build scalable systems & maintain consistent brand experiences.", "sort_order": 4 } }
+    ],
+    "testimonials": [
+      { "id": "tst-1", "status": "published", "data": { "quote": "Alex truly understood my vision & turned it into impactful designs, results went beyond my expectations!", "rating": "4.9", "sort_order": 1 } },
+      { "id": "tst-2", "status": "published", "data": { "quote": "Alex truly understood my vision and turned it into impactful designs, the results went beyond my expectations!", "rating": "5.0", "sort_order": 2 } },
+      { "id": "tst-3", "status": "published", "data": { "quote": "As a small business owner, I appreciated how stress-free Alex Morgan made the process.", "rating": "4.6", "sort_order": 3 } },
+      { "id": "tst-4", "status": "published", "data": { "quote": "As a small business owner, the entire process felt effortless thanks to Alex's clear guidance & excellence.", "rating": "5.0", "sort_order": 4 } },
+      { "id": "tst-5", "status": "published", "data": { "quote": "Running a small business is challenging, but Alex Morgan made this experience smooth and completely hassle-free.", "rating": "4.8", "sort_order": 5 } }
+    ],
+    "faqs": [
+      { "id": "faq-1", "status": "published", "data": { "question": "How do we get started?", "answer": [{ "_type": "block", "_key": "faq1a", "style": "normal", "children": [{ "_type": "span", "_key": "faq1s", "text": "Send a short brief through the contact form. I reply within two working days with next steps, a rough timeline and an estimate." }] }], "sort_order": 1 } },
+      { "id": "faq-2", "status": "published", "data": { "question": "Can you redesign my existing website or app?", "answer": [{ "_type": "block", "_key": "faq2a", "style": "normal", "children": [{ "_type": "span", "_key": "faq2s", "text": "Yes. Most of my work is redesign rather than greenfield. I start with an audit of what you already have so we keep what performs and fix what does not." }] }], "sort_order": 2 } },
+      { "id": "faq-3", "status": "published", "data": { "question": "Do you also handle development or just design?", "answer": [{ "_type": "block", "_key": "faq3a", "style": "normal", "children": [{ "_type": "span", "_key": "faq3s", "text": "Both. I design and build, so the result matches the design exactly and nothing is lost in handover." }] }], "sort_order": 3 } },
+      { "id": "faq-4", "status": "published", "data": { "question": "What tools do you use for design?", "answer": [{ "_type": "block", "_key": "faq4a", "style": "normal", "children": [{ "_type": "span", "_key": "faq4s", "text": "Figma for design and prototyping, with the build in Astro, Framer or Webflow depending on what the project needs." }] }], "sort_order": 4 } },
+      { "id": "faq-5", "status": "published", "data": { "question": "Can I request additional revisions?", "answer": [{ "_type": "block", "_key": "faq5a", "style": "normal", "children": [{ "_type": "span", "_key": "faq5s", "text": "Every project includes two rounds of revisions at each stage. Further rounds are billed at my hourly rate, agreed with you first." }] }], "sort_order": 5 } }
+    ],
+    "skills": [
+      { "id": "skill-1", "status": "published", "data": { "name": "Product Design", "group": "Technical", "sort_order": 1 } },
+      { "id": "skill-2", "status": "published", "data": { "name": "Design Systems", "group": "Technical", "sort_order": 2 } },
+      { "id": "skill-3", "status": "published", "data": { "name": "Prototyping", "group": "Technical", "sort_order": 3 } },
+      { "id": "skill-4", "status": "published", "data": { "name": "User Research", "group": "Technical", "sort_order": 4 } },
+      { "id": "skill-5", "status": "published", "data": { "name": "Brand Identity", "group": "Creative", "sort_order": 5 } },
+      { "id": "skill-6", "status": "published", "data": { "name": "Art Direction", "group": "Creative", "sort_order": 6 } },
+      { "id": "skill-7", "status": "published", "data": { "name": "Motion", "group": "Creative", "sort_order": 7 } },
+      { "id": "skill-8", "status": "published", "data": { "name": "Webflow & Framer", "group": "Creative", "sort_order": 8 } }
+    ],
+    "pages": [
+      {
+        "id": "page-about",
+        "slug": "about",
+        "status": "published",
+        "data": {
+          "title": "A visual designer who builds digital experiences that drive real growth",
+          "intro": "I help brands find clarity and express it through strong, thoughtful design.",
+          "content": [
+            { "_type": "block", "_key": "ab1", "style": "normal", "children": [{ "_type": "span", "_key": "ab1s", "text": "Originally from CDMX, I've been designing identities for 7+ years, working with startups, restaurants, hoteliers and creative teams across Mexico." }] },
+            { "_type": "block", "_key": "ab2", "style": "normal", "children": [{ "_type": "span", "_key": "ab2s", "text": "I believe good design starts with empathy. I ask questions, listen closely, and build brands that feel as good as they look — honest, beautiful and built to last." }] }
+          ]
+        }
+      },
+      {
+        "id": "page-privacy",
+        "slug": "privacy-policy",
+        "status": "published",
+        "data": {
+          "title": "Privacy Policy",
+          "intro": "How this site handles your information.",
+          "content": [
+            { "_type": "block", "_key": "pp1", "style": "normal", "children": [{ "_type": "span", "_key": "pp1s", "text": "Replace this placeholder with your own privacy policy before you publish. This template collects no personal data by default: the contact form opens your visitor's own email client and sends nothing to this site." }] }
+          ]
+        }
+      },
+      {
+        "id": "page-terms",
+        "slug": "terms-conditions",
+        "status": "published",
+        "data": {
+          "title": "Terms & Conditions",
+          "intro": "The terms that apply to this site.",
+          "content": [
+            { "_type": "block", "_key": "tc1", "style": "normal", "children": [{ "_type": "span", "_key": "tc1s", "text": "Replace this placeholder with your own terms before you publish." }] }
+          ]
+        }
+      }
+    ],
+    "projects": [
+      {
+        "id": "proj-connecto",
+        "slug": "connecto",
+        "status": "published",
+        "data": {
+          "title": "Connecto",
+          "category": "Mobile App",
+          "year": "2024",
+          "summary": "Connecto is a telecom app for recharges, tracking, support, and seamless everyday mobile management.",
+          "featured": true,
+          "sort_order": 1,
+          "challenge": [{ "_type": "block", "_key": "c1", "style": "normal", "children": [{ "_type": "span", "_key": "c1s", "text": "Customers were abandoning top-ups halfway through because the existing flow buried balance, plan and payment across four separate screens." }] }],
+          "approach": [{ "_type": "block", "_key": "a1", "style": "normal", "children": [{ "_type": "span", "_key": "a1s", "text": "We collapsed the journey into a single sheet with the most-used amount preselected, and moved support into the same surface so nobody has to leave to ask a question." }] }]
+        },
+        "taxonomies": { "tag": ["mobile-app", "product-design"] }
+      },
+      {
+        "id": "proj-paynest",
+        "slug": "paynest",
+        "status": "published",
+        "data": {
+          "title": "PayNest",
+          "category": "Fintech",
+          "year": "2024",
+          "summary": "A payments dashboard that makes recurring billing legible for small teams.",
+          "featured": true,
+          "sort_order": 2,
+          "challenge": [{ "_type": "block", "_key": "c2", "style": "normal", "children": [{ "_type": "span", "_key": "c2s", "text": "Finance leads could see totals but never why a number moved, so every month ended in a manual reconciliation." }] }],
+          "approach": [{ "_type": "block", "_key": "a2", "style": "normal", "children": [{ "_type": "span", "_key": "a2s", "text": "Each figure became traceable to the events behind it, with changes since last month surfaced first rather than hidden in a report." }] }]
+        },
+        "taxonomies": { "tag": ["product-design", "web-design"] }
+      },
+      {
+        "id": "proj-shopora",
+        "slug": "shopora",
+        "status": "published",
+        "data": {
+          "title": "Shopora",
+          "category": "E-commerce",
+          "year": "2024",
+          "summary": "A storefront system built for independent retailers who manage their own catalogue.",
+          "featured": true,
+          "sort_order": 3,
+          "challenge": [{ "_type": "block", "_key": "c3", "style": "normal", "children": [{ "_type": "span", "_key": "c3s", "text": "Owners were editing products on their phones between customers, but the admin assumed a desktop and a quiet moment." }] }],
+          "approach": [{ "_type": "block", "_key": "a3", "style": "normal", "children": [{ "_type": "span", "_key": "a3s", "text": "We rebuilt the catalogue editor mobile-first, so a price change takes three taps and survives a dropped connection." }] }]
+        },
+        "taxonomies": { "tag": ["web-design", "product-design"] }
+      },
+      {
+        "id": "proj-edunova",
+        "slug": "edunova",
+        "status": "published",
+        "data": {
+          "title": "EduNova",
+          "category": "Education",
+          "year": "2026",
+          "summary": "A learning platform that keeps cohorts moving together instead of drifting apart.",
+          "featured": true,
+          "sort_order": 4,
+          "challenge": [{ "_type": "block", "_key": "c4", "style": "normal", "children": [{ "_type": "span", "_key": "c4s", "text": "Completion collapsed after week two: learners who fell behind had no way back in without starting over." }] }],
+          "approach": [{ "_type": "block", "_key": "a4", "style": "normal", "children": [{ "_type": "span", "_key": "a4s", "text": "Progress became cohort-relative rather than absolute, and every module gained a short catch-up path so returning never means restarting." }] }]
+        },
+        "taxonomies": { "tag": ["product-design", "branding"] }
+      },
+      {
+        "id": "proj-medilink",
+        "slug": "medilink",
+        "status": "published",
+        "data": {
+          "title": "MediLink",
+          "category": "Healthcare",
+          "year": "2023",
+          "summary": "Appointment booking and records for clinics, designed for people in a hurry.",
+          "featured": false,
+          "sort_order": 5,
+          "challenge": [{ "_type": "block", "_key": "c5", "style": "normal", "children": [{ "_type": "span", "_key": "c5s", "text": "Patients booked by phone because the online flow asked for information they did not have to hand." }] }],
+          "approach": [{ "_type": "block", "_key": "a5", "style": "normal", "children": [{ "_type": "span", "_key": "a5s", "text": "Booking now asks only what is needed to hold the slot; everything else is collected afterwards, when there is time to find it." }] }]
+        },
+        "taxonomies": { "tag": ["product-design"] }
+      },
+      {
+        "id": "proj-travelio",
+        "slug": "travelio",
+        "status": "published",
+        "data": {
+          "title": "Travelio",
+          "category": "Travel",
+          "year": "2023",
+          "summary": "Trip planning that holds a whole itinerary in one view instead of a dozen tabs.",
+          "featured": false,
+          "sort_order": 6,
+          "challenge": [{ "_type": "block", "_key": "c6", "style": "normal", "children": [{ "_type": "span", "_key": "c6s", "text": "Planning happened across tabs, notes and screenshots, so nothing was ever the single source of truth." }] }],
+          "approach": [{ "_type": "block", "_key": "a6", "style": "normal", "children": [{ "_type": "span", "_key": "a6s", "text": "One timeline holds flights, stays and plans together, and anything pasted into it is parsed into the right slot automatically." }] }]
+        },
+        "taxonomies": { "tag": ["web-design", "branding"] }
+      }
+    ]
+  }
+}

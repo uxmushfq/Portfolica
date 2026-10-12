@@ -1,0 +1,61 @@
+/*
+  theme.css — YOUR edit surface.
+
+  This is the file to change when you want the site to look different.
+  Everything here is UNLAYERED, which means it always wins over the
+  defaults in tokens.css. No !important, no specificity tricks.
+
+  Do not edit tokens.css. Override here instead, so your changes survive
+  a template update.
+
+  Uncomment and edit any of the examples below.
+*/
+
+:root {
+	/* --- Brand colour ------------------------------------------------ */
+	/* --color-accent: #2563eb; */
+	/* --color-accent-hover: #3b82f6; */
+
+	/* --- Surfaces ----------------------------------------------------- */
+	/* --color-bg: #ffffff; */
+	/* --color-surface: #fafafa; */
+
+	/* --- Corner rounding ---------------------------------------------- */
+	/* Portfolica is quite round by default. For a squarer look: */
+	/* --radius-md: 0.5rem; */
+	/* --radius-lg: 0.75rem; */
+
+	/* --- Density ------------------------------------------------------ */
+	/* Tighten or loosen the space between sections: */
+	/* --space-section: 4rem; */
+
+	/* --- Motion ------------------------------------------------------- */
+	/* The original's entrances are slow and cinematic (1.5s). For a
+	   snappier feel: */
+	/* --dur-slow: 700ms; */
+
+	/* Switch off entrance movement but keep the fade: */
+	/* --rise-sm: 0px; --rise-lg: 0px; --rise-hero: 0px; */
+}
+
+/*
+  --- Dark mode -------------------------------------------------------
+
+  Portfolica ships light-only, like the original design. To add a dark
+  palette, uncomment this block and set `color-scheme: light dark` above.
+  Every colour is a single token, so nothing else needs to change.
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-bg: #18181b;
+		--color-surface: #27272a;
+		--color-surface-alt: #1f1f22;
+		--color-text: #fafafa;
+		--color-text-soft: #e4e4e7;
+		--color-muted: #a1a1aa;
+		--color-subtle: #71717a;
+		--color-border: #3f3f46;
+		--color-border-strong: #52525b;
+	}
+}
+*/

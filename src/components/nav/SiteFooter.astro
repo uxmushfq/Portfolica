@@ -1,0 +1,105 @@
+---
+/**
+ * SiteFooter — socials, legal links, copyright.
+ *
+ * Socials come from `site_options.socials`, not EmDash's built-in
+ * `settings.social`, because that built-in list is a fixed six platforms and
+ * does not include Behance, Dribbble, X or Figma.
+ */
+interface Props {
+	settings?: Record<string, any> | null;
+	options?: Record<string, any> | null;
+	legalMenu?: { items: Array<{ label?: string; url?: string }> } | null;
+}
+
+const { settings, options, legalMenu } = Astro.props;
+
+const siteTitle = settings?.title || "Portfolica";
+const socials: Array<{ platform: string; url: string }> = options?.socials ?? [];
+const copyright =
+	options?.copyright_line || `© ${new Date().getFullYear()} ${siteTitle}`;
+
+const LABELS: Record<string, string> = {
+	behance: "Behance",
+	dribbble: "Dribbble",
+	x: "X",
+	figma: "Figma",
+	instagram: "Instagram",
+	linkedin: "LinkedIn",
+	github: "GitHub",
+	youtube: "YouTube",
+};
+---
+
+<footer class="site-footer">
+	<div class="container-page footer-inner">
+		<p class="copyright">{copyright}</p>
+
+		{
+			socials.length > 0 && (
+				<ul class="socials" aria-label="Social links">
+					{socials.map((s) => (
+						<li>
+							<a href={s.url} target="_blank" rel="noopener noreferrer me">
+								{LABELS[s.platform] ?? s.platform}
+							</a>
+						</li>
+					))}
+				</ul>
+			)
+		}
+
+		{
+			legalMenu?.items?.length ? (
+				<nav class="legal" aria-label="Legal">
+					{legalMenu.items.map((item) => (
+						<a href={item.url}>{item.label}</a>
+					))}
+				</nav>
+			) : null
+		}
+	</div>
+</footer>
+
+<style>
+	.site-footer {
+		padding-block: var(--space-20) var(--space-10);
+		border-top: 1px solid var(--color-border);
+		margin-top: var(--space-section);
+	}
+
+	.footer-inner {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-5);
+		align-items: flex-start;
+		font-size: var(--text-sm);
+		color: var(--color-muted);
+	}
+
+	.socials,
+	.legal {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-5);
+		list-style: none;
+	}
+
+	.socials a,
+	.legal a {
+		transition: color var(--dur-base) var(--ease-ui);
+	}
+
+	.socials a:hover,
+	.legal a:hover {
+		color: var(--color-text);
+	}
+
+	@media (min-width: 810px) {
+		.footer-inner {
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-between;
+		}
+	}
+</style>

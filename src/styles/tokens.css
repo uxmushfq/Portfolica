@@ -1,0 +1,154 @@
+/*
+  tokens.css — Portfolica's design tokens.
+
+  These are DEFAULTS. To restyle the site, override any variable in
+  src/styles/theme.css rather than editing this file. Declarations there are
+  unlayered, so they always beat these @layer base defaults — no !important
+  and no specificity tricks.
+
+  Every value below was measured from the original Portfolica design rather
+  than estimated. See docs/phase-1-audit-and-plan.md §5 for the measurements
+  and docs/reference/measurements.json for the raw data.
+
+  --font-sans is supplied by Astro's font pipeline in astro.config.mjs, not
+  here. To swap the typeface, edit the `fonts` entry there and keep the
+  cssVariable name.
+*/
+
+@layer base {
+	:root {
+		/* Portfolica is a light design, like the original. See design.md for
+		   how to add a dark palette: every colour below is a single hook. */
+		color-scheme: light;
+
+		/* ---------------------------------------------------------------
+		   Colour — Tailwind's zinc scale, which is what the original uses.
+		   --------------------------------------------------------------- */
+		--color-bg: #f4f4f5; /* zinc-100 — page background, NOT white */
+		--color-surface: #ffffff; /* cards, panels, form fields */
+		--color-surface-alt: #fafafa; /* zinc-50 — subtle raised areas */
+
+		--color-text: #27272a; /* zinc-800 — primary copy */
+		--color-text-soft: #3f3f46; /* zinc-700 — secondary copy */
+		--color-muted: #71717a; /* zinc-500 — captions, meta */
+		--color-subtle: #a1a1aa; /* zinc-400 — placeholders, disabled */
+
+		--color-border: #e4e4e7; /* zinc-200 */
+		--color-border-strong: #d4d4d8; /* zinc-300 */
+
+		--color-accent: #f64617; /* the primary orange — CTAs, icons */
+		--color-accent-hover: #fd6e32; /* lighter orange — hover state */
+		--color-on-accent: #ffffff; /* text on accent surfaces */
+		--color-accent-ring: color-mix(in srgb, var(--color-accent) 24%, transparent);
+
+		--color-info: #1747f6;
+		--color-info-soft: #7190ff;
+
+		/* ---------------------------------------------------------------
+		   Typography — Inter only, at four weights.
+		   --------------------------------------------------------------- */
+		--font-body: var(--font-sans), system-ui, sans-serif;
+		--font-heading: var(--font-sans), system-ui, sans-serif;
+
+		--weight-regular: 400;
+		--weight-medium: 500; /* the workhorse: all headings use this */
+		--weight-semibold: 600;
+		--weight-bold: 700;
+
+		/* Type scale. Only the two display sizes change across breakpoints;
+		   everything 24px and below is fixed at every width. */
+		--text-display: clamp(4.75rem, 6.7vw, 6rem); /* 76 → 96px */
+		--text-heading: clamp(2.5rem, 4.4vw, 4rem); /* 40 → 52 → 64px */
+		--text-lead: 1.5rem; /* 24px */
+		--text-body: 1.25rem; /* 20px */
+		--text-md: 1.125rem; /* 18px — FAQ questions */
+		--text-base: 1rem; /* 16px — nav, UI */
+		--text-sm: 0.875rem; /* 14px — meta, chips, buttons */
+		--text-xs: 0.75rem; /* 12px — captions */
+
+		/* Line heights, as measured */
+		--leading-display: 1; /* 96/96, 76/76 */
+		--leading-heading: 1.1; /* 64/70.4 */
+		--leading-snug: 1.2; /* 14/16.8 */
+		--leading-normal: 1.3; /* 24/31.2, 20/26, 16/20.8 */
+		--leading-relaxed: 1.4; /* 18/25.2 */
+		--leading-prose: 1.6; /* long-form body copy */
+
+		/* Letter spacing is `normal` everywhere except the small button label */
+		--tracking-normal: normal;
+		--tracking-button: -0.7px;
+
+		/* ---------------------------------------------------------------
+		   Spacing — the steps actually present in the design
+		   --------------------------------------------------------------- */
+		--space-1: 0.5rem; /* 8px */
+		--space-2: 0.625rem; /* 10px — the dominant grid gap */
+		--space-3: 0.75rem; /* 12px */
+		--space-4: 1rem; /* 16px */
+		--space-5: 1.25rem; /* 20px */
+		--space-6: 1.5rem; /* 24px */
+		--space-7: 1.875rem; /* 30px */
+		--space-8: 2rem; /* 32px */
+		--space-10: 2.5rem; /* 40px */
+		--space-12: 3.125rem; /* 50px */
+		--space-20: 5rem; /* 80px */
+		--space-25: 6.25rem; /* 100px */
+		--space-30: 7.5rem; /* 120px */
+
+		/* Vertical rhythm between sections: 100px desktop, 80px below */
+		--space-section: 5rem;
+
+		/* ---------------------------------------------------------------
+		   Layout — content widths and gutters per breakpoint
+		   --------------------------------------------------------------- */
+		--width-content: 75rem; /* 1200px */
+		--width-prose: 43.75rem; /* 700px — the inner reading column */
+		--gutter: 0.9375rem; /* 15px on mobile */
+
+		/* ---------------------------------------------------------------
+		   Radii — 24px dominates the design
+		   --------------------------------------------------------------- */
+		--radius-sm: 0.5rem; /* 8px */
+		--radius-md: 1.5rem; /* 24px — cards, images, panels */
+		--radius-lg: 2.5rem; /* 40px */
+		--radius-pill: 6.25rem; /* 100px */
+		--radius-full: 9999px;
+
+		/* ---------------------------------------------------------------
+		   Motion — the original animates with springs; these are the CSS
+		   equivalents. Zeroed wholesale under prefers-reduced-motion, so
+		   components never need their own reduced-motion branch.
+		   --------------------------------------------------------------- */
+		--dur-fast: 150ms;
+		--dur-base: 300ms; /* measured button transition */
+		--dur-slow: 1500ms; /* measured entrance duration */
+
+		--ease-ui: cubic-bezier(0.44, 0, 0.56, 1); /* measured, exact */
+		--ease-out: cubic-bezier(0.16, 1, 0.3, 1); /* ≈ a bounce:0 spring */
+
+		/* A bounce:0.2 spring overshoots slightly before settling; this
+		   approximates the hero's curve. */
+		--ease-spring: linear(
+			0, 0.0039, 0.0156, 0.0352, 0.0625, 0.2656, 0.5625, 0.8164, 0.9492,
+			1.0117, 1.0273, 1.0234, 1.0137, 1.0059, 1.0012, 1
+		);
+
+		--rise-sm: 20px; /* standard scroll reveal */
+		--rise-md: 50px;
+		--rise-lg: 140px; /* large section entrance */
+		--rise-hero: 77px;
+
+		--stagger: 30ms; /* per-letter / per-child delay */
+		--delay-base: 100ms;
+		--delay-late: 500ms;
+	}
+
+	/* Section rhythm steps up with the viewport: 80px below the tablet
+	   breakpoint, 100px from it. Matches the measured original. */
+	@media (min-width: 810px) {
+		:root {
+			--gutter: 1.875rem; /* 30px */
+			--space-section: 6.25rem; /* 100px */
+		}
+	}
+}

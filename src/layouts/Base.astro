@@ -1,0 +1,123 @@
+---
+/**
+ * Base.astro — the document shell for every public page.
+ *
+ * Owns: <head>, SEO metadata, fonts, header, footer, skip link.
+ * Does NOT own page content — that comes through <slot />.
+ *
+ * SEO tags, JSON-LD, Open Graph and Twitter cards are all rendered by
+ * <EmDashHead>, which reads the page context built below. The sitemap and
+ * robots.txt are served by EmDash itself at /sitemap.xml and /robots.txt —
+ * there is no build-time sitemap integration, because CMS routes do not
+ * exist at build time.
+ */
+import { Font } from "astro:assets";
+import { getMenuWithCacheHint, getSiteSettingsWithCacheHint } from "emdash";
+import { createPublicPageContext } from "emdash/page";
+import { EmDashBodyEnd, EmDashBodyStart, EmDashHead } from "emdash/ui";
+import SiteFooter from "../components/nav/SiteFooter.astro";
+import SiteHeader from "../components/nav/SiteHeader.astro";
+import { getSiteOptions, useCacheHint } from "../lib/queries";
+import "../styles/global.css";
+
+interface Props {
+	title?: string;
+	description?: string | null;
+	image?: string | null;
+	canonical?: string | null;
+	robots?: string | null;
+	type?: "website" | "article";
+	/** Set on a CMS entry page so EmDash applies its SEO panel values. */
+	content?: { collection: string; id: string; slug?: string | null };
+}
+
+const {
+	title,
+	description,
+	image,
+	canonical,
+	robots,
+	type = "website",
+	content,
+} = Astro.props;
+
+const [settingsResult, primaryResult, legalResult, siteOptions] = await Promise.all([
+	getSiteSettingsWithCacheHint(),
+	getMenuWithCacheHint("primary"),
+	getMenuWithCacheHint("legal"),
+	getSiteOptions(),
+]);
+
+useCacheHint(
+	Astro,
+	settingsResult.cacheHint,
+	primaryResult.cacheHint,
+	legalResult.cacheHint,
+	siteOptions.cacheHint,
+);
+
+const settings = settingsResult.data;
+const options = siteOptions.options;
+
+const siteTitle = settings?.title || "Portfolica";
+const separator = settings?.seo?.titleSeparator || " — ";
+const fullTitle =
+	!title || title === siteTitle ? siteTitle : `${title}${separator}${siteTitle}`;
+const siteDescription = settings?.tagline || "";
+const canonicalUrl = canonical ?? new URL(Astro.url.pathname, Astro.url.origin).href;
+
+const pageCtx = createPublicPageContext({
+	Astro,
+	kind: content ? "content" : "custom",
+	pageType: type,
+	title: fullTitle,
+	pageTitle: title ?? siteTitle,
+	description: description || siteDescription,
+	canonical: canonicalUrl,
+	image,
+	content,
+	seo: { ogImage: image, robots },
+	siteName: siteTitle,
+});
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>{fullTitle}</title>
+		<EmDashHead page={pageCtx} />
+		<Font cssVariable="--font-sans" preload />
+		<link
+			rel="alternate"
+			type="application/rss+xml"
+			title={`${siteTitle} RSS Feed`}
+			href="/rss.xml"
+		/>
+	</head>
+	<body>
+		<EmDashBodyStart page={pageCtx} />
+
+		<a class="skip-link" href="#main">Skip to content</a>
+
+		<SiteHeader
+			menu={primaryResult.data}
+			settings={settings}
+			options={options}
+			isLoggedIn={Boolean(Astro.locals.user)}
+		/>
+
+		<main id="main">
+			<slot />
+		</main>
+
+		<SiteFooter
+			settings={settings}
+			options={options}
+			legalMenu={legalResult.data}
+		/>
+
+		<EmDashBodyEnd page={pageCtx} />
+	</body>
+</html>
