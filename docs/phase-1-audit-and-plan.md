@@ -2,569 +2,404 @@
 
 **Status:** awaiting review. No application code written yet.
 **Date:** 2026-10-12
-**Target stack:** Astro + Tailwind CSS + EmDash CMS on Cloudflare Workers (D1 + R2)
+**Scope decision:** faithful 1:1 recreation of the Framer original. No blog, team or testimonials.
+**Target stack:** Astro + Tailwind CSS v4 + EmDash CMS on Cloudflare Workers (D1 + R2)
 
 ---
 
-## 0. How this document was researched
+## 0. Sources
 
-Everything below about EmDash is taken from primary sources, not from memory:
+Nothing here is from memory or guesswork. Every EmDash fact traces to a declaration file or docs page;
+every design value was measured from the live site in a real browser.
 
 | Source | What it gave |
 | --- | --- |
-| `emdash@1.2.0` + `create-emdash@1.2.0` npm tarballs | Published API surface, LICENSE text, dependency and peer ranges |
-| `emdash-cms/emdash` git clone, HEAD `2244d2c` dated **2026-10-12 17:34 UTC** | 92 docs pages (the source of `docs.emdashcms.com`), first-party templates, agent skills, TypeScript declarations |
-| `templates/portfolio-cloudflare` | The scaffold base for this project |
-| `dist/**/*.d.mts` type declarations | Authoritative field-type union and seed schema |
+| `emdash@1.2.0` / `create-emdash@1.2.0` npm tarballs | API surface, LICENSE text, peer ranges |
+| `emdash-cms/emdash` clone, HEAD `2244d2c` (2026-10-12 17:34 UTC) | 92 docs pages, first-party templates, agent skills, `.d.mts` types |
+| `templates/portfolio-cloudflare` | Scaffold base |
+| **`portfolica.framer.website`, rendered in Chromium at 3 breakpoints** | Page map, type scale, palette, spacing, radii, motion |
+| developers.cloudflare.com pricing pages | Verified free-tier limits |
 
-`docs.emdashcms.com/llms.txt` was specified as the pre-code reading. That host is blocked by this environment's
-network policy, so the repository clone was used instead. The clone is the upstream that `llms.txt` is generated
-from and is current as of today, so the prerequisite is satisfied rather than skipped. No EmDash API in this
-document is inferred — each is traceable to a declaration file or a docs page.
-
-### Two inputs still missing
-
-| Gap | Effect | Resolution |
-| --- | --- | --- |
-| **No readable Portfolica design** | §3 (page/section inventory) and §4 (design tokens) cannot be completed | Allow `portfolica.framer.website` in Network access, **or** supply a Figma file URL |
-| **Live demo unreachable** | §7 motion *inventory* is a stub; the motion *framework* is complete | Same as above |
-
-`framer.com/projects/…` is the authenticated Framer editor and cannot be fetched even if allowed — the published
-site is the usable source. Sections dependent on these inputs are marked **PENDING INPUT** and are deliberately
-left empty rather than filled with plausible guesses.
+Measurement method: Playwright + Chromium, 5 pages × 3 viewports (1440 / 1000 / 390), computed styles read
+after animations settled, plus the Framer appear-animation config parsed from the page itself.
 
 ---
 
-## 1. Licensing — resolved, no blocker
+## 1. Licensing — resolved
 
-**EmDash is MIT licensed, Copyright 2026 Cloudflare Inc.** Verified by reading `LICENSE` inside the published
-tarballs, and confirmed across every bundled runtime package:
+**EmDash is MIT, Copyright 2026 Cloudflare Inc.** Verified from the LICENSE file inside the published tarballs,
+and across every bundled package: `emdash`, `create-emdash`, `@emdash-cms/admin`, `auth`, `blocks`,
+`cloudflare`, `plugin-types`, `registry-client` — all MIT.
 
-| Package | Version | License |
-| --- | --- | --- |
-| `emdash` | 1.2.0 | MIT |
-| `create-emdash` | 1.2.0 | MIT |
-| `@emdash-cms/admin` | 1.2.0 | MIT |
-| `@emdash-cms/auth` | 1.2.0 | MIT |
-| `@emdash-cms/blocks` | 1.2.0 | MIT |
-| `@emdash-cms/cloudflare` | 1.2.0 | MIT |
-| `@emdash-cms/plugin-types` | 0.6.0 | MIT |
-| `@emdash-cms/registry-client` | 0.7.0 | MIT |
+MIT grants the right to "use, copy, modify, merge, publish, distribute, sublicense, and/or **sell**". Bundling it
+in a paid, redistributed template is permitted. The sole obligation is retaining the copyright and permission
+notice, shipped as `licenses/THIRD-PARTY-NOTICES.md`.
 
-MIT grants, verbatim, the right to "use, copy, modify, merge, publish, distribute, sublicense, and/or **sell**
-copies of the Software". Bundling EmDash inside a paid, redistributed template is therefore permitted outright.
-
-**The one obligation:** "The above copyright notice and this permission notice shall be included in all copies or
-substantial portions of the Software." Satisfied by shipping `licenses/THIRD-PARTY-NOTICES.md` containing
-EmDash's notice and those of other bundled MIT/ISC dependencies. Planned for Phase 7 alongside your own `LICENSE`.
-
-Note this is a *redistribution* question only, and it is settled. It is not legal advice, and it says nothing
-about Framer's terms for the original Portfolica design — that is your own IP and your call.
+This covers redistribution only. It is not legal advice, and says nothing about Framer's terms for the original
+Portfolica design, which is your own IP.
 
 ---
 
-## 2. Stack decisions and verified versions
+## 2. Everything is free — verified
 
-From the upstream pnpm catalog (`pnpm-workspace.yaml`) at today's HEAD:
-
-| Dependency | Version | Note |
+| Service | Free allowance | Headroom for a portfolio |
 | --- | --- | --- |
-| `astro` | `^7.3.2` | Satisfies `emdash`'s `astro >=6.0.0-beta.0` peer — no conflict |
-| `emdash` | `1.2.0` | Published release |
-| `@emdash-cms/cloudflare` | `1.2.0` | D1 + R2 adapters |
-| `@astrojs/cloudflare` | `^14.3.1` | |
-| `@astrojs/react` | `^7.0.0` | Required — the admin UI is React |
-| `react` / `react-dom` | `19.2.4` | Admin only; must not reach public routes |
-| `wrangler` | `^4.125.0` | Satisfies the `>=4.99.0` peer |
-| Node | `>=22.16` | Matches your constraint |
+| Workers | 100,000 requests/day | ample; cached hits don't count |
+| D1 (database) | 5M rows read/day · 100k written/day · 5 GB | ample |
+| R2 (media) | 10 GB-month storage + free op allowances | ~ thousands of images |
+| Image transformations | 5,000 unique/month | capped by our variant budget (§8) |
+| Astro · Tailwind · EmDash · Inter | open source | — |
 
-### Decision D1 — scaffolding method
+Two things worth stating in the buyer docs:
 
-`npm create emdash@latest` **cannot run in this environment**: the scaffolder shells out to `giget`, which fetches
-from `codeload.github.com`, and that host returns 403 under the network policy.
+**Caching extends the free tier, not just speed.** Workers Cache serves matching requests at the edge *without
+invoking the Worker*, so cached page views consume neither the 100k/day request budget nor any D1 reads.
 
-The scaffolder's only job is to copy one of `templates/{blank,starter,blog,marketing,portfolio}[-cloudflare]` and
-rewrite the project name. Its prompts are `Which template?`, `Where will you deploy?` (Cloudflare Workers = D1 + R2),
-and `Which package manager?`.
+**Image transformations cannot produce a surprise bill.** On the free plan, exceeding 5,000 unique
+transformations returns error 9422 for *new* variants while cached ones keep serving; Cloudflare states you are
+not charged for exceeding free-plan limits. We further limit exposure by shipping a deliberately small set of
+image widths (§8).
 
-**Recommendation:** copy `templates/portfolio-cloudflare` from the clone — byte-identical to what choosing
-*portfolio* + *Cloudflare Workers* would produce, with no invented configuration. If you'd rather the record show a
-genuine `npm create emdash@latest` run, allow `codeload.github.com` and I'll run it as specified.
+The only real cost is a domain name.
 
-### Decision D2 — Tailwind vs EmDash's native token CSS  ← **needs your call**
+---
 
-EmDash templates ship **no Tailwind**. They use a two-file CSS system that is already unusually well suited to
-AI extension:
+## 3. Stack and decisions
 
-- `src/styles/tokens.css` — token defaults inside `@layer base`
-- `src/styles/theme.css` — overrides, *unlayered*, so they always win without `!important`
-- Colours use `light-dark(<light>, <dark>)`, so **one token carries both modes** and there is no second dark palette to maintain
+Versions from the upstream pnpm catalog at today's HEAD:
 
-You asked for Tailwind. The two can be combined rather than traded off:
+| Dependency | Version |
+| --- | --- |
+| `astro` | `^7.3.2` (satisfies emdash's `>=6.0.0-beta.0` peer) |
+| `emdash` / `@emdash-cms/cloudflare` | `1.2.0` |
+| `@astrojs/cloudflare` | `^14.3.1` |
+| `@astrojs/react` | `^7.0.0` (admin UI only) |
+| `react` / `react-dom` | `19.2.4` (admin only) |
+| `wrangler` | `^4.125.0` |
+| Node | `>=22.16` |
+
+### D1 — scaffolding: copy the template
+
+`npm create emdash@latest` fetches via `giget` from `codeload.github.com`. That host was blocked when this audit
+began; it may now be reachable. Either way the scaffolder's only job is to copy
+`templates/portfolio-cloudflare` and rename the project, so we copy it from the audited clone — identical result,
+pinned to a known commit.
+
+### D2 — Tailwind v4: **settled by the design itself**
+
+The measured palette *is* Tailwind's `zinc` scale, exactly:
+
+| Measured | Tailwind |
+| --- | --- |
+| `#fafafa` `#f4f4f5` `#e4e4e7` `#d4d4d8` | zinc-50 / 100 / 200 / 300 |
+| `#a1a1aa` `#71717a` `#52525b` | zinc-400 / 500 / 600 |
+| `#3f3f46` `#27272a` | zinc-700 / 800 |
+
+So Tailwind is no longer a preference — the design is already expressed in its vocabulary. We keep EmDash's
+`tokens.css` / `theme.css` split and bridge it with Tailwind v4's `@theme`, so values are declared once:
 
 ```css
 /* src/styles/global.css */
 @import "tailwindcss";
-@import "./tokens.css";          /* @layer base defaults — single source of truth */
-
-@theme inline {
-  --color-bg:       var(--color-bg);
-  --color-fg:       var(--color-fg);
-  --font-heading:   var(--font-heading);
-  --spacing-section: var(--space-section);
-  /* …generated from the token table in §4 */
-}
-
-@import "./theme.css";           /* unlayered buyer overrides, still win */
+@import "./tokens.css";     /* @layer base defaults — the single source of truth */
+@theme inline { /* maps the tokens below into Tailwind utilities */ }
+@import "./theme.css";      /* unlayered buyer overrides — always win */
 ```
 
-Tailwind v4's CSS-first `@theme` reads the same custom properties the tokens define, so utilities
-(`bg-bg`, `font-heading`) and EmDash's own admin/Portable-Text styling resolve to identical values, and upstream's
-documented customisation path keeps working.
+### D3 — SSR + edge cache
 
-**Recommendation: adopt Tailwind v4 this way.** Cost: one dependency (`@tailwindcss/vite`) and a divergence from
-first-party convention that `AGENTS.md` must explain. Benefit: what your buyers and their AI agents expect, and
-`light-dark()` means dark mode stays free.
+EmDash templates are `output: "server"` and upstream forbids `getStaticPaths()` for CMS content. Lighthouse 95+
+is therefore reached via Workers Cache, not static generation. See §8.
 
-Say the word if you'd rather ship upstream's plain-CSS system — it is the lower-risk option and genuinely good,
-but less marketable.
+### D4 — free-plan Worker config: already correct
 
-### Decision D3 — SSR, and what it means for Lighthouse 95+
+Upstream `wrangler.jsonc` ships `DB` (D1), `MEDIA` (R2) and the maintenance cron, with `worker_loaders`
+**already commented out** and labelled paid-plan-only. There is no `sandboxRunner` key to remove. Nothing to strip.
 
-The template is `output: "server"`, and upstream is explicit: *"Do not add `getStaticPaths()` to a theme's content
-routes."* Content is queried from D1 per request. So the performance target is met at the **edge cache**, not by
-static generation — see §8. This is achievable but is an architectural commitment worth agreeing before Phase 2.
+### D5 — homepage as blocks
 
-### Decision D4 — free-plan posture: already satisfied
-
-Upstream `wrangler.jsonc` ships exactly what you asked for, with **`worker_loaders` already commented out**:
-
-```jsonc
-"d1_databases": [{ "binding": "DB",    "database_name": "my-portfolio-site"  }],
-"r2_buckets":   [{ "binding": "MEDIA", "bucket_name":   "my-portfolio-media" }],
-// Sandboxed plugins require Worker Loader, available on Workers paid plans. Uncomment to enable:
-// "worker_loaders": [{ "binding": "LOADER" }],
-"triggers": { "crons": ["* * * * *"] }
-```
-
-`DB`, `MEDIA` and the cron trigger are kept as specified. There is **no `sandboxRunner` key to remove** — it is
-not present in the template's `emdash()` options. Nothing to strip; the default is already free-plan.
+The one place we deliberately exceed the Framer original. Each homepage section becomes an EmDash block type so a
+buyer can reorder, duplicate or remove sections *from the admin*, with no code edit. Section inventory stays 1:1;
+only editability improves. This is the clearest expression of "no hardcoded content a buyer would want to edit",
+and the strongest answer to no-code competitors.
 
 ---
 
-## 3. Page, section & component inventory — **PENDING INPUT**
+## 4. Page & section inventory — measured
 
-Blocked on a readable design. To be filled as:
+### Routes
 
-| Page | Route | Sections (top → bottom) | Components used |
-| --- | --- | --- | --- |
-| _pending_ | | | |
-
-A component is listed once and reused; each entry will record its Figma/Framer frame, breakpoint behaviour, and
-whether its content is CMS-editable (§5) or static.
-
-### Upstream's portfolio template as the baseline
-
-The first-party portfolio template already covers this much, and Portfolica's inventory will be expressed as a
-delta against it:
-
-| Page | Path | Content |
+| Page | Route | Doc height (desktop) |
 | --- | --- | --- |
-| Home | `/` | Centred serif title + tagline, "Selected Work" grid |
-| Work index | `/work` | Heading, tag filter chips, full grid |
-| Project detail | `/work/[slug]` | Meta line, title, summary, featured image, Portable Text body, gallery, external URL |
-| About | `/about` | Portable Text page content |
-| Contact | `/contact` | Direct email call to action |
-| 404 | — | |
+| Home | `/` | 9927px |
+| About | `/about` | 5430px |
+| All projects | `/all-projects` | 6206px |
+| Contact | `/contact` | 2408px |
+| Project detail | `/project-details/[slug]` | 5113px |
+| Privacy policy | `/legal/privacy-policy` | — |
+| Terms & conditions | `/legal/terms-conditions` | — |
+| 404 | `/404` | — |
 
-Its stated design intent — *"Editorial, near-monochrome, photography as the main visual interest… for designers,
-photographers, illustrators, studios"* — is close enough to Portfolica's audience that the structural work is a
-refinement rather than a rebuild.
+Six seeded projects: `connecto`, `edunova`, `medilink`, `paynest`, `shopora`, `travelio`.
+
+### Homepage sections, in order
+
+| # | Section | Contents | Source |
+| --- | --- | --- | --- |
+| 1 | Header | avatar logo · nav (About, All Projects, Contact, 404) · "Book a 30 min call" · email icon | menu + settings |
+| 2 | Hero | "Alex / Morgan" + inline avatar · availability badge · tagline · 2 CTAs | settings |
+| 3 | Work strip | 4 device images, horizontal ticker | `projects` |
+| 4 | Intro card | About me / Background / My Approach — 3 labelled blocks | block fields |
+| 5 | Career | 4 roles with date ranges | `experience` |
+| 6 | Stats ticker | 100% Client Satisfaction · 50+ Projects Completed · 4X Client Growth · 7+ Years of Experience | `stats` |
+| 7 | Awards | "Good work gets noticed" | `awards` |
+| 8 | Projects | 2×2 grid, chips showing name + year, caption, "View All Projects" | `projects` |
+| 9 | Process | "How things get built together" — steps 01–04 | `process_steps` |
+| 10 | Services | 2×2 grid, icon + title + description ×4 | `services` |
+| 11 | FAQ | "Before you ask" — 5 accordion rows | `faqs` |
+| 12 | Contact | "Have a project in mind?" — Name, Email, Project Information, Submit | block fields |
+| 13 | Footer | socials · legal links | menus + settings |
+
+**Other pages reuse these sections.** About = headline + Career + Skills + Awards + CTA. All-projects = heading +
+grid + Services + FAQ + CTA. Contact = CTA + FAQ. Project detail = title + Challenge + Approach + body + gallery +
+"Explore more like this one".
+
+> Demo-copy fix: the original reads "Years of **Experiance**". Corrected in our seed.
 
 ---
 
-## 4. Design tokens — **PENDING INPUT**
+## 5. Design tokens — measured
 
-Token *architecture* is settled (D2); token *values* need the design. Target shape:
+### Breakpoints (Framer's three tiers)
+
+| Name | Range | Content width | Side gutter |
+| --- | --- | --- | --- |
+| Desktop | `≥1200px` | 1200px | fluid |
+| Tablet | `810–1199.98px` | 940px | 30px |
+| Mobile | `≤809.98px` | 360px | 15px |
+
+### Type — Inter only, weights 400 / 500 / 600 / 700
+
+| Role | Desktop | Tablet | Mobile | Weight | Line-height |
+| --- | --- | --- | --- | --- | --- |
+| Display (hero) | 96px | 96px | 76px | 500 | 1.0 |
+| Section heading | 64px | 52px | 40px | 500 | 1.1 |
+| Lead | 24px | 24px | 24px | 400/500 | 1.3 |
+| Body | 20px | 20px | 20px | 400/500 | 1.3 |
+| FAQ question | 18px | 18px | 18px | 500 | 1.4 |
+| UI / nav | 16px | 16px | 16px | 400/500 | 1.3 |
+| Small | 14px | 14px | 14px | 400/500/600 | 1.2–1.3 |
+| Caption | 12px | 12px | 12px | 400 | — |
+
+**Only the two display sizes change across breakpoints.** Everything 24px and below is fixed at all widths —
+a notably simple system, and cheap to implement. Letter-spacing is `normal` everywhere except the 14px/600
+button label at `-0.7px`.
+
+Two fluid pairs cover the responsive behaviour:
 
 ```css
-@layer base {
-  :root {
-    /* Colour — one declaration serves both modes */
-    --color-bg:      light-dark(#ffffff, #0a0a0a);
-    --color-fg:      light-dark(#0a0a0a, #f5f5f5);
-    --color-muted:   light-dark(…, …);
-    --color-brand:   light-dark(…, …);
-
-    /* Type scale */
-    --font-heading: …;  --font-body: …;
-    --text-display: clamp(…, …vw, …);
-    --text-h1 … --text-body … --text-caption;
-
-    /* Spacing, radii, shadows, breakpoints, motion */
-    --space-1 … --space-section;
-    --radius-sm … --radius-full;
-    --shadow-card …;
-    --ease-out-expo …; --dur-base …;
-  }
-}
+--text-display: clamp(76px, 6.7vw, 96px);   /* 76 → 96 */
+--text-heading: clamp(40px, 4.4vw, 64px);   /* 40 → 52 → 64 */
 ```
 
-| Group | Source of truth | Status |
-| --- | --- | --- |
-| Colour | Framer/Figma variables | pending |
-| Type scale | Design, as `clamp()` fluid pairs | pending |
-| Spacing | Design spacing variables | pending |
-| Radii / shadows | Design | pending |
-| Breakpoints | Design frame widths | pending |
-| Motion | Live demo timings | pending (framework in §7) |
+### Colour
 
-Fluid type and spacing will use `clamp()` keyed to the design's own breakpoints, so there are fewer media queries
-for a buyer's agent to keep consistent.
+```css
+--color-bg:        #f4f4f5;  /* zinc-100 — page background, NOT white */
+--color-surface:   #ffffff;  /* cards, panels */
+--color-fg:        #27272a;  /* zinc-800 — primary text */
+--color-fg-soft:   #3f3f46;  /* zinc-700 */
+--color-muted:     #71717a;  /* zinc-500 */
+--color-subtle:    #a1a1aa;  /* zinc-400 */
+--color-line:      #e4e4e7;  /* zinc-200 — borders */
+--color-accent:    #f64617;  /* primary orange — CTAs, icons */
+--color-accent-2:  #fd6e32;  /* lighter orange */
+--color-info:      #1747f6;  /* blue, sparing */
+--color-info-soft: #7190ff;
+```
+
+### Radii, spacing, rhythm
+
+```css
+--radius-sm: 8px;    --radius-md: 24px;   /* dominant — cards, images */
+--radius-lg: 40px;   --radius-pill: 100px;  --radius-full: 9999px;
+```
+
+Spacing steps in use: `8 10 12 16 20 24 30 32 40 50 80 100 120`
+Grid gaps: 10px dominant, then 20, 16, 12, 24, 8, 32.
+
+Section vertical rhythm: **100px** desktop → **80px** tablet/mobile, with 30px for tight blocks.
 
 ---
 
-## 5. Proposed EmDash content model
+## 6. Content model
 
-This section is **complete** — it depends on EmDash's capabilities and your stated collections, not on the visuals.
-Field-level detail will be confirmed against the design once available.
+Faithful scope. Schema lives in the database, so it travels to buyers as a committed **seed file**
+(`seed/seed.json`, declared via `package.json#emdash.seed`). `applySeed({ includeContent })` lets the setup wizard
+apply structure always and demo content optionally.
 
-### Mechanism: a seed file, which is what makes this redistributable
+Field types available: `string` `text` `url` `slug` `number` `integer` `boolean` `datetime` `select`
+`multiSelect` `portableText` `image` `file` `reference` `json` `repeater` `blocks`
+Collection `supports`: `drafts` `revisions` `preview` `scheduling` `search` `seo`
 
-EmDash stores its schema **in the database, not in code**. For a paid template that matters enormously: the
-content model has to travel to buyers somehow. The supported mechanism is a **seed file**, declared in
-`package.json`:
+### `projects` — `/project-details/[slug]` · `supports: [drafts, revisions, preview, search, seo]`
 
-```json
-{ "emdash": { "seed": "seed/seed.json" } }
-```
+| Field | Type | Notes |
+| --- | --- | --- |
+| `title` | `string` ✓ | searchable |
+| `featured_image` | `image` ✓ | grid + hero |
+| `year` | `string` | chip label |
+| `category` | `string` | chip label |
+| `summary` | `text` | searchable |
+| `challenge` | `portableText` | detail page |
+| `approach` | `portableText` | detail page |
+| `gallery` | `repeater` | `{ image, caption? }` |
+| `url` | `url` | live link |
+| `featured` | `boolean` | homepage selection |
+| `sort_order` | `integer` | manual order |
 
-`SeedFile` (from `emdash/seed` declarations) carries the whole model in one committed artifact:
+### Supporting collections — all `routable: false`
 
-```
-version, defaultLocale, meta, settings, collections[], blockTypes[], relations[],
-taxonomies[], menus[], redirects[], widgetAreas[], sections[], bylines[], content{}
-```
+| Collection | Fields | Seeded |
+| --- | --- | --- |
+| `services` | `title` ✓, `description`, `icon` (select), `sort_order` | 4 |
+| `experience` | `role` ✓, `period`, `sort_order` | 4 |
+| `process_steps` | `step_number`, `title` ✓, `description`, `sort_order` | 4 |
+| `stats` | `value` ✓, `label` ✓, `sort_order` | 4 |
+| `faqs` | `question` ✓, `answer` (portableText), `sort_order` | 5 |
+| `awards` | `title` ✓, `issuer`, `year`, `url`, `sort_order` | — |
+| `skills` | `name` ✓, `group`, `sort_order` | about page |
 
-`applySeed({ includeContent })` lets the setup wizard apply the **structure always** and the **demo content
-optionally** — so a buyer gets the full model and can choose whether to keep the sample projects. `emdash export-seed`
-round-trips a model built in the admin UI back into the file, which is how I'll keep `seed.json` honest.
+### `pages` — `/[slug]` · `content: blocks`
+Covers About, Privacy policy, Terms & conditions, and any page a buyer adds.
 
-> **Buyer-docs consequence:** *"Rebuilding a template does not reapply its seed to an initialized database."*
-> Seed changes after setup require the schema-evolution path. This goes in the README and `AGENTS.md`.
+### `site_options` — `hidden: true`, `routable: false`
 
-### Available field types (authoritative)
+Built-in site settings already provide `title`, `tagline`, `logo`, `favicon`, `url`, `postsPerPage`, `dateFormat`,
+`timezone`, `seo`. But **built-in `settings.social` is a fixed list** — twitter, github, facebook, instagram,
+linkedin, youtube — and your site links **Behance, Dribbble, X, Figma and Cal.com**. Three of those five are not
+representable. So socials become a custom field here:
 
-`string`, `text`, `url`, `slug`, `number`, `integer`, `boolean`, `datetime`, `select`, `multiSelect`,
-`portableText`, `image`, `file`, `reference`, `json`, `repeater`, `blocks`
-
-Per-collection `supports`: `drafts`, `revisions`, `preview`, `scheduling`, `search`, `seo`
-
-### Collections
-
-Legend: **CMS** = editable in admin · **Static** = lives in template code
-
-#### `projects` — case studies · `/work/[slug]`
-`supports: [drafts, revisions, preview, search, seo]`
-
-| Field | Type | Req | Notes |
-| --- | --- | --- | --- |
-| `title` | `string` | ✓ | searchable |
-| `featured_image` | `image` | ✓ | media value, not a URL |
-| `thumbnail` | `image` | | grid override; falls back to `featured_image` |
-| `client` | `string` | | |
-| `year` | `string` | | string, not integer — allows "2024–25" |
-| `role` | `string` | | |
-| `summary` | `text` | | searchable; grid + meta line |
-| `content` | `portableText` | | searchable; case-study body |
-| `gallery` | `repeater` | | rows of `{ image, caption? }` |
-| `metrics` | `repeater` | | rows of `{ label, value }` for results |
-| `url` | `url` | | live-site link |
-| `featured` | `boolean` | | drives homepage selection |
-| `sort_order` | `integer` | | manual ordering |
-
-Taxonomies: `tag`, `industry`, `service`
-
-#### `services`
-`supports: [drafts, revisions, search, seo]` · routable if the design has detail pages
-
-`title` `string` ✓ · `summary` `text` · `content` `portableText` · `icon` `select` (maps to an icon component — a
-`select` keeps a stored value from becoming an arbitrary module path) · `deliverables` `repeater{item}` ·
-`starting_price` `string` · `sort_order` `integer`
-
-#### `testimonials` — `routable: false`
-`quote` `text` ✓ · `author_name` `string` ✓ · `author_role` `string` · `author_company` `string` ·
-`avatar` `image` · `company_logo` `image` · `project` `reference` → `projects` · `featured` `boolean` · `sort_order` `integer`
-
-#### `team` — `routable: false` unless the design has bios
-`name` `string` ✓ · `role` `string` · `photo` `image` · `bio` `portableText` · `socials` `repeater{platform select, url}` · `sort_order` `integer`
-
-#### `posts` — blog · `/blog/[slug]`
-`supports: [drafts, revisions, scheduling, search, seo]`
-
-`title` `string` ✓ · `excerpt` `text` · `featured_image` `image` · `content` `portableText`
-Taxonomies: `category` (hierarchical), `tag`
-
-> Authors use EmDash's **built-in `bylines`** (`displayName`, `bio`, `websiteUrl`, `avatar`) rather than a custom
-> `authors` collection — it's first-class in the seed schema and in the admin.
-
-#### `clients` — logo wall · `routable: false`
-`name` `string` ✓ · `logo` `image` ✓ · `url` `url` · `sort_order` `integer`
-
-#### `pages` — composable CMS pages · `/[slug]`
-`title` `string` ✓ · `content` `blocks` (see below) · `supports: [drafts, revisions, preview, seo]`
-
-#### `site_options` — `hidden: true`, `routable: false`
-Built-in site settings cover `title`, `tagline`, `logo`, `favicon`, `url`, `postsPerPage`, `dateFormat`,
-`timezone`, `seo`, and `social`. **But `social` is a fixed set** — `twitter`, `github`, `facebook`, `instagram`,
-`linkedin`, `youtube`. No Dribbble, Behance, X or Bluesky, which is too narrow for a designer portfolio.
-
-So this collection holds what built-in settings can't:
-
-`socials` `repeater{platform select, url}` · `nav_cta_label` `string` · `nav_cta_url` `url` ·
-`availability_badge` `string` · `contact_email` `string` · `footer_tagline` `text` · `copyright_line` `string` ·
+`socials` `repeater{platform select, url}` · `avatar` `image` · `availability_badge` `string` ·
+`hero_line_1` `string` · `hero_line_2` `string` · `hero_tagline` `text` · `cta_primary_label/url` ·
+`cta_secondary_label/url` · `booking_url` `url` · `contact_email` `string` · `copyright_line` `string` ·
 `notfound_heading` `string` · `notfound_body` `text`
 
-### Blocks — how the homepage becomes editable  ← **recommended**
+### Menus (CMS-managed)
+`primary` (About, All Projects, Contact, 404) · `footer` · `legal`
 
-Your constraint *"no hardcoded content that a buyer would reasonably want to edit"* points at the `blocks` field.
-Upstream's marketing template seeds eleven block types and lets editors **add, reorder, duplicate and remove**
-them, with pages created in the admin getting their own URL and no route file.
+### Block types (homepage composition, D5)
+`hero` · `work_strip` · `intro_card` · `career` · `stats_ticker` · `awards` · `projects_grid` ·
+`process` · `services` · `faq` · `contact_form`
 
-Applied to Portfolica, each homepage section becomes a block type (final list pending §3):
+### Static by choice
+Layout grids · motion timings · icon set · section internals. Everything a buyer would plausibly edit is CMS-backed.
 
-`hero` · `logo_wall` · `about_intro` · `selected_work` · `services_list` · `process_steps` · `stats` ·
-`testimonials` · `team` · `blog_teaser` · `faq` · `cta` · `contact`
-
-Rendered through a generated union, which keeps the component map exhaustive at compile time:
-
-```astro
 ---
-import { Blocks, defineBlockComponents } from "emdash/ui";
-import type { PageContentBlock } from "../emdash-env";
 
-const components = defineBlockComponents<PageContentBlock>({
-  portfolica_hero: Hero,
-  portfolica_selected_work: SelectedWork,
-  /* … */
-});
----
-<Blocks value={Astro.props.value} components={components} />
-```
+## 7. Motion — measured from the live site
 
-This is the single biggest lever on perceived value: buyers rearrange their homepage in the admin instead of
-editing `.astro` files.
+Framer drives motion with springs via JS, not CSS easing. The appear-animation config parsed from the page:
 
-### Taxonomies, menus, relations
-
-| Taxonomy | Hierarchical | Applies to |
+| Pattern | From | Transition |
 | --- | --- | --- |
-| `tag` | no | `projects`, `posts` |
-| `category` | yes | `posts` |
-| `industry` | no | `projects` |
-| `service` | no | `projects` |
+| Hero entrance | `opacity 0.001`, `y −77` | spring, duration 1.5s, **bounce 0.2**, delay 0.1s |
+| Standard entrance | `opacity 0.001`, `y 20` | spring, duration 1.5s, bounce 0, delay 0.1s |
+| Large section | `opacity 0.001`, `y 140` | spring, duration 1.5s, bounce 0, delay 0.5s |
+| Late element | `opacity 0.001`, `y 50` | spring, stiffness 300, damping 50, mass 1, delay 2s |
+| Scroll reveal | `opacity 0`, `y 20–30` | runtime, same spring language |
+| Button hover | — | `background, box-shadow` **0.3s `cubic-bezier(0.44, 0, 0.56, 1)`** |
 
-Menus (**CMS**): `primary`, `footer_primary`, `footer_secondary`
-Widget areas: `footer` — optional, if the design's footer has editor-controlled columns
-Sections: a reusable CTA block, so the same call to action can be dropped into any Portable Text field
+Only one CSS transition is declared on the whole site — the button hover above. Everything else is JS.
 
-> Taxonomy names must match the seed **exactly** — a seed of `"name": "tag"` must be queried as `getTerm("tag", …)`.
-> A wrong name returns empty with no error. This goes in `AGENTS.md` as a named gotcha.
+### How we rebuild it, CSS-first
 
-### Static by deliberate choice
-
-Layout structure and grids · motion timings and easings · icon set · section *ordering* within a block component ·
-legal/boilerplate microcopy not worth a CMS field. Everything a buyer would plausibly want to change is CMS-backed.
-
----
-
-## 6. Proposed folder structure
-
-```
-portfolica/
-├── AGENTS.md                      # Phase 6 — project map + conventions for AI agents
-├── design.md                      # Phase 6 — tokens, type, spacing, component usage
-├── README.md                      # Phase 7 — buyer quick start
-├── CHANGELOG.md
-├── LICENSE                        # your terms (placeholder until supplied)
-├── licenses/
-│   └── THIRD-PARTY-NOTICES.md     # EmDash MIT + bundled deps (§1 obligation)
-├── .cursor/rules/                 # Phase 6 — Cursor rules
-├── prompts/                       # Phase 6 — per-component prompt snippets
-│   ├── add-testimonial-variant.md
-│   ├── add-block-type.md
-│   └── add-collection.md
-├── docs/
-│   ├── phase-1-audit-and-plan.md  # this file
-│   ├── deploy-cloudflare.md
-│   ├── editing-content.md
-│   └── customizing-tokens.md
-│
-├── astro.config.mjs               # adapter, emdash(), fonts, cache provider, routeRules
-├── wrangler.jsonc                 # DB + MEDIA + cron (LOADER stays commented)
-├── package.json                   # emdash.seed → seed/seed.json
-├── tsconfig.json
-├── emdash-env.d.ts                # generated — PageContentBlock union lives here
-├── worker-configuration.d.ts
-├── .env.example                   # names only, never values
-├── .gitignore                     # local .db, uploads, .env
-│
-├── seed/
-│   └── seed.json                  # the entire content model + demo content
-│
-└── src/
-    ├── worker.ts                  # Cloudflare entry point
-    ├── live.config.ts             # emdashLoader() registration
-    ├── styles/
-    │   ├── tokens.css             # @layer base defaults — DO NOT EDIT (buyer-facing rule)
-    │   ├── theme.css              # unlayered overrides — the buyer's edit surface
-    │   └── global.css             # Tailwind entry + @theme bridge (D2)
-    ├── layouts/
-    │   ├── Base.astro             # html head, SEO, header/footer, cache hints
-    │   └── Page.astro
-    ├── components/
-    │   ├── blocks/                # one file per block type in §5
-    │   │   ├── Hero.astro
-    │   │   ├── SelectedWork.astro
-    │   │   └── …
-    │   ├── cards/
-    │   │   ├── ProjectCard.astro
-    │   │   ├── PostCard.astro
-    │   │   ├── TestimonialCard.astro
-    │   │   ├── TeamCard.astro
-    │   │   └── ClientLogo.astro
-    │   ├── nav/
-    │   │   ├── Header.astro
-    │   │   ├── Footer.astro
-    │   │   └── MobileMenu.astro
-    │   ├── primitives/
-    │   │   ├── Button.astro
-    │   │   ├── Tag.astro
-    │   │   ├── Marquee.astro
-    │   │   └── Reveal.astro       # scroll-reveal wrapper (§7)
-    │   ├── PortfolicaBlocks.astro # defineBlockComponents map
-    │   └── seo/
-    │       ├── Seo.astro
-    │       └── JsonLd.astro
-    ├── lib/
-    │   ├── queries.ts             # typed wrappers over getEmDashCollection/Entry
-    │   ├── seo.ts
-    │   └── format.ts
-    └── pages/
-        ├── index.astro
-        ├── work/{index,[slug]}.astro
-        ├── services/{index,[slug]}.astro
-        ├── blog/{index,[slug]}.astro
-        ├── about.astro
-        ├── contact.astro
-        ├── [slug].astro           # CMS pages via blocks
-        ├── tag/[slug].astro
-        ├── category/[slug].astro
-        ├── search.astro
-        ├── 404.astro
-        └── rss.xml.ts
-```
-
-**Conventions, chosen so an agent can extend predictably:** one component per file, named for the block type it
-renders; every CMS read goes through `src/lib/queries.ts` so cache-hint handling exists in one place; `tokens.css`
-is declared off-limits and `theme.css` is the sanctioned edit surface.
-
----
-
-## 7. Motion & interaction plan
-
-### Inventory — **PENDING INPUT**
-
-| # | Section | Interaction | Trigger | Technique | JS? |
-| --- | --- | --- | --- | --- | --- |
-| _pending — needs the live demo_ | | | | | |
-
-### Framework — complete, CSS-first
-
-This is independent of the specific inventory and will absorb it:
-
-| Interaction | Technique | JS cost |
+| Interaction | Technique | JS |
 | --- | --- | --- |
-| Scroll reveal / fade-up | `animation-timeline: view()` | none |
-| Staggered children | `--i` index custom property → `animation-delay` | none |
-| Sticky / pinned sections | `position: sticky` | none |
-| Parallax imagery | `animation-timeline: scroll()` | none |
-| Logo marquee | CSS keyframes on a duplicated track | none |
-| Card hover (scale, clip, image zoom) | `transition` on `transform` / `clip-path` | none |
-| Page transitions | Astro View Transitions + `view-transition-name` | built-in |
+| Scroll reveal (fade + rise 20–30px) | `animation-timeline: view()` | none |
+| Hero / section entrances | CSS keyframes + `animation-delay` | none |
+| Stats & awards tickers | CSS keyframes on a duplicated track | none |
+| Work strip | same ticker pattern | none |
+| Button hover | `transition: background, box-shadow .3s cubic-bezier(.44,0,.56,1)` — exact match | none |
+| Card hover | `transform` / `clip-path` transition | none |
+| FAQ accordion | `<details>` + `::details-content` | none |
+| Page transitions | Astro View Transitions | built-in |
 | Nav scroll state | one `IntersectionObserver` sentinel | ~10 lines |
-| Counters | `IntersectionObserver` + `requestAnimationFrame` | ~20 lines |
-| Mobile menu | `<details>` or the Popover API | minimal |
 
-**Scroll-driven CSS animations carry the load.** Where `animation-timeline` needs a fallback, one shared
-`IntersectionObserver` in `Reveal.astro` adds an `.is-visible` class — a single tiny script for the whole site,
-not a library. **No animation library** (no GSAP, Framer Motion, Lenis): they contradict both the Lighthouse
-target and "avoid ongoing maintenance".
+**Springs → CSS.** A `bounce: 0` spring is critically damped, so a plain ease-out curve matches it closely. The
+hero's `bounce: 0.2` has slight overshoot, reproduced with a `linear()` easing or a subtle two-stage keyframe.
+Duration 1.5s is slow by CSS convention but it is what the original does, so we match it.
 
-Motion lives in tokens (`--dur-*`, `--ease-*`, `--reveal-distance`, `--stagger`) so it is tunable without
-touching components.
+**No animation library.** No GSAP, Framer Motion or Lenis — they would contradict both the Lighthouse target and
+the "no ongoing maintenance" constraint.
 
-### Reduced motion
-
-One block neutralises every animation by zeroing the tokens, rather than per-component overrides:
+Motion lives in tokens (`--dur-*`, `--ease-*`, `--rise-*`, `--stagger`) so it is tunable without touching components.
 
 ```css
 @media (prefers-reduced-motion: reduce) {
-  :root { --dur-fast: 0ms; --dur-base: 0ms; --dur-slow: 0ms; --reveal-distance: 0; --stagger: 0ms; }
-  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important;
-                           transition-duration: .01ms !important; scroll-behavior: auto !important; }
+  :root { --dur-fast:0ms; --dur-base:0ms; --dur-slow:0ms; --rise-sm:0; --rise-lg:0; --stagger:0ms; }
+  *,*::before,*::after { animation-duration:.01ms !important; animation-iteration-count:1 !important;
+                         transition-duration:.01ms !important; scroll-behavior:auto !important; }
 }
 ```
 
----
-
-## 8. Performance plan — Lighthouse 95+ on an SSR site
-
-Per D3 there is no static output, so the budget is met at the edge:
-
-1. **Workers Cache in front of the Worker** — matching requests never execute it:
-   ```js
-   import { cacheCloudflare } from "@astrojs/cloudflare/cache";
-   export default defineConfig({
-     adapter: cloudflare(),
-     cache: { provider: cacheCloudflare() },
-     routeRules: { "/": { maxAge: 300, swr: 86400 } },
-   });
-   ```
-2. **Cache hints on every cached route** — `Astro.cache.set(cacheHint)`, using
-   `getSiteSettingsWithCacheHint()`, `getMenuWithCacheHint()`, `getTaxonomyTermsWithCacheHint()`,
-   `getWidgetAreaWithCacheHint()` in layouts.
-3. **Explicit `Cache-Control` on every custom route.** Workers Cache applies RFC 9111 heuristic freshness —
-   *a `200` with no header is cached for 2 hours*. Session-dependent routes get `private, no-store`.
-4. **Zero framework JS on public routes.** React is an admin dependency; no React island may reach a public page.
-   I'll assert this in the build check — it's the single largest risk to the score.
-5. **Astro Fonts API** (already in the template) — self-hosted, preloaded, `font-display: swap`.
-6. **`<Image>` from `emdash/ui`** + Cloudflare image transformation; `priority` on the hero image only, everything
-   else lazy. Image fields are media objects — passing the whole value is required, not the `src`.
-7. **`devToolbar: { enabled: false }`**, already set upstream.
-
-**Known caveat to document:** Workers Cache runs *before* the Worker and cannot vary on cookies, so a signed-in
-editor may be served the cached anonymous page without the editing toolbar until it expires. Editor-rendered
-responses carry `private, no-store`, so nothing leaks the other way. Worth noting in the README.
+> One open item: the tickers are JS-driven in Framer, so their exact speed isn't readable from the page. I'll
+> match them by eye against the live site during Phase 4.
 
 ---
 
-## 9. Deployment notes for Phase 5
+## 8. Performance — Lighthouse 95+ on SSR
 
-`wrangler login` → `npm run build` → `npx wrangler deploy`, then the custom domain:
+1. **Workers Cache** via `cacheCloudflare()` + `routeRules` — matching requests never invoke the Worker.
+2. **Cache hints** on every cached route: `Astro.cache.set(cacheHint)`, using `getSiteSettingsWithCacheHint()`,
+   `getMenuWithCacheHint()`, `getTaxonomyTermsWithCacheHint()`, `getWidgetAreaWithCacheHint()` in layouts.
+3. **Explicit `Cache-Control` everywhere.** Workers Cache applies RFC 9111 heuristic freshness — a `200` with no
+   header is cached for 2 hours. Session-dependent routes get `private, no-store`.
+4. **Zero framework JS on public routes.** React is an admin-only dependency and must never reach a public page.
+   Asserted in the build check — the single largest risk to the score.
+5. **Astro Fonts API** for Inter — self-hosted, preloaded, `font-display: swap`, subset to the weights used.
+6. **A fixed, small set of image widths** (4 per image) — keeps quality high and stays well inside the free
+   5,000 transformations/month.
+7. **`devToolbar: { enabled: false }`**, already upstream.
 
-```jsonc
-{ "routes": [{ "pattern": "www.example.com", "custom_domain": true }] }
+**Documented caveat:** Workers Cache runs before the Worker and cannot vary on cookies, so a signed-in editor may
+briefly see the cached anonymous page without the editing toolbar. Editor-rendered responses carry
+`private, no-store`, so nothing leaks the other way.
+
+---
+
+## 9. Folder structure
+
+```
+portfolica/
+├── AGENTS.md  design.md  README.md  CHANGELOG.md  LICENSE
+├── licenses/THIRD-PARTY-NOTICES.md
+├── .cursor/rules/            prompts/            docs/
+├── astro.config.mjs  wrangler.jsonc  package.json  tsconfig.json
+├── emdash-env.d.ts  worker-configuration.d.ts  .env.example  .gitignore
+├── seed/seed.json            ← entire content model + demo content
+└── src/
+    ├── worker.ts  live.config.ts
+    ├── styles/   tokens.css · theme.css · global.css
+    ├── layouts/  Base.astro · Page.astro
+    ├── components/
+    │   ├── blocks/      Hero · WorkStrip · IntroCard · Career · StatsTicker
+    │   │                Awards · ProjectsGrid · Process · Services · Faq · ContactForm
+    │   ├── cards/       ProjectCard · ServiceCard · ExperienceRow · FaqRow
+    │   ├── nav/         Header · Footer · MobileMenu
+    │   ├── primitives/  Button · Chip · Ticker · Reveal
+    │   ├── PortfolicaBlocks.astro
+    │   └── seo/         Seo.astro · JsonLd.astro
+    ├── lib/      queries.ts · seo.ts · format.ts
+    └── pages/
+        ├── index.astro · about.astro · contact.astro · all-projects.astro
+        ├── project-details/[slug].astro
+        ├── legal/[slug].astro · [slug].astro
+        ├── 404.astro · rss.xml.ts
 ```
 
-Redeploy, then run the setup wizard at `/_emdash/admin`.
-
-> **Ordering trap, worth getting right in the docs.** Without `siteUrl` / `EMDASH_SITE_URL` / `SITE_URL`, setup
-> records whatever address it runs on as the site origin — and **passkeys only work at the address where they were
-> created**. So either run setup on the production domain, or set `EMDASH_SITE_URL` to it *before* setup. Getting
-> this backwards means re-registering passkeys. The sequence is: add the custom domain → redeploy → *then* run setup.
-
-`EMDASH_ENCRYPTION_KEY` via `wrangler secret put`; `.env` git-ignored, `.env.example` names keys only.
+Conventions: one component per file named for its block type; every CMS read goes through `src/lib/queries.ts` so
+cache-hint handling lives in one place; `tokens.css` is off-limits and `theme.css` is the sanctioned edit surface.
 
 ---
 
@@ -572,40 +407,52 @@ Redeploy, then run the setup wizard at `/_emdash/admin`.
 
 | # | Risk | Severity | Mitigation |
 | --- | --- | --- | --- |
-| R1 | No readable design — Phases 3–4 cannot start | **blocking** | Allow `portfolica.framer.website`, or supply a Figma URL |
-| R2 | React admin bundle leaking into public routes | high | Assert zero-JS on public routes in the build check (§8.4) |
-| R3 | Seed can't be reapplied after setup | medium | Document schema evolution; test against a fresh DB every time |
-| R4 | SSR + D1 latency hurting scores | medium | Workers Cache (§8); place the Worker near D1 |
-| R5 | Tailwind diverging from upstream convention | low | The `@theme` bridge (D2) keeps one source of truth; explain in `AGENTS.md` |
-| R6 | EmDash upgrades breaking a shipped template | medium | Pin exact versions; upstream has an `upgrading-emdash` skill to follow |
-| R7 | `templates/portfolio-cloudflare` is `v0.0.3` and moving | low | Pin to the audited commit; re-verify before release |
+| R1 | React admin bundle leaking into public routes | high | assert zero-JS on public routes in build check |
+| R2 | Seed can't be reapplied after setup | medium | document schema evolution; always test on a fresh DB |
+| R3 | SSR + D1 latency | medium | Workers Cache; place Worker near D1 |
+| R4 | 1.5s spring entrances feel slow / hurt CLS | medium | reserve space, animate only `opacity`/`transform`, verify LCP |
+| R5 | EmDash upgrades breaking a shipped template | medium | pin exact versions; follow upstream `upgrading-emdash` skill |
+| R6 | Ticker speed not readable from source | low | match by eye in Phase 4 |
+| R7 | `templates/portfolio-cloudflare` is `v0.0.3` and moving | low | pin to audited commit; re-verify before release |
 
 ---
 
-## 11. Phase plan & commits
+## 11. Phases
 
 | Phase | Deliverable | Commit |
 | --- | --- | --- |
 | **1** | This document | `docs: phase 1 audit and plan` |
-| 2 | Scaffold, Tailwind + tokens, Base layout, fonts, SEO/OG/sitemap/RSS, 404, seed with demo content | `feat: phase 2 foundation` |
-| 3 | Components 1:1 with the design, pages, dynamic routes, CMS menus + settings, a11y | `feat: phase 3 components and pages` |
-| 4 | Motion, View Transitions, reduced-motion, Lighthouse 95+ | `feat: phase 4 motion and polish` |
-| 5 | Deploy, custom domain, setup wizard | `chore: phase 5 deployment` |
-| 6 | `AGENTS.md`, `design.md`, prompt snippets, Cursor rules | `docs: phase 6 ai-ready package` |
-| 7 | README, LICENSE, CHANGELOG, third-party notices | `docs: phase 7 buyer docs` |
+| 2 | Scaffold · Tailwind + tokens · Base layout · Inter · SEO/OG/sitemap/RSS · 404 · seed | `feat: phase 2 foundation` |
+| 3 | Components 1:1 · pages · dynamic routes · CMS menus/settings · a11y | `feat: phase 3 components and pages` |
+| 4 | Motion · View Transitions · reduced-motion · Lighthouse 95+ | `feat: phase 4 motion and polish` |
+| 5 | Deploy · custom domain · setup wizard | `chore: phase 5 deployment` |
+| 6 | `AGENTS.md` · `design.md` · prompt snippets · Cursor rules | `docs: phase 6 ai-ready package` |
+| 7 | README · LICENSE · CHANGELOG · third-party notices | `docs: phase 7 buyer docs` |
 
-Phase 2 can begin immediately on approval — scaffold, token architecture, seed and content model need no design
-input. Only the token *values* (§4) and component fidelity (§3) are gated.
+### Deployment notes for Phase 5
+
+`wrangler login` → `npm run build` → `npx wrangler deploy`, then custom domain:
+
+```jsonc
+{ "routes": [{ "pattern": "www.example.com", "custom_domain": true }] }
+```
+
+> **Ordering trap.** Without `siteUrl` / `EMDASH_SITE_URL` / `SITE_URL`, setup records whatever address it runs on
+> as the site origin — and **passkeys only work at the address where they were created**. Correct sequence:
+> add custom domain → redeploy → *then* run setup at `/_emdash/admin`. Getting it backwards means re-registering
+> passkeys.
+
+`EMDASH_ENCRYPTION_KEY` is set by the site owner via `wrangler secret put`; it never enters the repo or `.env`.
 
 ---
 
-## 12. Questions for you
+## 12. Open questions
 
-1. **Design access** — allow `portfolica.framer.website`, or paste a Figma file URL? (R1, blocking for Phases 3–4)
-2. **D2 — Tailwind?** Adopt Tailwind v4 bridged to EmDash's tokens as recommended, or stay on upstream's plain CSS?
-3. **D3 — confirm SSR + edge caching** as the route to Lighthouse 95+, rather than static generation?
-4. **Blocks** — make the homepage block-composable (recommended, §5), or fixed sections with field-level editing?
-5. **Scope** — are Services, Team and Blog all in Portfolica, or should any ship as stubs?
-6. **Scaffolding** — copy `templates/portfolio-cloudflare` from the audited clone, or allow `codeload.github.com`
-   so `npm create emdash@latest` runs verbatim?
-7. **LICENSE** — send your terms when ready; `licenses/THIRD-PARTY-NOTICES.md` is handled either way.
+1. **Awards section** — "Good work gets noticed" renders via a runtime ticker I couldn't read statically. Is it
+   award names, publication logos, or client logos? Affects the `awards` field list.
+2. **Contact form delivery** — the form posts Name / Email / Project Information. Options: `mailto:`
+   (zero-config, free, works everywhere), or EmDash's email integration (needs a provider). Faithful + free
+   points at `mailto:` with the form as progressive enhancement. Confirm?
+3. **The 404 nav item** — the original lists "404" in the primary menu, which is a template-demo convention.
+   Keep it for faithfulness, or drop it as buyers would?
+4. **LICENSE terms** — send when ready; third-party notices are handled either way.

@@ -1,0 +1,5098 @@
+{
+  "desktop": {
+    "home": {
+      "docHeight": 9927,
+      "bodyBg": "rgb(244, 244, 245)",
+      "specimens": [
+        {
+          "tag": "h1",
+          "fontSize": "96px",
+          "fontWeight": "500",
+          "lineHeight": "96px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Alex",
+          "count": 2
+        },
+        {
+          "tag": "h2",
+          "fontSize": "64px",
+          "fontWeight": "500",
+          "lineHeight": "70.4px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(246, 70, 23)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "100%",
+          "count": 4
+        },
+        {
+          "tag": "h6",
+          "fontSize": "24px",
+          "fontWeight": "400",
+          "lineHeight": "31.2px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(161, 161, 170)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "I help brands fine clarity and express it though strong, tho",
+          "count": 7
+        },
+        {
+          "tag": "h6",
+          "fontSize": "24px",
+          "fontWeight": "400",
+          "lineHeight": "31.2px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Design Director",
+          "count": 4
+        },
+        {
+          "tag": "h6",
+          "fontSize": "24px",
+          "fontWeight": "500",
+          "lineHeight": "31.2px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(161, 161, 170)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "2025 - Now",
+          "count": 4
+        },
+        {
+          "tag": "h6",
+          "fontSize": "24px",
+          "fontWeight": "500",
+          "lineHeight": "31.2px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "UX-UI & Creative",
+          "count": 4
+        },
+        {
+          "tag": "h6",
+          "fontSize": "24px",
+          "fontWeight": "400",
+          "lineHeight": "31.2px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(82, 82, 91)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Crafting clean, user-friendly sites that reflect your brand ",
+          "count": 4
+        },
+        {
+          "tag": "p",
+          "fontSize": "20px",
+          "fontWeight": "400",
+          "lineHeight": "26px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "I build digital experiences that drive real growth for your ",
+          "count": 11
+        },
+        {
+          "tag": "p",
+          "fontSize": "20px",
+          "fontWeight": "500",
+          "lineHeight": "26px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(161, 161, 170)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "01",
+          "count": 4
+        },
+        {
+          "tag": "p",
+          "fontSize": "20px",
+          "fontWeight": "400",
+          "lineHeight": "26px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Subscribe to get early access to special offers, design disc",
+          "count": 1
+        },
+        {
+          "tag": "p",
+          "fontSize": "18px",
+          "fontWeight": "500",
+          "lineHeight": "25.2px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "How do we get started?",
+          "count": 5
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "About",
+          "count": 14
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(255, 255, 255)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Start a Project",
+          "count": 4
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(161, 161, 170)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "What I do",
+          "count": 3
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Career",
+          "count": 15
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Name",
+          "count": 3
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "**We will reach out to you within 24hrs**",
+          "count": 2
+        },
+        {
+          "tag": "a",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Privacy Policy",
+          "count": 2
+        },
+        {
+          "tag": "p",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "lineHeight": "16.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "4.9 / 5",
+          "count": 20
+        },
+        {
+          "tag": "p",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "18.2px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Helped 120+ businesses & counting",
+          "count": 1
+        },
+        {
+          "tag": "p",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "lineHeight": "16.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(63, 63, 70)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "About me",
+          "count": 7
+        },
+        {
+          "tag": "p",
+          "fontSize": "14px",
+          "fontWeight": "600",
+          "lineHeight": "16.8px",
+          "letterSpacing": "-0.7px",
+          "textTransform": "none",
+          "color": "rgb(255, 255, 255)",
+          "fontFamily": "Space Grotesk",
+          "sample": "Get for Free",
+          "count": 2
+        },
+        {
+          "tag": "p",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "lineHeight": "normal",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(0, 0, 238)",
+          "fontFamily": "sans-serif",
+          "sample": "Create a free website with Framer, the website builder loved",
+          "count": 1
+        }
+      ],
+      "containerWidths": [
+        {
+          "value": 1440,
+          "count": 31
+        },
+        {
+          "value": 700,
+          "count": 30
+        },
+        {
+          "value": 640,
+          "count": 28
+        },
+        {
+          "value": 1200,
+          "count": 24
+        },
+        {
+          "value": 590,
+          "count": 22
+        },
+        {
+          "value": 280,
+          "count": 18
+        },
+        {
+          "value": 660,
+          "count": 10
+        },
+        {
+          "value": 504,
+          "count": 9
+        },
+        {
+          "value": 370,
+          "count": 6
+        },
+        {
+          "value": 330,
+          "count": 6
+        }
+      ],
+      "radii": [
+        {
+          "value": "24px",
+          "count": 49
+        },
+        {
+          "value": "8px",
+          "count": 15
+        },
+        {
+          "value": "100%",
+          "count": 13
+        },
+        {
+          "value": "40px",
+          "count": 11
+        },
+        {
+          "value": "50px",
+          "count": 10
+        },
+        {
+          "value": "100px",
+          "count": 7
+        },
+        {
+          "value": "99px",
+          "count": 4
+        },
+        {
+          "value": "42.42px",
+          "count": 4
+        },
+        {
+          "value": "12px",
+          "count": 4
+        },
+        {
+          "value": "56px",
+          "count": 4
+        }
+      ],
+      "gaps": [
+        {
+          "value": "10px",
+          "count": 44
+        },
+        {
+          "value": "20px",
+          "count": 32
+        },
+        {
+          "value": "16px",
+          "count": 19
+        },
+        {
+          "value": "12px",
+          "count": 16
+        },
+        {
+          "value": "24px",
+          "count": 13
+        },
+        {
+          "value": "8px",
+          "count": 9
+        },
+        {
+          "value": "48px",
+          "count": 7
+        },
+        {
+          "value": "4px",
+          "count": 6
+        },
+        {
+          "value": "64px",
+          "count": 6
+        },
+        {
+          "value": "30px",
+          "count": 6
+        }
+      ],
+      "sectionPaddingY": [
+        {
+          "value": "100px / 100px",
+          "count": 7
+        },
+        {
+          "value": "120px / 30px",
+          "count": 1
+        },
+        {
+          "value": "30px / 30px",
+          "count": 1
+        },
+        {
+          "value": "100px / 30px",
+          "count": 1
+        }
+      ]
+    },
+    "about": {
+      "docHeight": 5430,
+      "bodyBg": "rgb(244, 244, 245)",
+      "specimens": [
+        {
+          "tag": "span",
+          "fontSize": "64px",
+          "fontWeight": "500",
+          "lineHeight": "70.4px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(246, 70, 23)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Visual",
+          "count": 2
+        },
+        {
+          "tag": "span",
+          "fontSize": "64px",
+          "fontWeight": "500",
+          "lineHeight": "70.4px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "who",
+          "count": 6
+        },
+        {
+          "tag": "span",
+          "fontSize": "64px",
+          "fontWeight": "500",
+          "lineHeight": "70.4px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "digital",
+          "count": 2
+        },
+        {
+          "tag": "p",
+          "fontSize": "20px",
+          "fontWeight": "500",
+          "lineHeight": "26px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Design Director",
+          "count": 8
+        },
+        {
+          "tag": "p",
+          "fontSize": "20px",
+          "fontWeight": "400",
+          "lineHeight": "26px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Solvix",
+          "count": 9
+        },
+        {
+          "tag": "p",
+          "fontSize": "20px",
+          "fontWeight": "400",
+          "lineHeight": "26px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Alex truly understood my vision & turned it into impactful d",
+          "count": 5
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "About",
+          "count": 12
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(255, 255, 255)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Start a Project",
+          "count": 4
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Name",
+          "count": 3
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "**We will reach out to you within 24hrs**",
+          "count": 2
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Dribbble",
+          "count": 14
+        },
+        {
+          "tag": "a",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Privacy Policy",
+          "count": 2
+        },
+        {
+          "tag": "p",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "lineHeight": "16.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(63, 63, 70)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Work Experience",
+          "count": 4
+        },
+        {
+          "tag": "p",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "lineHeight": "16.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "4.9",
+          "count": 6
+        },
+        {
+          "tag": "p",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "18.2px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Helped 120+ businesses & counting",
+          "count": 1
+        },
+        {
+          "tag": "p",
+          "fontSize": "14px",
+          "fontWeight": "600",
+          "lineHeight": "16.8px",
+          "letterSpacing": "-0.7px",
+          "textTransform": "none",
+          "color": "rgb(255, 255, 255)",
+          "fontFamily": "Space Grotesk",
+          "sample": "Get for Free",
+          "count": 2
+        },
+        {
+          "tag": "p",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "lineHeight": "normal",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(0, 0, 238)",
+          "fontFamily": "sans-serif",
+          "sample": "Create a free website with Framer, the website builder loved",
+          "count": 1
+        }
+      ],
+      "containerWidths": [
+        {
+          "value": 1440,
+          "count": 24
+        },
+        {
+          "value": 640,
+          "count": 15
+        },
+        {
+          "value": 1200,
+          "count": 14
+        },
+        {
+          "value": 245,
+          "count": 12
+        },
+        {
+          "value": 700,
+          "count": 10
+        },
+        {
+          "value": 330,
+          "count": 10
+        },
+        {
+          "value": 285,
+          "count": 8
+        },
+        {
+          "value": 370,
+          "count": 6
+        },
+        {
+          "value": 360,
+          "count": 5
+        },
+        {
+          "value": 320,
+          "count": 4
+        }
+      ],
+      "radii": [
+        {
+          "value": "8px",
+          "count": 39
+        },
+        {
+          "value": "24px",
+          "count": 18
+        },
+        {
+          "value": "100%",
+          "count": 12
+        },
+        {
+          "value": "40px",
+          "count": 7
+        },
+        {
+          "value": "50px",
+          "count": 5
+        },
+        {
+          "value": "100px",
+          "count": 4
+        },
+        {
+          "value": "20px",
+          "count": 4
+        },
+        {
+          "value": "12px",
+          "count": 4
+        },
+        {
+          "value": "56px",
+          "count": 4
+        },
+        {
+          "value": "14px",
+          "count": 3
+        }
+      ],
+      "gaps": [
+        {
+          "value": "20px",
+          "count": 21
+        },
+        {
+          "value": "10px",
+          "count": 21
+        },
+        {
+          "value": "12px",
+          "count": 15
+        },
+        {
+          "value": "4px",
+          "count": 7
+        },
+        {
+          "value": "8px",
+          "count": 5
+        },
+        {
+          "value": "64px",
+          "count": 4
+        },
+        {
+          "value": "90px",
+          "count": 4
+        },
+        {
+          "value": "24px",
+          "count": 3
+        },
+        {
+          "value": "60px",
+          "count": 2
+        },
+        {
+          "value": "48px",
+          "count": 2
+        }
+      ],
+      "sectionPaddingY": [
+        {
+          "value": "100px / 100px",
+          "count": 5
+        },
+        {
+          "value": "120px / 30px",
+          "count": 1
+        },
+        {
+          "value": "100px / 30px",
+          "count": 1
+        }
+      ]
+    },
+    "all-projects": {
+      "docHeight": 6206,
+      "bodyBg": "rgb(244, 244, 245)",
+      "specimens": [
+        {
+          "tag": "h6",
+          "fontSize": "24px",
+          "fontWeight": "500",
+          "lineHeight": "31.2px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "UX-UI & Creative",
+          "count": 4
+        },
+        {
+          "tag": "h6",
+          "fontSize": "24px",
+          "fontWeight": "400",
+          "lineHeight": "31.2px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(82, 82, 91)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Crafting clean, user-friendly sites that reflect your brand ",
+          "count": 4
+        },
+        {
+          "tag": "span",
+          "fontSize": "20px",
+          "fontWeight": "400",
+          "lineHeight": "26px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Complete",
+          "count": 9
+        },
+        {
+          "tag": "p",
+          "fontSize": "20px",
+          "fontWeight": "400",
+          "lineHeight": "26px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Subscribe to get early access to special offers, design disc",
+          "count": 1
+        },
+        {
+          "tag": "p",
+          "fontSize": "18px",
+          "fontWeight": "500",
+          "lineHeight": "25.2px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "How do we get started?",
+          "count": 5
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "About",
+          "count": 12
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(255, 255, 255)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Start a Project",
+          "count": 4
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Name",
+          "count": 3
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "**We will reach out to you within 24hrs**",
+          "count": 2
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Dribbble",
+          "count": 14
+        },
+        {
+          "tag": "a",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Privacy Policy",
+          "count": 2
+        },
+        {
+          "tag": "p",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "lineHeight": "16.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Connecto",
+          "count": 13
+        },
+        {
+          "tag": "p",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "18.2px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Helped 120+ businesses & counting",
+          "count": 1
+        },
+        {
+          "tag": "p",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "lineHeight": "16.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(63, 63, 70)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Services",
+          "count": 3
+        },
+        {
+          "tag": "p",
+          "fontSize": "14px",
+          "fontWeight": "600",
+          "lineHeight": "16.8px",
+          "letterSpacing": "-0.7px",
+          "textTransform": "none",
+          "color": "rgb(255, 255, 255)",
+          "fontFamily": "Space Grotesk",
+          "sample": "Get for Free",
+          "count": 2
+        },
+        {
+          "tag": "p",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "lineHeight": "normal",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(0, 0, 238)",
+          "fontFamily": "sans-serif",
+          "sample": "Create a free website with Framer, the website builder loved",
+          "count": 1
+        }
+      ],
+      "containerWidths": [
+        {
+          "value": 590,
+          "count": 28
+        },
+        {
+          "value": 1440,
+          "count": 24
+        },
+        {
+          "value": 700,
+          "count": 14
+        },
+        {
+          "value": 1200,
+          "count": 13
+        },
+        {
+          "value": 640,
+          "count": 11
+        },
+        {
+          "value": 660,
+          "count": 10
+        },
+        {
+          "value": 630,
+          "count": 6
+        },
+        {
+          "value": 606,
+          "count": 5
+        },
+        {
+          "value": 250,
+          "count": 4
+        },
+        {
+          "value": 500,
+          "count": 4
+        }
+      ],
+      "radii": [
+        {
+          "value": "24px",
+          "count": 20
+        },
+        {
+          "value": "100%",
+          "count": 12
+        },
+        {
+          "value": "50px",
+          "count": 11
+        },
+        {
+          "value": "42.42px",
+          "count": 6
+        },
+        {
+          "value": "40px",
+          "count": 6
+        },
+        {
+          "value": "12px",
+          "count": 4
+        },
+        {
+          "value": "56px",
+          "count": 4
+        },
+        {
+          "value": "100px",
+          "count": 3
+        },
+        {
+          "value": "16px",
+          "count": 3
+        },
+        {
+          "value": "10px",
+          "count": 2
+        }
+      ],
+      "gaps": [
+        {
+          "value": "20px",
+          "count": 24
+        },
+        {
+          "value": "10px",
+          "count": 23
+        },
+        {
+          "value": "16px",
+          "count": 13
+        },
+        {
+          "value": "8px",
+          "count": 9
+        },
+        {
+          "value": "48px",
+          "count": 8
+        },
+        {
+          "value": "12px",
+          "count": 8
+        },
+        {
+          "value": "30px",
+          "count": 6
+        },
+        {
+          "value": "64px",
+          "count": 3
+        },
+        {
+          "value": "24px",
+          "count": 3
+        },
+        {
+          "value": "60px",
+          "count": 2
+        }
+      ],
+      "sectionPaddingY": [
+        {
+          "value": "100px / 100px",
+          "count": 4
+        },
+        {
+          "value": "100px / 120px",
+          "count": 1
+        },
+        {
+          "value": "100px / 30px",
+          "count": 1
+        }
+      ]
+    },
+    "contact": {
+      "docHeight": 2408,
+      "bodyBg": "rgb(244, 244, 245)",
+      "specimens": [
+        {
+          "tag": "p",
+          "fontSize": "20px",
+          "fontWeight": "400",
+          "lineHeight": "26px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Subscribe to get early access to special offers, design disc",
+          "count": 1
+        },
+        {
+          "tag": "p",
+          "fontSize": "18px",
+          "fontWeight": "500",
+          "lineHeight": "25.2px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "How do we get started?",
+          "count": 5
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "About",
+          "count": 10
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Name",
+          "count": 3
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(255, 255, 255)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Submit",
+          "count": 2
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "**We will reach out to you within 24hrs**",
+          "count": 2
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Dribbble",
+          "count": 14
+        },
+        {
+          "tag": "a",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Privacy Policy",
+          "count": 2
+        },
+        {
+          "tag": "p",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "lineHeight": "16.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(63, 63, 70)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Contact",
+          "count": 2
+        },
+        {
+          "tag": "p",
+          "fontSize": "14px",
+          "fontWeight": "600",
+          "lineHeight": "16.8px",
+          "letterSpacing": "-0.7px",
+          "textTransform": "none",
+          "color": "rgb(255, 255, 255)",
+          "fontFamily": "Space Grotesk",
+          "sample": "Get for Free",
+          "count": 2
+        },
+        {
+          "tag": "p",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "lineHeight": "normal",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(0, 0, 238)",
+          "fontFamily": "sans-serif",
+          "sample": "Create a free website with Framer, the website builder loved",
+          "count": 1
+        }
+      ],
+      "containerWidths": [
+        {
+          "value": 1440,
+          "count": 20
+        },
+        {
+          "value": 700,
+          "count": 12
+        },
+        {
+          "value": 660,
+          "count": 10
+        },
+        {
+          "value": 1200,
+          "count": 7
+        },
+        {
+          "value": 640,
+          "count": 6
+        },
+        {
+          "value": 606,
+          "count": 5
+        },
+        {
+          "value": 445,
+          "count": 2
+        },
+        {
+          "value": 298,
+          "count": 2
+        },
+        {
+          "value": 420,
+          "count": 2
+        },
+        {
+          "value": 513,
+          "count": 1
+        }
+      ],
+      "radii": [
+        {
+          "value": "100%",
+          "count": 12
+        },
+        {
+          "value": "24px",
+          "count": 9
+        },
+        {
+          "value": "12px",
+          "count": 4
+        },
+        {
+          "value": "56px",
+          "count": 4
+        },
+        {
+          "value": "50px",
+          "count": 3
+        },
+        {
+          "value": "16px",
+          "count": 3
+        },
+        {
+          "value": "100px",
+          "count": 2
+        },
+        {
+          "value": "10px",
+          "count": 2
+        },
+        {
+          "value": "11px",
+          "count": 2
+        },
+        {
+          "value": "32px",
+          "count": 1
+        }
+      ],
+      "gaps": [
+        {
+          "value": "10px",
+          "count": 10
+        },
+        {
+          "value": "20px",
+          "count": 9
+        },
+        {
+          "value": "30px",
+          "count": 6
+        },
+        {
+          "value": "16px",
+          "count": 6
+        },
+        {
+          "value": "12px",
+          "count": 5
+        },
+        {
+          "value": "8px",
+          "count": 5
+        },
+        {
+          "value": "24px",
+          "count": 3
+        },
+        {
+          "value": "60px",
+          "count": 2
+        },
+        {
+          "value": "16px 30px",
+          "count": 2
+        },
+        {
+          "value": "64px",
+          "count": 2
+        }
+      ],
+      "sectionPaddingY": [
+        {
+          "value": "100px / 100px",
+          "count": 2
+        },
+        {
+          "value": "100px / 30px",
+          "count": 1
+        }
+      ]
+    },
+    "project": {
+      "docHeight": 5113,
+      "bodyBg": "rgb(244, 244, 245)",
+      "specimens": [
+        {
+          "tag": "h4",
+          "fontSize": "40px",
+          "fontWeight": "500",
+          "lineHeight": "52px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Challenge",
+          "count": 2
+        },
+        {
+          "tag": "h6",
+          "fontSize": "24px",
+          "fontWeight": "400",
+          "lineHeight": "31.2px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Connecto is a telecom app for recharges, tracking, support, ",
+          "count": 1
+        },
+        {
+          "tag": "p",
+          "fontSize": "20px",
+          "fontWeight": "400",
+          "lineHeight": "26px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "This project solves common e-commerce usability challenges b",
+          "count": 6
+        },
+        {
+          "tag": "p",
+          "fontSize": "20px",
+          "fontWeight": "400",
+          "lineHeight": "26px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Title",
+          "count": 4
+        },
+        {
+          "tag": "p",
+          "fontSize": "20px",
+          "fontWeight": "500",
+          "lineHeight": "26px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Connecto",
+          "count": 3
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "About",
+          "count": 14
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Dribbble",
+          "count": 14
+        },
+        {
+          "tag": "a",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Privacy Policy",
+          "count": 2
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Built in",
+          "count": 1
+        },
+        {
+          "tag": "p",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "lineHeight": "16.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(63, 63, 70)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Projects",
+          "count": 1
+        },
+        {
+          "tag": "p",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "lineHeight": "16.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Connecto",
+          "count": 4
+        },
+        {
+          "tag": "p",
+          "fontSize": "14px",
+          "fontWeight": "600",
+          "lineHeight": "16.8px",
+          "letterSpacing": "-0.7px",
+          "textTransform": "none",
+          "color": "rgb(255, 255, 255)",
+          "fontFamily": "Space Grotesk",
+          "sample": "Get for Free",
+          "count": 2
+        },
+        {
+          "tag": "p",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "lineHeight": "normal",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(0, 0, 238)",
+          "fontFamily": "sans-serif",
+          "sample": "Create a free website with Framer, the website builder loved",
+          "count": 1
+        }
+      ],
+      "containerWidths": [
+        {
+          "value": 1440,
+          "count": 17
+        },
+        {
+          "value": 1140,
+          "count": 15
+        },
+        {
+          "value": 590,
+          "count": 8
+        },
+        {
+          "value": 1200,
+          "count": 7
+        },
+        {
+          "value": 546,
+          "count": 6
+        },
+        {
+          "value": 445,
+          "count": 2
+        },
+        {
+          "value": 630,
+          "count": 2
+        },
+        {
+          "value": 298,
+          "count": 2
+        },
+        {
+          "value": 420,
+          "count": 2
+        },
+        {
+          "value": 513,
+          "count": 1
+        }
+      ],
+      "radii": [
+        {
+          "value": "24px",
+          "count": 18
+        },
+        {
+          "value": "100%",
+          "count": 12
+        },
+        {
+          "value": "50px",
+          "count": 7
+        },
+        {
+          "value": "56px",
+          "count": 4
+        },
+        {
+          "value": "16px",
+          "count": 3
+        },
+        {
+          "value": "42.42px",
+          "count": 2
+        },
+        {
+          "value": "10px",
+          "count": 2
+        },
+        {
+          "value": "11px",
+          "count": 2
+        },
+        {
+          "value": "100px",
+          "count": 1
+        },
+        {
+          "value": "12px",
+          "count": 1
+        }
+      ],
+      "gaps": [
+        {
+          "value": "10px",
+          "count": 13
+        },
+        {
+          "value": "20px",
+          "count": 8
+        },
+        {
+          "value": "12px",
+          "count": 6
+        },
+        {
+          "value": "48px",
+          "count": 5
+        },
+        {
+          "value": "8px",
+          "count": 5
+        },
+        {
+          "value": "16px",
+          "count": 4
+        },
+        {
+          "value": "24px",
+          "count": 4
+        },
+        {
+          "value": "60px",
+          "count": 2
+        },
+        {
+          "value": "16px 30px",
+          "count": 2
+        },
+        {
+          "value": "20px normal",
+          "count": 2
+        }
+      ],
+      "sectionPaddingY": [
+        {
+          "value": "100px / 30px",
+          "count": 2
+        },
+        {
+          "value": "100px / 100px",
+          "count": 1
+        }
+      ]
+    }
+  },
+  "tablet": {
+    "home": {
+      "docHeight": 10426,
+      "bodyBg": "rgb(244, 244, 245)",
+      "specimens": [
+        {
+          "tag": "h1",
+          "fontSize": "96px",
+          "fontWeight": "500",
+          "lineHeight": "96px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Alex",
+          "count": 2
+        },
+        {
+          "tag": "h2",
+          "fontSize": "52px",
+          "fontWeight": "500",
+          "lineHeight": "57.2px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(246, 70, 23)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "100%",
+          "count": 4
+        },
+        {
+          "tag": "h6",
+          "fontSize": "24px",
+          "fontWeight": "400",
+          "lineHeight": "31.2px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(161, 161, 170)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "I help brands fine clarity and express it though strong, tho",
+          "count": 7
+        },
+        {
+          "tag": "h6",
+          "fontSize": "24px",
+          "fontWeight": "400",
+          "lineHeight": "31.2px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Design Director",
+          "count": 4
+        },
+        {
+          "tag": "h6",
+          "fontSize": "24px",
+          "fontWeight": "500",
+          "lineHeight": "31.2px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(161, 161, 170)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "2025 - Now",
+          "count": 4
+        },
+        {
+          "tag": "h6",
+          "fontSize": "24px",
+          "fontWeight": "500",
+          "lineHeight": "31.2px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "UX-UI & Creative",
+          "count": 4
+        },
+        {
+          "tag": "h6",
+          "fontSize": "24px",
+          "fontWeight": "400",
+          "lineHeight": "31.2px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(82, 82, 91)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Crafting clean, user-friendly sites that reflect your brand ",
+          "count": 4
+        },
+        {
+          "tag": "p",
+          "fontSize": "20px",
+          "fontWeight": "400",
+          "lineHeight": "26px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "I build digital experiences that drive real growth for your ",
+          "count": 11
+        },
+        {
+          "tag": "p",
+          "fontSize": "20px",
+          "fontWeight": "500",
+          "lineHeight": "26px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(161, 161, 170)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "01",
+          "count": 4
+        },
+        {
+          "tag": "p",
+          "fontSize": "20px",
+          "fontWeight": "400",
+          "lineHeight": "26px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Subscribe to get early access to special offers, design disc",
+          "count": 1
+        },
+        {
+          "tag": "p",
+          "fontSize": "18px",
+          "fontWeight": "500",
+          "lineHeight": "25.2px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "How do we get started?",
+          "count": 5
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "About",
+          "count": 14
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(255, 255, 255)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Start a Project",
+          "count": 4
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(161, 161, 170)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "What I do",
+          "count": 3
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Career",
+          "count": 15
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Name",
+          "count": 3
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "**We will reach out to you within 24hrs**",
+          "count": 2
+        },
+        {
+          "tag": "a",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Privacy Policy",
+          "count": 2
+        },
+        {
+          "tag": "p",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "lineHeight": "16.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "4.9 / 5",
+          "count": 20
+        },
+        {
+          "tag": "p",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "18.2px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Helped 120+ businesses & counting",
+          "count": 1
+        },
+        {
+          "tag": "p",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "lineHeight": "16.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(63, 63, 70)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "About me",
+          "count": 7
+        },
+        {
+          "tag": "p",
+          "fontSize": "14px",
+          "fontWeight": "600",
+          "lineHeight": "16.8px",
+          "letterSpacing": "-0.7px",
+          "textTransform": "none",
+          "color": "rgb(255, 255, 255)",
+          "fontFamily": "Space Grotesk",
+          "sample": "Get for Free",
+          "count": 2
+        },
+        {
+          "tag": "p",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "lineHeight": "normal",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(0, 0, 238)",
+          "fontFamily": "sans-serif",
+          "sample": "Create a free website with Framer, the website builder loved",
+          "count": 1
+        }
+      ],
+      "containerWidths": [
+        {
+          "value": 700,
+          "count": 39
+        },
+        {
+          "value": 1000,
+          "count": 32
+        },
+        {
+          "value": 640,
+          "count": 28
+        },
+        {
+          "value": 940,
+          "count": 20
+        },
+        {
+          "value": 280,
+          "count": 18
+        },
+        {
+          "value": 460,
+          "count": 18
+        },
+        {
+          "value": 660,
+          "count": 10
+        },
+        {
+          "value": 504,
+          "count": 9
+        },
+        {
+          "value": 420,
+          "count": 6
+        },
+        {
+          "value": 370,
+          "count": 6
+        }
+      ],
+      "radii": [
+        {
+          "value": "24px",
+          "count": 49
+        },
+        {
+          "value": "8px",
+          "count": 15
+        },
+        {
+          "value": "100%",
+          "count": 13
+        },
+        {
+          "value": "40px",
+          "count": 11
+        },
+        {
+          "value": "50px",
+          "count": 10
+        },
+        {
+          "value": "100px",
+          "count": 7
+        },
+        {
+          "value": "48px",
+          "count": 6
+        },
+        {
+          "value": "99px",
+          "count": 4
+        },
+        {
+          "value": "42.42px",
+          "count": 4
+        },
+        {
+          "value": "12px",
+          "count": 4
+        }
+      ],
+      "gaps": [
+        {
+          "value": "10px",
+          "count": 44
+        },
+        {
+          "value": "20px",
+          "count": 32
+        },
+        {
+          "value": "16px",
+          "count": 21
+        },
+        {
+          "value": "12px",
+          "count": 16
+        },
+        {
+          "value": "24px",
+          "count": 14
+        },
+        {
+          "value": "8px",
+          "count": 9
+        },
+        {
+          "value": "48px",
+          "count": 7
+        },
+        {
+          "value": "4px",
+          "count": 6
+        },
+        {
+          "value": "6px",
+          "count": 6
+        },
+        {
+          "value": "30px",
+          "count": 6
+        }
+      ],
+      "sectionPaddingY": [
+        {
+          "value": "100px / 100px",
+          "count": 6
+        },
+        {
+          "value": "120px / 30px",
+          "count": 1
+        },
+        {
+          "value": "30px / 30px",
+          "count": 1
+        },
+        {
+          "value": "80px / 80px",
+          "count": 1
+        },
+        {
+          "value": "100px / 30px",
+          "count": 1
+        }
+      ]
+    },
+    "about": {
+      "docHeight": 5782,
+      "bodyBg": "rgb(244, 244, 245)",
+      "specimens": [
+        {
+          "tag": "span",
+          "fontSize": "52px",
+          "fontWeight": "500",
+          "lineHeight": "57.2px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(246, 70, 23)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Visual",
+          "count": 2
+        },
+        {
+          "tag": "span",
+          "fontSize": "52px",
+          "fontWeight": "500",
+          "lineHeight": "57.2px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "who",
+          "count": 6
+        },
+        {
+          "tag": "span",
+          "fontSize": "52px",
+          "fontWeight": "500",
+          "lineHeight": "57.2px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "digital",
+          "count": 2
+        },
+        {
+          "tag": "p",
+          "fontSize": "20px",
+          "fontWeight": "500",
+          "lineHeight": "26px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Design Director",
+          "count": 8
+        },
+        {
+          "tag": "p",
+          "fontSize": "20px",
+          "fontWeight": "400",
+          "lineHeight": "26px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Solvix",
+          "count": 9
+        },
+        {
+          "tag": "p",
+          "fontSize": "20px",
+          "fontWeight": "400",
+          "lineHeight": "26px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Alex truly understood my vision & turned it into impactful d",
+          "count": 5
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "About",
+          "count": 12
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(255, 255, 255)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Start a Project",
+          "count": 4
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Name",
+          "count": 3
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "**We will reach out to you within 24hrs**",
+          "count": 2
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Dribbble",
+          "count": 14
+        },
+        {
+          "tag": "a",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Privacy Policy",
+          "count": 2
+        },
+        {
+          "tag": "p",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "lineHeight": "16.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(63, 63, 70)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Work Experience",
+          "count": 4
+        },
+        {
+          "tag": "p",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "lineHeight": "16.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "4.9",
+          "count": 6
+        },
+        {
+          "tag": "p",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "18.2px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Helped 120+ businesses & counting",
+          "count": 1
+        },
+        {
+          "tag": "p",
+          "fontSize": "14px",
+          "fontWeight": "600",
+          "lineHeight": "16.8px",
+          "letterSpacing": "-0.7px",
+          "textTransform": "none",
+          "color": "rgb(255, 255, 255)",
+          "fontFamily": "Space Grotesk",
+          "sample": "Get for Free",
+          "count": 2
+        },
+        {
+          "tag": "p",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "lineHeight": "normal",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(0, 0, 238)",
+          "fontFamily": "sans-serif",
+          "sample": "Create a free website with Framer, the website builder loved",
+          "count": 1
+        }
+      ],
+      "containerWidths": [
+        {
+          "value": 1000,
+          "count": 25
+        },
+        {
+          "value": 640,
+          "count": 15
+        },
+        {
+          "value": 700,
+          "count": 13
+        },
+        {
+          "value": 300,
+          "count": 12
+        },
+        {
+          "value": 330,
+          "count": 10
+        },
+        {
+          "value": 940,
+          "count": 8
+        },
+        {
+          "value": 340,
+          "count": 8
+        },
+        {
+          "value": 370,
+          "count": 6
+        },
+        {
+          "value": 360,
+          "count": 5
+        },
+        {
+          "value": 320,
+          "count": 4
+        }
+      ],
+      "radii": [
+        {
+          "value": "8px",
+          "count": 39
+        },
+        {
+          "value": "24px",
+          "count": 18
+        },
+        {
+          "value": "100%",
+          "count": 12
+        },
+        {
+          "value": "40px",
+          "count": 7
+        },
+        {
+          "value": "50px",
+          "count": 5
+        },
+        {
+          "value": "100px",
+          "count": 4
+        },
+        {
+          "value": "20px",
+          "count": 4
+        },
+        {
+          "value": "12px",
+          "count": 4
+        },
+        {
+          "value": "56px",
+          "count": 4
+        },
+        {
+          "value": "14px",
+          "count": 3
+        }
+      ],
+      "gaps": [
+        {
+          "value": "20px",
+          "count": 21
+        },
+        {
+          "value": "10px",
+          "count": 21
+        },
+        {
+          "value": "12px",
+          "count": 15
+        },
+        {
+          "value": "4px",
+          "count": 7
+        },
+        {
+          "value": "8px",
+          "count": 5
+        },
+        {
+          "value": "90px",
+          "count": 4
+        },
+        {
+          "value": "64px",
+          "count": 3
+        },
+        {
+          "value": "24px",
+          "count": 3
+        },
+        {
+          "value": "60px",
+          "count": 2
+        },
+        {
+          "value": "48px",
+          "count": 2
+        }
+      ],
+      "sectionPaddingY": [
+        {
+          "value": "100px / 100px",
+          "count": 4
+        },
+        {
+          "value": "120px / 30px",
+          "count": 1
+        },
+        {
+          "value": "80px / 80px",
+          "count": 1
+        },
+        {
+          "value": "100px / 30px",
+          "count": 1
+        }
+      ]
+    },
+    "all-projects": {
+      "docHeight": 6414,
+      "bodyBg": "rgb(244, 244, 245)",
+      "specimens": [
+        {
+          "tag": "h6",
+          "fontSize": "24px",
+          "fontWeight": "500",
+          "lineHeight": "31.2px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "UX-UI & Creative",
+          "count": 4
+        },
+        {
+          "tag": "h6",
+          "fontSize": "24px",
+          "fontWeight": "400",
+          "lineHeight": "31.2px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(82, 82, 91)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Crafting clean, user-friendly sites that reflect your brand ",
+          "count": 4
+        },
+        {
+          "tag": "span",
+          "fontSize": "20px",
+          "fontWeight": "400",
+          "lineHeight": "26px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Complete",
+          "count": 9
+        },
+        {
+          "tag": "p",
+          "fontSize": "20px",
+          "fontWeight": "400",
+          "lineHeight": "26px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Subscribe to get early access to special offers, design disc",
+          "count": 1
+        },
+        {
+          "tag": "p",
+          "fontSize": "18px",
+          "fontWeight": "500",
+          "lineHeight": "25.2px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "How do we get started?",
+          "count": 5
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "About",
+          "count": 12
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(255, 255, 255)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Start a Project",
+          "count": 4
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Name",
+          "count": 3
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "**We will reach out to you within 24hrs**",
+          "count": 2
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Dribbble",
+          "count": 14
+        },
+        {
+          "tag": "a",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Privacy Policy",
+          "count": 2
+        },
+        {
+          "tag": "p",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "lineHeight": "16.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Connecto",
+          "count": 13
+        },
+        {
+          "tag": "p",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "18.2px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Helped 120+ businesses & counting",
+          "count": 1
+        },
+        {
+          "tag": "p",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "lineHeight": "16.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(63, 63, 70)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Services",
+          "count": 3
+        },
+        {
+          "tag": "p",
+          "fontSize": "14px",
+          "fontWeight": "600",
+          "lineHeight": "16.8px",
+          "letterSpacing": "-0.7px",
+          "textTransform": "none",
+          "color": "rgb(255, 255, 255)",
+          "fontFamily": "Space Grotesk",
+          "sample": "Get for Free",
+          "count": 2
+        },
+        {
+          "tag": "p",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "lineHeight": "normal",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(0, 0, 238)",
+          "fontFamily": "sans-serif",
+          "sample": "Create a free website with Framer, the website builder loved",
+          "count": 1
+        }
+      ],
+      "containerWidths": [
+        {
+          "value": 1000,
+          "count": 24
+        },
+        {
+          "value": 700,
+          "count": 23
+        },
+        {
+          "value": 460,
+          "count": 20
+        },
+        {
+          "value": 640,
+          "count": 11
+        },
+        {
+          "value": 660,
+          "count": 10
+        },
+        {
+          "value": 940,
+          "count": 9
+        },
+        {
+          "value": 420,
+          "count": 9
+        },
+        {
+          "value": 606,
+          "count": 5
+        },
+        {
+          "value": 250,
+          "count": 4
+        },
+        {
+          "value": 500,
+          "count": 4
+        }
+      ],
+      "radii": [
+        {
+          "value": "24px",
+          "count": 20
+        },
+        {
+          "value": "100%",
+          "count": 12
+        },
+        {
+          "value": "50px",
+          "count": 11
+        },
+        {
+          "value": "42.42px",
+          "count": 6
+        },
+        {
+          "value": "40px",
+          "count": 6
+        },
+        {
+          "value": "12px",
+          "count": 4
+        },
+        {
+          "value": "56px",
+          "count": 4
+        },
+        {
+          "value": "100px",
+          "count": 3
+        },
+        {
+          "value": "16px",
+          "count": 3
+        },
+        {
+          "value": "10px",
+          "count": 2
+        }
+      ],
+      "gaps": [
+        {
+          "value": "20px",
+          "count": 24
+        },
+        {
+          "value": "10px",
+          "count": 23
+        },
+        {
+          "value": "8px",
+          "count": 9
+        },
+        {
+          "value": "48px",
+          "count": 8
+        },
+        {
+          "value": "12px",
+          "count": 8
+        },
+        {
+          "value": "6px",
+          "count": 8
+        },
+        {
+          "value": "16px",
+          "count": 7
+        },
+        {
+          "value": "30px",
+          "count": 6
+        },
+        {
+          "value": "24px",
+          "count": 3
+        },
+        {
+          "value": "60px",
+          "count": 2
+        }
+      ],
+      "sectionPaddingY": [
+        {
+          "value": "100px / 100px",
+          "count": 3
+        },
+        {
+          "value": "100px / 120px",
+          "count": 1
+        },
+        {
+          "value": "80px / 80px",
+          "count": 1
+        },
+        {
+          "value": "100px / 30px",
+          "count": 1
+        }
+      ]
+    },
+    "contact": {
+      "docHeight": 2519,
+      "bodyBg": "rgb(244, 244, 245)",
+      "specimens": [
+        {
+          "tag": "p",
+          "fontSize": "20px",
+          "fontWeight": "400",
+          "lineHeight": "26px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Subscribe to get early access to special offers, design disc",
+          "count": 1
+        },
+        {
+          "tag": "p",
+          "fontSize": "18px",
+          "fontWeight": "500",
+          "lineHeight": "25.2px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "How do we get started?",
+          "count": 5
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "About",
+          "count": 10
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Name",
+          "count": 3
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(255, 255, 255)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Submit",
+          "count": 2
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "**We will reach out to you within 24hrs**",
+          "count": 2
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Dribbble",
+          "count": 14
+        },
+        {
+          "tag": "a",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Privacy Policy",
+          "count": 2
+        },
+        {
+          "tag": "p",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "lineHeight": "16.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(63, 63, 70)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Contact",
+          "count": 2
+        },
+        {
+          "tag": "p",
+          "fontSize": "14px",
+          "fontWeight": "600",
+          "lineHeight": "16.8px",
+          "letterSpacing": "-0.7px",
+          "textTransform": "none",
+          "color": "rgb(255, 255, 255)",
+          "fontFamily": "Space Grotesk",
+          "sample": "Get for Free",
+          "count": 2
+        },
+        {
+          "tag": "p",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "lineHeight": "normal",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(0, 0, 238)",
+          "fontFamily": "sans-serif",
+          "sample": "Create a free website with Framer, the website builder loved",
+          "count": 1
+        }
+      ],
+      "containerWidths": [
+        {
+          "value": 1000,
+          "count": 20
+        },
+        {
+          "value": 700,
+          "count": 12
+        },
+        {
+          "value": 660,
+          "count": 10
+        },
+        {
+          "value": 640,
+          "count": 6
+        },
+        {
+          "value": 940,
+          "count": 5
+        },
+        {
+          "value": 606,
+          "count": 5
+        },
+        {
+          "value": 970,
+          "count": 3
+        },
+        {
+          "value": 445,
+          "count": 2
+        },
+        {
+          "value": 298,
+          "count": 2
+        },
+        {
+          "value": 420,
+          "count": 2
+        }
+      ],
+      "radii": [
+        {
+          "value": "100%",
+          "count": 12
+        },
+        {
+          "value": "24px",
+          "count": 9
+        },
+        {
+          "value": "12px",
+          "count": 4
+        },
+        {
+          "value": "56px",
+          "count": 4
+        },
+        {
+          "value": "50px",
+          "count": 3
+        },
+        {
+          "value": "16px",
+          "count": 3
+        },
+        {
+          "value": "100px",
+          "count": 2
+        },
+        {
+          "value": "10px",
+          "count": 2
+        },
+        {
+          "value": "11px",
+          "count": 2
+        },
+        {
+          "value": "32px",
+          "count": 1
+        }
+      ],
+      "gaps": [
+        {
+          "value": "10px",
+          "count": 10
+        },
+        {
+          "value": "20px",
+          "count": 9
+        },
+        {
+          "value": "30px",
+          "count": 6
+        },
+        {
+          "value": "16px",
+          "count": 6
+        },
+        {
+          "value": "12px",
+          "count": 5
+        },
+        {
+          "value": "8px",
+          "count": 5
+        },
+        {
+          "value": "24px",
+          "count": 3
+        },
+        {
+          "value": "60px",
+          "count": 2
+        },
+        {
+          "value": "16px 30px",
+          "count": 2
+        },
+        {
+          "value": "32px",
+          "count": 2
+        }
+      ],
+      "sectionPaddingY": [
+        {
+          "value": "80px / 80px",
+          "count": 1
+        },
+        {
+          "value": "100px / 100px",
+          "count": 1
+        },
+        {
+          "value": "100px / 30px",
+          "count": 1
+        }
+      ]
+    },
+    "project": {
+      "docHeight": 4786,
+      "bodyBg": "rgb(244, 244, 245)",
+      "specimens": [
+        {
+          "tag": "h4",
+          "fontSize": "40px",
+          "fontWeight": "500",
+          "lineHeight": "52px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Challenge",
+          "count": 2
+        },
+        {
+          "tag": "h6",
+          "fontSize": "24px",
+          "fontWeight": "400",
+          "lineHeight": "31.2px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Connecto is a telecom app for recharges, tracking, support, ",
+          "count": 1
+        },
+        {
+          "tag": "p",
+          "fontSize": "20px",
+          "fontWeight": "400",
+          "lineHeight": "26px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "This project solves common e-commerce usability challenges b",
+          "count": 6
+        },
+        {
+          "tag": "p",
+          "fontSize": "20px",
+          "fontWeight": "400",
+          "lineHeight": "26px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Title",
+          "count": 4
+        },
+        {
+          "tag": "p",
+          "fontSize": "20px",
+          "fontWeight": "500",
+          "lineHeight": "26px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Connecto",
+          "count": 3
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "About",
+          "count": 14
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Dribbble",
+          "count": 14
+        },
+        {
+          "tag": "a",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Privacy Policy",
+          "count": 2
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Built in",
+          "count": 1
+        },
+        {
+          "tag": "p",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "lineHeight": "16.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(63, 63, 70)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Projects",
+          "count": 1
+        },
+        {
+          "tag": "p",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "lineHeight": "16.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Connecto",
+          "count": 4
+        },
+        {
+          "tag": "p",
+          "fontSize": "14px",
+          "fontWeight": "600",
+          "lineHeight": "16.8px",
+          "letterSpacing": "-0.7px",
+          "textTransform": "none",
+          "color": "rgb(255, 255, 255)",
+          "fontFamily": "Space Grotesk",
+          "sample": "Get for Free",
+          "count": 2
+        },
+        {
+          "tag": "p",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "lineHeight": "normal",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(0, 0, 238)",
+          "fontFamily": "sans-serif",
+          "sample": "Create a free website with Framer, the website builder loved",
+          "count": 1
+        }
+      ],
+      "containerWidths": [
+        {
+          "value": 940,
+          "count": 22
+        },
+        {
+          "value": 1000,
+          "count": 18
+        },
+        {
+          "value": 460,
+          "count": 8
+        },
+        {
+          "value": 446,
+          "count": 6
+        },
+        {
+          "value": 420,
+          "count": 4
+        },
+        {
+          "value": 445,
+          "count": 2
+        },
+        {
+          "value": 298,
+          "count": 2
+        },
+        {
+          "value": 513,
+          "count": 1
+        },
+        {
+          "value": 700,
+          "count": 1
+        },
+        {
+          "value": 846,
+          "count": 1
+        }
+      ],
+      "radii": [
+        {
+          "value": "24px",
+          "count": 18
+        },
+        {
+          "value": "100%",
+          "count": 12
+        },
+        {
+          "value": "50px",
+          "count": 7
+        },
+        {
+          "value": "56px",
+          "count": 4
+        },
+        {
+          "value": "16px",
+          "count": 3
+        },
+        {
+          "value": "42.42px",
+          "count": 2
+        },
+        {
+          "value": "10px",
+          "count": 2
+        },
+        {
+          "value": "11px",
+          "count": 2
+        },
+        {
+          "value": "100px",
+          "count": 1
+        },
+        {
+          "value": "12px",
+          "count": 1
+        }
+      ],
+      "gaps": [
+        {
+          "value": "10px",
+          "count": 13
+        },
+        {
+          "value": "20px",
+          "count": 8
+        },
+        {
+          "value": "12px",
+          "count": 6
+        },
+        {
+          "value": "48px",
+          "count": 5
+        },
+        {
+          "value": "8px",
+          "count": 5
+        },
+        {
+          "value": "6px",
+          "count": 4
+        },
+        {
+          "value": "24px",
+          "count": 4
+        },
+        {
+          "value": "60px",
+          "count": 2
+        },
+        {
+          "value": "16px 30px",
+          "count": 2
+        },
+        {
+          "value": "16px",
+          "count": 2
+        }
+      ],
+      "sectionPaddingY": [
+        {
+          "value": "100px / 30px",
+          "count": 2
+        },
+        {
+          "value": "100px / 100px",
+          "count": 1
+        }
+      ]
+    }
+  },
+  "mobile": {
+    "home": {
+      "docHeight": 11966,
+      "bodyBg": "rgb(244, 244, 245)",
+      "specimens": [
+        {
+          "tag": "h1",
+          "fontSize": "76px",
+          "fontWeight": "500",
+          "lineHeight": "76px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Alex",
+          "count": 2
+        },
+        {
+          "tag": "h2",
+          "fontSize": "40px",
+          "fontWeight": "500",
+          "lineHeight": "44px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(246, 70, 23)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "100%",
+          "count": 4
+        },
+        {
+          "tag": "h6",
+          "fontSize": "24px",
+          "fontWeight": "400",
+          "lineHeight": "31.2px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(161, 161, 170)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "I help brands fine clarity and express it though strong, tho",
+          "count": 7
+        },
+        {
+          "tag": "h6",
+          "fontSize": "24px",
+          "fontWeight": "400",
+          "lineHeight": "31.2px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Design Director",
+          "count": 4
+        },
+        {
+          "tag": "h6",
+          "fontSize": "24px",
+          "fontWeight": "500",
+          "lineHeight": "31.2px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(161, 161, 170)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "2025 - Now",
+          "count": 4
+        },
+        {
+          "tag": "h6",
+          "fontSize": "24px",
+          "fontWeight": "500",
+          "lineHeight": "31.2px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "UX-UI & Creative",
+          "count": 4
+        },
+        {
+          "tag": "h6",
+          "fontSize": "24px",
+          "fontWeight": "400",
+          "lineHeight": "31.2px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(82, 82, 91)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Crafting clean, user-friendly sites that reflect your brand ",
+          "count": 4
+        },
+        {
+          "tag": "p",
+          "fontSize": "20px",
+          "fontWeight": "400",
+          "lineHeight": "26px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "I build digital experiences that drive real growth for your ",
+          "count": 11
+        },
+        {
+          "tag": "p",
+          "fontSize": "20px",
+          "fontWeight": "500",
+          "lineHeight": "26px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(161, 161, 170)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "01",
+          "count": 4
+        },
+        {
+          "tag": "p",
+          "fontSize": "20px",
+          "fontWeight": "400",
+          "lineHeight": "26px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Subscribe to get early access to special offers, design disc",
+          "count": 1
+        },
+        {
+          "tag": "p",
+          "fontSize": "18px",
+          "fontWeight": "500",
+          "lineHeight": "25.2px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "How do we get started?",
+          "count": 5
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "About",
+          "count": 14
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(255, 255, 255)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Start a Project",
+          "count": 4
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(161, 161, 170)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "What I do",
+          "count": 3
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Career",
+          "count": 15
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Name",
+          "count": 3
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "**We will reach out to you within 24hrs**",
+          "count": 2
+        },
+        {
+          "tag": "a",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Privacy Policy",
+          "count": 2
+        },
+        {
+          "tag": "p",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "lineHeight": "16.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "4.9 / 5",
+          "count": 20
+        },
+        {
+          "tag": "p",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "18.2px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Helped 120+ businesses & counting",
+          "count": 1
+        },
+        {
+          "tag": "p",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "lineHeight": "16.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(63, 63, 70)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "About me",
+          "count": 7
+        },
+        {
+          "tag": "p",
+          "fontSize": "14px",
+          "fontWeight": "600",
+          "lineHeight": "16.8px",
+          "letterSpacing": "-0.7px",
+          "textTransform": "none",
+          "color": "rgb(255, 255, 255)",
+          "fontFamily": "Space Grotesk",
+          "sample": "Get for Free",
+          "count": 2
+        },
+        {
+          "tag": "p",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "lineHeight": "normal",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(0, 0, 238)",
+          "fontFamily": "sans-serif",
+          "sample": "Create a free website with Framer, the website builder loved",
+          "count": 1
+        }
+      ],
+      "containerWidths": [
+        {
+          "value": 360,
+          "count": 90
+        },
+        {
+          "value": 300,
+          "count": 38
+        },
+        {
+          "value": 390,
+          "count": 32
+        },
+        {
+          "value": 280,
+          "count": 19
+        },
+        {
+          "value": 320,
+          "count": 14
+        },
+        {
+          "value": 370,
+          "count": 10
+        },
+        {
+          "value": 330,
+          "count": 10
+        },
+        {
+          "value": 504,
+          "count": 8
+        },
+        {
+          "value": 266,
+          "count": 5
+        },
+        {
+          "value": 267,
+          "count": 3
+        }
+      ],
+      "radii": [
+        {
+          "value": "24px",
+          "count": 49
+        },
+        {
+          "value": "8px",
+          "count": 15
+        },
+        {
+          "value": "100%",
+          "count": 13
+        },
+        {
+          "value": "40px",
+          "count": 11
+        },
+        {
+          "value": "50px",
+          "count": 9
+        },
+        {
+          "value": "100px",
+          "count": 7
+        },
+        {
+          "value": "48px",
+          "count": 6
+        },
+        {
+          "value": "99px",
+          "count": 4
+        },
+        {
+          "value": "42.42px",
+          "count": 4
+        },
+        {
+          "value": "12px",
+          "count": 4
+        }
+      ],
+      "gaps": [
+        {
+          "value": "10px",
+          "count": 43
+        },
+        {
+          "value": "16px",
+          "count": 25
+        },
+        {
+          "value": "20px",
+          "count": 21
+        },
+        {
+          "value": "12px",
+          "count": 17
+        },
+        {
+          "value": "32px",
+          "count": 13
+        },
+        {
+          "value": "24px",
+          "count": 13
+        },
+        {
+          "value": "8px",
+          "count": 10
+        },
+        {
+          "value": "4px",
+          "count": 6
+        },
+        {
+          "value": "15px",
+          "count": 6
+        },
+        {
+          "value": "6px",
+          "count": 6
+        }
+      ],
+      "sectionPaddingY": [
+        {
+          "value": "30px / 30px",
+          "count": 11
+        },
+        {
+          "value": "20px / 20px",
+          "count": 9
+        },
+        {
+          "value": "80px / 80px",
+          "count": 7
+        },
+        {
+          "value": "80px / 30px",
+          "count": 2
+        },
+        {
+          "value": "15px / 15px",
+          "count": 2
+        },
+        {
+          "value": "48px / 48px",
+          "count": 1
+        }
+      ]
+    },
+    "about": {
+      "docHeight": 6585,
+      "bodyBg": "rgb(244, 244, 245)",
+      "specimens": [
+        {
+          "tag": "span",
+          "fontSize": "40px",
+          "fontWeight": "500",
+          "lineHeight": "44px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(246, 70, 23)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Visual",
+          "count": 2
+        },
+        {
+          "tag": "span",
+          "fontSize": "40px",
+          "fontWeight": "500",
+          "lineHeight": "44px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "who",
+          "count": 6
+        },
+        {
+          "tag": "span",
+          "fontSize": "40px",
+          "fontWeight": "500",
+          "lineHeight": "44px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "digital",
+          "count": 2
+        },
+        {
+          "tag": "p",
+          "fontSize": "20px",
+          "fontWeight": "500",
+          "lineHeight": "26px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Design Director",
+          "count": 8
+        },
+        {
+          "tag": "p",
+          "fontSize": "20px",
+          "fontWeight": "400",
+          "lineHeight": "26px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Solvix",
+          "count": 9
+        },
+        {
+          "tag": "p",
+          "fontSize": "20px",
+          "fontWeight": "400",
+          "lineHeight": "26px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Alex truly understood my vision & turned it into impactful d",
+          "count": 5
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "About",
+          "count": 12
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(255, 255, 255)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Start a Project",
+          "count": 4
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Name",
+          "count": 3
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "**We will reach out to you within 24hrs**",
+          "count": 2
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Dribbble",
+          "count": 14
+        },
+        {
+          "tag": "a",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Privacy Policy",
+          "count": 2
+        },
+        {
+          "tag": "p",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "lineHeight": "16.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(63, 63, 70)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Work Experience",
+          "count": 4
+        },
+        {
+          "tag": "p",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "lineHeight": "16.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "4.9",
+          "count": 6
+        },
+        {
+          "tag": "p",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "18.2px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Helped 120+ businesses & counting",
+          "count": 1
+        },
+        {
+          "tag": "p",
+          "fontSize": "14px",
+          "fontWeight": "600",
+          "lineHeight": "16.8px",
+          "letterSpacing": "-0.7px",
+          "textTransform": "none",
+          "color": "rgb(255, 255, 255)",
+          "fontFamily": "Space Grotesk",
+          "sample": "Get for Free",
+          "count": 2
+        },
+        {
+          "tag": "p",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "lineHeight": "normal",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(0, 0, 238)",
+          "fontFamily": "sans-serif",
+          "sample": "Create a free website with Framer, the website builder loved",
+          "count": 1
+        }
+      ],
+      "containerWidths": [
+        {
+          "value": 360,
+          "count": 42
+        },
+        {
+          "value": 390,
+          "count": 25
+        },
+        {
+          "value": 320,
+          "count": 20
+        },
+        {
+          "value": 300,
+          "count": 11
+        },
+        {
+          "value": 370,
+          "count": 10
+        },
+        {
+          "value": 330,
+          "count": 10
+        },
+        {
+          "value": 298,
+          "count": 2
+        },
+        {
+          "value": 271,
+          "count": 1
+        },
+        {
+          "value": 268,
+          "count": 1
+        },
+        {
+          "value": 243,
+          "count": 1
+        }
+      ],
+      "radii": [
+        {
+          "value": "8px",
+          "count": 39
+        },
+        {
+          "value": "24px",
+          "count": 18
+        },
+        {
+          "value": "100%",
+          "count": 12
+        },
+        {
+          "value": "40px",
+          "count": 7
+        },
+        {
+          "value": "20px",
+          "count": 5
+        },
+        {
+          "value": "50px",
+          "count": 4
+        },
+        {
+          "value": "100px",
+          "count": 4
+        },
+        {
+          "value": "12px",
+          "count": 4
+        },
+        {
+          "value": "56px",
+          "count": 4
+        },
+        {
+          "value": "14px",
+          "count": 3
+        }
+      ],
+      "gaps": [
+        {
+          "value": "20px",
+          "count": 22
+        },
+        {
+          "value": "10px",
+          "count": 21
+        },
+        {
+          "value": "12px",
+          "count": 13
+        },
+        {
+          "value": "4px",
+          "count": 9
+        },
+        {
+          "value": "32px",
+          "count": 6
+        },
+        {
+          "value": "8px",
+          "count": 5
+        },
+        {
+          "value": "16px",
+          "count": 3
+        },
+        {
+          "value": "24px",
+          "count": 3
+        },
+        {
+          "value": "16px 30px",
+          "count": 2
+        },
+        {
+          "value": "15px",
+          "count": 2
+        }
+      ],
+      "sectionPaddingY": [
+        {
+          "value": "20px / 20px",
+          "count": 9
+        },
+        {
+          "value": "80px / 80px",
+          "count": 5
+        },
+        {
+          "value": "80px / 15px",
+          "count": 1
+        },
+        {
+          "value": "30px / 30px",
+          "count": 1
+        },
+        {
+          "value": "48px / 48px",
+          "count": 1
+        },
+        {
+          "value": "80px / 30px",
+          "count": 1
+        }
+      ]
+    },
+    "all-projects": {
+      "docHeight": 7547,
+      "bodyBg": "rgb(244, 244, 245)",
+      "specimens": [
+        {
+          "tag": "h6",
+          "fontSize": "24px",
+          "fontWeight": "500",
+          "lineHeight": "31.2px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "UX-UI & Creative",
+          "count": 4
+        },
+        {
+          "tag": "h6",
+          "fontSize": "24px",
+          "fontWeight": "400",
+          "lineHeight": "31.2px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(82, 82, 91)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Crafting clean, user-friendly sites that reflect your brand ",
+          "count": 4
+        },
+        {
+          "tag": "span",
+          "fontSize": "20px",
+          "fontWeight": "400",
+          "lineHeight": "26px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Complete",
+          "count": 9
+        },
+        {
+          "tag": "p",
+          "fontSize": "20px",
+          "fontWeight": "400",
+          "lineHeight": "26px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Subscribe to get early access to special offers, design disc",
+          "count": 1
+        },
+        {
+          "tag": "p",
+          "fontSize": "18px",
+          "fontWeight": "500",
+          "lineHeight": "25.2px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "How do we get started?",
+          "count": 5
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "About",
+          "count": 12
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(255, 255, 255)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Start a Project",
+          "count": 4
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Name",
+          "count": 3
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "**We will reach out to you within 24hrs**",
+          "count": 2
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Dribbble",
+          "count": 14
+        },
+        {
+          "tag": "a",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Privacy Policy",
+          "count": 2
+        },
+        {
+          "tag": "p",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "lineHeight": "16.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Connecto",
+          "count": 13
+        },
+        {
+          "tag": "p",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "18.2px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Helped 120+ businesses & counting",
+          "count": 1
+        },
+        {
+          "tag": "p",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "lineHeight": "16.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(63, 63, 70)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Services",
+          "count": 3
+        },
+        {
+          "tag": "p",
+          "fontSize": "14px",
+          "fontWeight": "600",
+          "lineHeight": "16.8px",
+          "letterSpacing": "-0.7px",
+          "textTransform": "none",
+          "color": "rgb(255, 255, 255)",
+          "fontFamily": "Space Grotesk",
+          "sample": "Get for Free",
+          "count": 2
+        },
+        {
+          "tag": "p",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "lineHeight": "normal",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(0, 0, 238)",
+          "fontFamily": "sans-serif",
+          "sample": "Create a free website with Framer, the website builder loved",
+          "count": 1
+        }
+      ],
+      "containerWidths": [
+        {
+          "value": 360,
+          "count": 59
+        },
+        {
+          "value": 390,
+          "count": 24
+        },
+        {
+          "value": 300,
+          "count": 20
+        },
+        {
+          "value": 320,
+          "count": 16
+        },
+        {
+          "value": 266,
+          "count": 5
+        },
+        {
+          "value": 298,
+          "count": 2
+        },
+        {
+          "value": 264,
+          "count": 1
+        },
+        {
+          "value": 241,
+          "count": 1
+        }
+      ],
+      "radii": [
+        {
+          "value": "24px",
+          "count": 20
+        },
+        {
+          "value": "100%",
+          "count": 12
+        },
+        {
+          "value": "50px",
+          "count": 10
+        },
+        {
+          "value": "42.42px",
+          "count": 6
+        },
+        {
+          "value": "40px",
+          "count": 6
+        },
+        {
+          "value": "12px",
+          "count": 4
+        },
+        {
+          "value": "56px",
+          "count": 4
+        },
+        {
+          "value": "100px",
+          "count": 3
+        },
+        {
+          "value": "16px",
+          "count": 3
+        },
+        {
+          "value": "10px",
+          "count": 2
+        }
+      ],
+      "gaps": [
+        {
+          "value": "10px",
+          "count": 23
+        },
+        {
+          "value": "20px",
+          "count": 16
+        },
+        {
+          "value": "16px",
+          "count": 11
+        },
+        {
+          "value": "12px",
+          "count": 9
+        },
+        {
+          "value": "32px",
+          "count": 9
+        },
+        {
+          "value": "8px",
+          "count": 9
+        },
+        {
+          "value": "6px",
+          "count": 8
+        },
+        {
+          "value": "30px",
+          "count": 6
+        },
+        {
+          "value": "15px",
+          "count": 3
+        },
+        {
+          "value": "24px",
+          "count": 3
+        }
+      ],
+      "sectionPaddingY": [
+        {
+          "value": "20px / 20px",
+          "count": 6
+        },
+        {
+          "value": "30px / 30px",
+          "count": 5
+        },
+        {
+          "value": "80px / 80px",
+          "count": 4
+        },
+        {
+          "value": "80px / 15px",
+          "count": 1
+        },
+        {
+          "value": "48px / 48px",
+          "count": 1
+        },
+        {
+          "value": "80px / 30px",
+          "count": 1
+        }
+      ]
+    },
+    "contact": {
+      "docHeight": 2835,
+      "bodyBg": "rgb(244, 244, 245)",
+      "specimens": [
+        {
+          "tag": "p",
+          "fontSize": "20px",
+          "fontWeight": "400",
+          "lineHeight": "26px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Subscribe to get early access to special offers, design disc",
+          "count": 1
+        },
+        {
+          "tag": "p",
+          "fontSize": "18px",
+          "fontWeight": "500",
+          "lineHeight": "25.2px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "How do we get started?",
+          "count": 5
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "About",
+          "count": 10
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Name",
+          "count": 3
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(255, 255, 255)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Submit",
+          "count": 2
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "**We will reach out to you within 24hrs**",
+          "count": 2
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Dribbble",
+          "count": 14
+        },
+        {
+          "tag": "a",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Privacy Policy",
+          "count": 2
+        },
+        {
+          "tag": "p",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "lineHeight": "16.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(63, 63, 70)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Contact",
+          "count": 2
+        },
+        {
+          "tag": "p",
+          "fontSize": "14px",
+          "fontWeight": "600",
+          "lineHeight": "16.8px",
+          "letterSpacing": "-0.7px",
+          "textTransform": "none",
+          "color": "rgb(255, 255, 255)",
+          "fontFamily": "Space Grotesk",
+          "sample": "Get for Free",
+          "count": 2
+        },
+        {
+          "tag": "p",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "lineHeight": "normal",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(0, 0, 238)",
+          "fontFamily": "sans-serif",
+          "sample": "Create a free website with Framer, the website builder loved",
+          "count": 1
+        }
+      ],
+      "containerWidths": [
+        {
+          "value": 360,
+          "count": 23
+        },
+        {
+          "value": 390,
+          "count": 20
+        },
+        {
+          "value": 320,
+          "count": 10
+        },
+        {
+          "value": 300,
+          "count": 6
+        },
+        {
+          "value": 266,
+          "count": 5
+        },
+        {
+          "value": 298,
+          "count": 2
+        },
+        {
+          "value": 264,
+          "count": 1
+        },
+        {
+          "value": 241,
+          "count": 1
+        }
+      ],
+      "radii": [
+        {
+          "value": "100%",
+          "count": 12
+        },
+        {
+          "value": "24px",
+          "count": 9
+        },
+        {
+          "value": "12px",
+          "count": 4
+        },
+        {
+          "value": "56px",
+          "count": 4
+        },
+        {
+          "value": "16px",
+          "count": 3
+        },
+        {
+          "value": "50px",
+          "count": 2
+        },
+        {
+          "value": "100px",
+          "count": 2
+        },
+        {
+          "value": "10px",
+          "count": 2
+        },
+        {
+          "value": "11px",
+          "count": 2
+        },
+        {
+          "value": "20px",
+          "count": 1
+        }
+      ],
+      "gaps": [
+        {
+          "value": "10px",
+          "count": 10
+        },
+        {
+          "value": "20px",
+          "count": 7
+        },
+        {
+          "value": "12px",
+          "count": 6
+        },
+        {
+          "value": "30px",
+          "count": 6
+        },
+        {
+          "value": "16px",
+          "count": 6
+        },
+        {
+          "value": "8px",
+          "count": 5
+        },
+        {
+          "value": "32px",
+          "count": 3
+        },
+        {
+          "value": "24px",
+          "count": 3
+        },
+        {
+          "value": "16px 30px",
+          "count": 2
+        },
+        {
+          "value": "6px",
+          "count": 2
+        }
+      ],
+      "sectionPaddingY": [
+        {
+          "value": "80px / 80px",
+          "count": 2
+        },
+        {
+          "value": "48px / 48px",
+          "count": 1
+        },
+        {
+          "value": "80px / 30px",
+          "count": 1
+        }
+      ]
+    },
+    "project": {
+      "docHeight": 5335,
+      "bodyBg": "rgb(244, 244, 245)",
+      "specimens": [
+        {
+          "tag": "h4",
+          "fontSize": "40px",
+          "fontWeight": "500",
+          "lineHeight": "52px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Challenge",
+          "count": 2
+        },
+        {
+          "tag": "h6",
+          "fontSize": "24px",
+          "fontWeight": "400",
+          "lineHeight": "31.2px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Connecto is a telecom app for recharges, tracking, support, ",
+          "count": 1
+        },
+        {
+          "tag": "p",
+          "fontSize": "20px",
+          "fontWeight": "400",
+          "lineHeight": "26px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "This project solves common e-commerce usability challenges b",
+          "count": 6
+        },
+        {
+          "tag": "p",
+          "fontSize": "20px",
+          "fontWeight": "400",
+          "lineHeight": "26px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Title",
+          "count": 4
+        },
+        {
+          "tag": "p",
+          "fontSize": "20px",
+          "fontWeight": "500",
+          "lineHeight": "26px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Connecto",
+          "count": 3
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "About",
+          "count": 14
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Dribbble",
+          "count": 14
+        },
+        {
+          "tag": "a",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Privacy Policy",
+          "count": 2
+        },
+        {
+          "tag": "p",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "20.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(113, 113, 122)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Built in",
+          "count": 1
+        },
+        {
+          "tag": "p",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "lineHeight": "16.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(63, 63, 70)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Projects",
+          "count": 1
+        },
+        {
+          "tag": "p",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "lineHeight": "16.8px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(39, 39, 42)",
+          "fontFamily": "Clash Grotesk",
+          "sample": "Connecto",
+          "count": 4
+        },
+        {
+          "tag": "p",
+          "fontSize": "14px",
+          "fontWeight": "600",
+          "lineHeight": "16.8px",
+          "letterSpacing": "-0.7px",
+          "textTransform": "none",
+          "color": "rgb(255, 255, 255)",
+          "fontFamily": "Space Grotesk",
+          "sample": "Get for Free",
+          "count": 2
+        },
+        {
+          "tag": "p",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "lineHeight": "normal",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(0, 0, 238)",
+          "fontFamily": "sans-serif",
+          "sample": "Create a free website with Framer, the website builder loved",
+          "count": 1
+        }
+      ],
+      "containerWidths": [
+        {
+          "value": 360,
+          "count": 40
+        },
+        {
+          "value": 390,
+          "count": 18
+        },
+        {
+          "value": 320,
+          "count": 2
+        },
+        {
+          "value": 298,
+          "count": 2
+        },
+        {
+          "value": 300,
+          "count": 1
+        },
+        {
+          "value": 264,
+          "count": 1
+        },
+        {
+          "value": 241,
+          "count": 1
+        }
+      ],
+      "radii": [
+        {
+          "value": "24px",
+          "count": 18
+        },
+        {
+          "value": "100%",
+          "count": 12
+        },
+        {
+          "value": "50px",
+          "count": 6
+        },
+        {
+          "value": "56px",
+          "count": 4
+        },
+        {
+          "value": "16px",
+          "count": 3
+        },
+        {
+          "value": "42.42px",
+          "count": 2
+        },
+        {
+          "value": "10px",
+          "count": 2
+        },
+        {
+          "value": "11px",
+          "count": 2
+        },
+        {
+          "value": "20px",
+          "count": 1
+        },
+        {
+          "value": "100px",
+          "count": 1
+        }
+      ],
+      "gaps": [
+        {
+          "value": "10px",
+          "count": 13
+        },
+        {
+          "value": "12px",
+          "count": 7
+        },
+        {
+          "value": "24px",
+          "count": 7
+        },
+        {
+          "value": "20px",
+          "count": 6
+        },
+        {
+          "value": "8px",
+          "count": 5
+        },
+        {
+          "value": "6px",
+          "count": 4
+        },
+        {
+          "value": "16px 30px",
+          "count": 2
+        },
+        {
+          "value": "16px",
+          "count": 2
+        },
+        {
+          "value": "32px",
+          "count": 2
+        },
+        {
+          "value": "60px",
+          "count": 1
+        }
+      ],
+      "sectionPaddingY": [
+        {
+          "value": "20px / 20px",
+          "count": 2
+        },
+        {
+          "value": "100px / 15px",
+          "count": 1
+        },
+        {
+          "value": "80px / 80px",
+          "count": 1
+        },
+        {
+          "value": "80px / 30px",
+          "count": 1
+        }
+      ]
+    }
+  }
+}
