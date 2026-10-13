@@ -22,33 +22,72 @@
 		color-scheme: light;
 
 		/* ---------------------------------------------------------------
-		   Colour — Tailwind's zinc scale, which is what the original uses.
+		   Colour — the project's own styles, read from the Framer source.
+		   Names and groupings match the design file, so a value here can
+		   be traced straight back to it.
 		   --------------------------------------------------------------- */
-		--color-bg: #f4f4f5; /* zinc-100 — page background, NOT white */
-		--color-surface: #ffffff; /* cards, panels, form fields */
-		--color-surface-alt: #fafafa; /* zinc-50 — subtle raised areas */
 
-		--color-text: #27272a; /* zinc-800 — primary copy */
-		--color-text-soft: #3f3f46; /* zinc-700 — secondary copy */
-		--color-muted: #71717a; /* zinc-500 — captions, meta */
-		--color-subtle: #a1a1aa; /* zinc-400 — placeholders, disabled */
+		/* Zinc — the neutral ramp */
+		--zinc-50: rgb(250, 250, 250);
+		--zinc-100: rgb(244, 244, 245);
+		--zinc-200: rgb(228, 228, 231);
+		--zinc-300: rgb(212, 212, 216);
+		--zinc-400: rgb(161, 161, 170);
+		--zinc-500: rgb(113, 113, 122);
+		--zinc-600: rgb(82, 82, 91);
+		--zinc-700: rgb(63, 63, 70);
+		--zinc-800: rgb(39, 39, 42);
 
-		--color-border: #e4e4e7; /* zinc-200 */
-		--color-border-strong: #d4d4d8; /* zinc-300 */
+		/* Base */
+		--white: rgb(255, 255, 255);
+		--white-60: rgba(255, 255, 255, 0.6);
+		--white-40: rgba(255, 255, 255, 0.4);
+		--dark: rgb(0, 0, 0);
+		--gray-3: rgb(240, 240, 240);
 
-		--color-accent: #f64617; /* the primary orange — CTAs, icons */
-		--color-accent-hover: #fd6e32; /* lighter orange — hover state */
-		--color-on-accent: #ffffff; /* text on accent surfaces */
+		/* Accent colours — two pairs, light and dark of each */
+		--primary-light: rgb(253, 110, 50);
+		--primary-dark: rgb(246, 70, 23);
+		--secondary-light: rgb(113, 144, 255);
+		--secondary-dark: rgb(23, 71, 246);
+
+		/* Semantic aliases — components use these, never the raw ramp.
+		   Retheming means repointing these, not hunting through markup. */
+		--color-bg: var(--zinc-100); /* page background, NOT white */
+		--color-surface: var(--white); /* cards, panels, pills, fields */
+		--color-surface-alt: var(--zinc-50);
+
+		--color-text: var(--zinc-800); /* primary copy */
+		--color-text-soft: var(--zinc-700);
+		--color-muted: var(--zinc-500);
+		--color-subtle: var(--zinc-400);
+
+		--color-border: var(--zinc-200);
+		--color-border-strong: var(--zinc-300);
+
+		--color-accent: var(--primary-dark); /* CTAs, icons */
+		--color-accent-hover: var(--primary-light);
+		--color-on-accent: var(--white);
 		--color-accent-ring: color-mix(in srgb, var(--color-accent) 24%, transparent);
 
-		--color-info: #1747f6;
-		--color-info-soft: #7190ff;
+		--color-info: var(--secondary-dark);
+		--color-info-soft: var(--secondary-light);
 
 		/* ---------------------------------------------------------------
-		   Typography — Inter only, at four weights.
+		   Typography — Clash Grotesk, the typeface the design actually
+		   uses. Every text style in the source is set in it (regular 400
+		   and medium 500, bold 700 where needed).
+
+		   It is loaded from Fontshare's own CDN in Base.astro rather than
+		   bundled with this template — see README for why that matters.
+		   The fallback stack is metric-sympathetic so layout barely
+		   shifts if the webfont is slow or blocked.
 		   --------------------------------------------------------------- */
-		--font-body: var(--font-sans), system-ui, sans-serif;
-		--font-heading: var(--font-sans), system-ui, sans-serif;
+		--font-clash: "Clash Grotesk", "Clash Grotesk Placeholder", ui-sans-serif,
+			system-ui, "Segoe UI", Roboto, sans-serif;
+
+		--font-body: var(--font-clash);
+		--font-heading: var(--font-clash);
 
 		--weight-regular: 400;
 		--weight-medium: 500; /* the workhorse: all headings use this */
@@ -106,13 +145,20 @@
 		--gutter: 0.9375rem; /* 15px on mobile */
 
 		/* ---------------------------------------------------------------
-		   Radii — 24px dominates the design
+		   Radii — the values present in the source, 24px dominating.
 		   --------------------------------------------------------------- */
 		--radius-sm: 0.5rem; /* 8px */
 		--radius-md: 1.5rem; /* 24px — cards, images, panels */
 		--radius-lg: 2.5rem; /* 40px */
-		--radius-pill: 6.25rem; /* 100px */
-		--radius-full: 9999px;
+		--radius-xl: 7.5rem; /* 120px — the largest soft corner */
+		--radius-pill: 3.125rem; /* 50px — nav pill, buttons */
+		--radius-full: 999px;
+
+		/* ---------------------------------------------------------------
+		   Shadows — the design has none. Elevation is carried by surface
+		   colour against the zinc-100 page, not by shade. Leave it that
+		   way: a stray box-shadow reads as foreign here.
+		   --------------------------------------------------------------- */
 
 		/* ---------------------------------------------------------------
 		   Motion — the original animates with springs; these are the CSS

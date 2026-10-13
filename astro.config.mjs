@@ -3,7 +3,7 @@ import { cacheCloudflare } from "@astrojs/cloudflare/cache";
 import react from "@astrojs/react";
 import { d1, r2 } from "@emdash-cms/cloudflare";
 import tailwindcss from "@tailwindcss/vite";
-import { defineConfig, fontProviders } from "astro/config";
+import { defineConfig } from "astro/config";
 import emdash from "emdash/astro";
 
 export default defineConfig({
@@ -27,19 +27,6 @@ export default defineConfig({
 		}),
 	],
 
-	// Inter is the only family in the design. Self-hosted and preloaded by
-	// Astro's font pipeline; the weights match those measured on the original.
-	fonts: [
-		{
-			provider: fontProviders.google(),
-			name: "Inter",
-			cssVariable: "--font-sans",
-			weights: [400, 500, 600, 700],
-			styles: ["normal"],
-			subsets: ["latin"],
-			fallbacks: ["system-ui", "sans-serif"],
-		},
-	],
 
 	// Workers Cache sits in front of the Worker: a cache hit is served at the
 	// edge without invoking it, which protects the free-plan request budget

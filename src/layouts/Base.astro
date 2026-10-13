@@ -11,7 +11,6 @@
  * there is no build-time sitemap integration, because CMS routes do not
  * exist at build time.
  */
-import { Font } from "astro:assets";
 import { getMenuWithCacheHint, getSiteSettingsWithCacheHint } from "emdash";
 import { createPublicPageContext } from "emdash/page";
 import { EmDashBodyEnd, EmDashBodyStart, EmDashHead } from "emdash/ui";
@@ -88,7 +87,23 @@ const pageCtx = createPublicPageContext({
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title>{fullTitle}</title>
 		<EmDashHead page={pageCtx} />
-		<Font cssVariable="--font-sans" preload />
+
+		{/*
+		  Clash Grotesk, served by Fontshare (Indian Type Foundry).
+
+		  Loaded from their CDN rather than bundled with this template on
+		  purpose. ITF's Free Font License permits you to use and self-host
+		  the font for your own site, but forbids redistributing the font
+		  files to anyone else — which is exactly what shipping them inside
+		  a template would do. Linking the official CDN means each site
+		  loads its own copy from ITF directly. See README › Fonts.
+		*/}
+		<link rel="preconnect" href="https://api.fontshare.com" />
+		<link rel="preconnect" href="https://cdn.fontshare.com" crossorigin />
+		<link
+			rel="stylesheet"
+			href="https://api.fontshare.com/v2/css?f[]=clash-grotesk@400,500,700&display=swap"
+		/>
 		<link
 			rel="alternate"
 			type="application/rss+xml"
