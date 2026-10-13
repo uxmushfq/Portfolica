@@ -37,6 +37,14 @@ const items = menu?.items ?? [];
 const path = Astro.url.pathname;
 ---
 
+<!--
+  Progressive blur strip. In the original this is a separate "Blur Gradient"
+  component in the layout template: fixed, full width, 120px tall, z-index 3,
+  sitting *behind* the nav (z-index 5). Content blurs as it scrolls under it,
+  while the nav pills stay solid white on top.
+-->
+<div class="top-blur" aria-hidden="true"></div>
+
 <header class="site-header">
 	<div class="container-page header-inner">
 		<!-- Left: avatar + links in one pill (tablet and up) -->
@@ -59,8 +67,15 @@ const path = Astro.url.pathname;
 							target={item.target}
 							rel={item.target === "_blank" ? "noopener noreferrer" : undefined}
 							aria-current={path === item.url ? "page" : undefined}
+							class="nav-link"
 						>
-							{item.label}
+							{/* Two stacked copies inside a clipped box: on hover the pair
+							    slides up one line, so the label rolls over. The duplicate is
+							    hidden from assistive tech so the name is announced once. */}
+							<span class="roll">
+								<span>{item.label}</span>
+								<span aria-hidden="true">{item.label}</span>
+							</span>
 						</a>
 					))
 				}
@@ -125,10 +140,31 @@ const path = Astro.url.pathname;
 </header>
 
 <style>
+	/*
+	 * Measured: blur 50, direction up, 120px tall, fixed, z-index 3 — behind
+	 * the nav, which is z-index 5. The mask makes it progressive: strongest
+	 * at the top edge, fading to nothing at the bottom, rather than a band
+	 * with a visible seam.
+	 */
+	.top-blur {
+		position: fixed;
+		inset-block-start: 0;
+		inset-inline: 0;
+		height: 120px;
+		z-index: 3;
+		pointer-events: none;
+		backdrop-filter: blur(16px);
+		-webkit-backdrop-filter: blur(16px);
+		mask-image: linear-gradient(to bottom, #000 0%, #000 42%, transparent 100%);
+		-webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 42%, transparent 100%);
+	}
+
+	/* The bar paints nothing itself: the pills are solid white and the blur
+	   is its own layer behind them. */
 	.site-header {
 		position: sticky;
 		top: 0;
-		z-index: 50;
+		z-index: 5;
 		padding-block: 10px;
 	}
 
@@ -140,12 +176,13 @@ const path = Astro.url.pathname;
 	}
 
 	/* --- left pill: avatar + links ------------------------------------- */
+	/* Measured padding: 10px 60px 10px 8px. */
 	.navpill {
 		display: none;
 		align-items: center;
 		gap: 48px;
 		height: 56px;
-		padding: 8px 60px 8px 8px;
+		padding: 10px 60px 10px 8px;
 		background: var(--color-surface);
 		border-radius: 50px;
 	}
@@ -173,19 +210,41 @@ const path = Astro.url.pathname;
 		gap: 48px;
 	}
 
-	.nav a {
+	/*
+	 * The label rolls: two stacked copies in a 21px clipped box, sliding up
+	 * one line on hover. The original drives this with a spring
+	 * (stiffness 300, damping 40, mass 0.1); this easing is its CSS
+	 * equivalent. Zeroed automatically under prefers-reduced-motion,
+	 * because the duration comes from a token.
+	 */
+	.nav-link {
+		display: block;
+		height: 21px;
+		overflow: clip;
 		font-size: var(--text-base);
 		font-weight: var(--weight-medium);
-		line-height: var(--leading-normal);
 		color: var(--color-text);
-		transition: color var(--dur-base) var(--ease-ui);
 	}
 
-	.nav a:hover {
-		color: var(--color-accent);
+	.roll {
+		display: flex;
+		flex-direction: column;
+		transition: translate var(--dur-base) var(--ease-out);
 	}
 
-	.nav a[aria-current="page"] {
+	.roll > span {
+		display: block;
+		height: 21px;
+		line-height: 21px;
+		white-space: nowrap;
+	}
+
+	.nav-link:hover .roll,
+	.nav-link:focus-visible .roll {
+		translate: 0 -21px;
+	}
+
+	.nav-link[aria-current="page"] {
 		color: var(--color-muted);
 	}
 
