@@ -8,7 +8,6 @@ import ProjectsGrid from "../components/blocks/ProjectsGrid.astro";
 import Services from "../components/blocks/Services.astro";
 import StatsTicker from "../components/blocks/StatsTicker.astro";
 import Testimonials from "../components/blocks/Testimonials.astro";
-import WorkStrip from "../components/blocks/WorkStrip.astro";
 import Section from "../components/primitives/Section.astro";
 import Base from "../layouts/Base.astro";
 import {
@@ -51,9 +50,13 @@ const o = options.options;
 ---
 
 <Base description={o?.hero_tagline}>
-	<Hero options={o} />
-
-	<WorkStrip projects={all.projects} />
+	{/*
+	  Section order taken from the source page tree:
+	  Hero › About › Brands › Projects › KPI › Testimonials › Process ›
+	  Services › FAQ › Contact. The carousel belongs to the Hero there,
+	  so it is rendered inside it rather than as its own band.
+	*/}
+	<Hero options={o} projects={all.projects} />
 
 	<Section heading="Mindset, methods, & experience">
 		<IntroCard
@@ -63,20 +66,20 @@ const o = options.options;
 		/>
 	</Section>
 
-	<Section flush>
-		<StatsTicker stats={stats.items} />
-	</Section>
-
-	<Section eyebrow="Testimonials" heading="Good work gets noticed">
-		<Testimonials testimonials={testimonials.items} />
-	</Section>
-
 	<Section heading="Designed, Built, & Shipped">
 		<ProjectsGrid
 			projects={featured.projects}
 			caption="Selected projects that reflect my approach to design, development, and execution."
 			showArchiveLink
 		/>
+	</Section>
+
+	<Section flush>
+		<StatsTicker stats={stats.items} />
+	</Section>
+
+	<Section eyebrow="Testimonials" heading="Good work gets noticed">
+		<Testimonials testimonials={testimonials.items} />
 	</Section>
 
 	<Section heading="How things get built together">

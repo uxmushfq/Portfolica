@@ -473,11 +473,19 @@
           "type": "image"
         },
         {
-          "slug": "availability_badge",
-          "label": "Availability badge",
+          "slug": "rating_value",
+          "label": "Rating",
           "type": "string",
           "ui": {
-            "helpText": "Small pill next to the hero, e.g. \"Available for work\"."
+            "helpText": "Shown in the small pill beside the hero intro, e.g. \"4.9 / 5\"."
+          }
+        },
+        {
+          "slug": "rating_label",
+          "label": "Rating caption",
+          "type": "string",
+          "ui": {
+            "helpText": "Sits next to the rating, e.g. \"Helped 120+ businesses & counting\"."
           }
         },
         {
@@ -673,8 +681,7 @@
           "hero_name_line_1": "Alex",
           "hero_name_line_2": "Morgan",
           "hero_tagline": "I build digital experiences that drive real growth for your business. Let's partner to create work that gets results.",
-          "availability_badge": "Available for work",
-          "cta_primary_label": "Book a Project",
+          "cta_primary_label": "Start a Project",
           "cta_primary_url": "/contact",
           "cta_secondary_label": "See Projects",
           "cta_secondary_url": "/all-projects",
@@ -709,7 +716,9 @@
             }
           },
           "booking_label": "Book a 30 min call",
-          "booking_label_short": "Book a call"
+          "booking_label_short": "Book a call",
+          "rating_value": "4.9 / 5",
+          "rating_label": "Helped 120+ businesses & counting"
         }
       }
     ],

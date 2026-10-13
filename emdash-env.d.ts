@@ -175,6 +175,8 @@ export interface SiteOption {
   notfound_body?: string;
   booking_label?: string;
   booking_label_short?: string;
+  rating_value?: string;
+  rating_label?: string;
   createdAt: Date;
   updatedAt: Date;
   publishedAt: Date | null;

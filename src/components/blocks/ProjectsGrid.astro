@@ -4,7 +4,6 @@
  * to the full archive underneath.
  */
 import Button from "../primitives/Button.astro";
-import Icon from "../primitives/Icon.astro";
 import ProjectCard from "../cards/ProjectCard.astro";
 
 interface Props {
@@ -31,10 +30,12 @@ const { projects, caption, showArchiveLink = false } = Astro.props;
 				<div class="grid-foot">
 					{caption && <p class="caption">{caption}</p>}
 					{showArchiveLink && (
-						<Button href="/all-projects" variant="surface">
-							View All Projects
-							<Icon name="arrow" size={16} />
-						</Button>
+						<Button
+							href="/all-projects"
+							label="View All Projects"
+							variant="secondary"
+							icon="arrow"
+						/>
 					)}
 				</div>
 			)}

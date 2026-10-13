@@ -1,96 +1,131 @@
 ---
 /**
- * Button — renders an <a> when `href` is set, otherwise a <button>.
+ * Button — matched to the source "Button - Primary" component.
  *
- * The hover transition is the one measured on the original design:
- * background + box-shadow over 300ms on cubic-bezier(.44, 0, .56, 1).
+ * Measured: 56px tall, 50px radius, 10px/30px padding, 20px gap between
+ * label and icon. The primary fill is a radial gradient from Primary Dark
+ * to Primary Light anchored at the right edge.
+ *
+ * On hover the label and icon both roll: each sits in a 21px clipped box
+ * holding two copies, and the pair slides up one line. The source drives
+ * this with a 0.4s spring; this easing is its CSS equivalent.
+ *
+ * Renders an <a> when `href` is set, otherwise a <button>.
  */
+import Icon from "./Icon.astro";
+
 interface Props {
 	href?: string;
-	variant?: "accent" | "surface" | "ghost";
+	label: string;
+	variant?: "primary" | "secondary" | "neutral";
+	icon?: string;
 	type?: "button" | "submit";
 	target?: string;
 	class?: string;
-	"aria-label"?: string;
 }
 
 const {
 	href,
-	variant = "accent",
+	label,
+	variant = "primary",
+	icon,
 	type = "button",
 	target,
 	class: className,
-	...rest
 } = Astro.props;
 
 const classes = ["btn", `btn-${variant}`, className].filter(Boolean).join(" ");
 const external = target === "_blank";
+const Tag = href ? "a" : "button";
 ---
 
-{
-	href ? (
-		<a
-			href={href}
-			class={classes}
-			target={target}
-			rel={external ? "noopener noreferrer" : undefined}
-			{...rest}
-		>
-			<slot />
-		</a>
-	) : (
-		<button type={type} class={classes} {...rest}>
-			<slot />
-		</button>
-	)
-}
+<Tag
+	class={classes}
+	href={href}
+	target={href ? target : undefined}
+	rel={external ? "noopener noreferrer" : undefined}
+	type={href ? undefined : type}
+>
+	<span class="btn-label">
+		<span>{label}</span>
+		<span aria-hidden="true">{label}</span>
+	</span>
+	{
+		icon && (
+			<span class="btn-icon">
+				<Icon name={icon} size={24} />
+				<Icon name={icon} size={24} />
+			</span>
+		)
+	}
+</Tag>
 
 <style>
 	.btn {
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		gap: var(--space-2);
-		padding: var(--space-3) var(--space-5);
+		gap: 20px;
+		height: 56px;
+		padding-inline: 30px;
 		border: 0;
-		border-radius: var(--radius-pill);
-		font-size: var(--text-sm);
-		font-weight: var(--weight-semibold);
-		letter-spacing: var(--tracking-button);
+		border-radius: 50px;
+		font-size: var(--text-base);
+		font-weight: var(--weight-medium);
+		line-height: var(--leading-normal);
 		cursor: pointer;
 		white-space: nowrap;
-		transition:
-			background var(--dur-base) var(--ease-ui),
-			box-shadow var(--dur-base) var(--ease-ui);
+		overflow: hidden;
+		transition: background var(--dur-base) var(--ease-ui);
 	}
 
-	.btn-accent {
-		background: var(--color-accent);
+	.btn-primary {
+		background: var(--gradient-primary);
 		color: var(--color-on-accent);
 	}
 
-	.btn-accent:hover {
-		background: var(--color-accent-hover);
-		box-shadow: 0 0 0 4px var(--color-accent-ring);
-	}
-
-	.btn-surface {
+	.btn-secondary,
+	.btn-neutral {
 		background: var(--color-surface);
 		color: var(--color-text);
 	}
 
-	.btn-surface:hover {
-		background: var(--color-surface-alt);
-		box-shadow: 0 0 0 4px var(--color-border);
+	/* Label and icon each roll one line on hover. */
+	.btn-label,
+	.btn-icon {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		flex: 0 0 auto;
 	}
 
-	.btn-ghost {
-		background: transparent;
-		color: var(--color-text);
-		box-shadow: inset 0 0 0 1px var(--color-border-strong);
+	.btn-label {
+		height: 21px;
+		overflow: clip;
 	}
 
-	.btn-ghost:hover {
-		background: var(--color-surface);
+	.btn-label > span {
+		display: block;
+		height: 21px;
+		line-height: 21px;
+	}
+
+	.btn-icon {
+		height: 24px;
+		width: 24px;
+		overflow: clip;
+	}
+
+	.btn-label,
+	.btn-icon {
+		transition: translate var(--dur-base) var(--ease-out);
+	}
+
+	.btn:hover .btn-label {
+		translate: 0 -21px;
+	}
+
+	.btn:hover .btn-icon {
+		translate: 0 -24px;
 	}
 </style>

@@ -155,6 +155,17 @@
 		--radius-full: 999px;
 
 		/* ---------------------------------------------------------------
+		   Gradients — buttons are filled with a radial ramp from Primary
+		   Dark to Primary Light, anchored at the right edge. Taken from
+		   the source component, not approximated.
+		   --------------------------------------------------------------- */
+		--gradient-primary: radial-gradient(
+			100% 100% at 100% 50%,
+			var(--primary-dark) 0%,
+			var(--primary-light) 100%
+		);
+
+		/* ---------------------------------------------------------------
 		   Shadows — the design has none. Elevation is carried by surface
 		   colour against the zinc-100 page, not by shade. Leave it that
 		   way: a stray box-shadow reads as foreign here.

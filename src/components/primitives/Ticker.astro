@@ -15,15 +15,17 @@
 interface Props {
 	/** Seconds for one full pass. Longer is slower. */
 	duration?: number;
+	/** Space between items, in px. */
+	gap?: number;
 	class?: string;
 }
 
-const { duration = 40, class: className } = Astro.props;
+const { duration = 40, gap = 10, class: className } = Astro.props;
 ---
 
 <div
 	class:list={["ticker", className]}
-	style={`--ticker-duration:${duration}s`}
+	style={`--ticker-duration:${duration}s; --ticker-gap:${gap}px`}
 	data-ticker
 >
 	<div class="ticker-track">
@@ -59,8 +61,8 @@ const { duration = 40, class: className } = Astro.props;
 	.ticker-group {
 		display: flex;
 		align-items: stretch;
-		gap: var(--space-2);
-		padding-right: var(--space-2);
+		gap: var(--ticker-gap, 10px);
+		padding-right: var(--ticker-gap, 10px);
 		flex: 0 0 auto;
 	}
 
