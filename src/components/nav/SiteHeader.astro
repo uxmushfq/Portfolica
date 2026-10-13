@@ -43,7 +43,10 @@ const path = Astro.url.pathname;
   sitting *behind* the nav (z-index 5). Content blurs as it scrolls under it,
   while the nav pills stay solid white on top.
 -->
-<div class="top-blur" aria-hidden="true"></div>
+<div class="top-blur" aria-hidden="true">
+	<div></div><div></div><div></div><div></div>
+	<div></div><div></div><div></div><div></div>
+</div>
 
 <header class="site-header">
 	<div class="container-page header-inner">
@@ -146,6 +149,20 @@ const path = Astro.url.pathname;
 	 * at the top edge, fading to nothing at the bottom, rather than a band
 	 * with a visible seam.
 	 */
+	/*
+	 * Progressive blur — eight stacked layers, not one.
+	 *
+	 * A single backdrop-filter behind an opacity mask looks foggy: the blur
+	 * radius is constant and the mask only fades that one blurred layer
+	 * toward transparent, so blurred and sharp content mix into milk.
+	 *
+	 * Real progressive blur ramps the radius itself. Each layer halves the
+	 * blur of the one below and is masked to its own band, so going up the
+	 * strip the layers compound: 0.39 → 0.78 → 1.56 → 3.13 → 6.25 → 12.5 →
+	 * 25 → 50px. Bands are 12.5% apart (100% / 8).
+	 *
+	 * --blur is the source control value (50). Change it alone to retune.
+	 */
 	.top-blur {
 		position: fixed;
 		inset-block-start: 0;
@@ -153,10 +170,71 @@ const path = Astro.url.pathname;
 		height: 120px;
 		z-index: 3;
 		pointer-events: none;
-		backdrop-filter: blur(16px);
-		-webkit-backdrop-filter: blur(16px);
-		mask-image: linear-gradient(to bottom, #000 0%, #000 42%, transparent 100%);
-		-webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 42%, transparent 100%);
+		--blur: 50px;
+	}
+
+	.top-blur > div {
+		position: absolute;
+		inset: 0;
+	}
+
+	/* `to top`: 0% is the bottom edge, 100% the top. Each layer switches on
+	   one band higher than the last and stays on above it, so the very top
+	   carries all eight and the bottom edge carries none. */
+	.top-blur > div:nth-child(1) {
+		backdrop-filter: blur(calc(var(--blur) / 128));
+		-webkit-backdrop-filter: blur(calc(var(--blur) / 128));
+		mask-image: linear-gradient(to top, transparent 0%, #000 12.5%);
+		-webkit-mask-image: linear-gradient(to top, transparent 0%, #000 12.5%);
+	}
+
+	.top-blur > div:nth-child(2) {
+		backdrop-filter: blur(calc(var(--blur) / 64));
+		-webkit-backdrop-filter: blur(calc(var(--blur) / 64));
+		mask-image: linear-gradient(to top, transparent 12.5%, #000 25%);
+		-webkit-mask-image: linear-gradient(to top, transparent 12.5%, #000 25%);
+	}
+
+	.top-blur > div:nth-child(3) {
+		backdrop-filter: blur(calc(var(--blur) / 32));
+		-webkit-backdrop-filter: blur(calc(var(--blur) / 32));
+		mask-image: linear-gradient(to top, transparent 25%, #000 37.5%);
+		-webkit-mask-image: linear-gradient(to top, transparent 25%, #000 37.5%);
+	}
+
+	.top-blur > div:nth-child(4) {
+		backdrop-filter: blur(calc(var(--blur) / 16));
+		-webkit-backdrop-filter: blur(calc(var(--blur) / 16));
+		mask-image: linear-gradient(to top, transparent 37.5%, #000 50%);
+		-webkit-mask-image: linear-gradient(to top, transparent 37.5%, #000 50%);
+	}
+
+	.top-blur > div:nth-child(5) {
+		backdrop-filter: blur(calc(var(--blur) / 8));
+		-webkit-backdrop-filter: blur(calc(var(--blur) / 8));
+		mask-image: linear-gradient(to top, transparent 50%, #000 62.5%);
+		-webkit-mask-image: linear-gradient(to top, transparent 50%, #000 62.5%);
+	}
+
+	.top-blur > div:nth-child(6) {
+		backdrop-filter: blur(calc(var(--blur) / 4));
+		-webkit-backdrop-filter: blur(calc(var(--blur) / 4));
+		mask-image: linear-gradient(to top, transparent 62.5%, #000 75%);
+		-webkit-mask-image: linear-gradient(to top, transparent 62.5%, #000 75%);
+	}
+
+	.top-blur > div:nth-child(7) {
+		backdrop-filter: blur(calc(var(--blur) / 2));
+		-webkit-backdrop-filter: blur(calc(var(--blur) / 2));
+		mask-image: linear-gradient(to top, transparent 75%, #000 87.5%);
+		-webkit-mask-image: linear-gradient(to top, transparent 75%, #000 87.5%);
+	}
+
+	.top-blur > div:nth-child(8) {
+		backdrop-filter: blur(var(--blur));
+		-webkit-backdrop-filter: blur(var(--blur));
+		mask-image: linear-gradient(to top, transparent 87.5%, #000 100%);
+		-webkit-mask-image: linear-gradient(to top, transparent 87.5%, #000 100%);
 	}
 
 	/* The bar paints nothing itself: the pills are solid white and the blur
