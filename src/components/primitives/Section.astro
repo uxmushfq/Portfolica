@@ -1,17 +1,22 @@
 ---
 /**
- * Section — the page's vertical rhythm and content width in one place.
+ * Section — the page's vertical rhythm, content width and heading block.
  *
- * Every band on every page uses this, so the 80px/100px section spacing and
- * the 1200px content width are defined once rather than per component.
+ * Measured from the source: bands are 100px top and bottom, the content
+ * column caps at 1200px, and a centred section opens with a white badge
+ * pill (36px tall, 100px radius, 10px/24px padding, 14px/500 in zinc-700)
+ * 12px above a heading capped at 430px, with 64px to the content below.
  */
 interface Props {
-	/** Optional eyebrow label above the heading, e.g. "Testimonials". */
+	/** Small pill above the heading, e.g. "About me". */
+	badge?: string;
+	/** Plain eyebrow label, for sections that use one instead of a badge. */
 	eyebrow?: string;
-	/** Section heading. Omit for an unlabelled band. */
 	heading?: string;
 	/** Heading level — keep one <h1> per page. */
 	as?: "h1" | "h2";
+	/** Centred heading block, as the About and Process sections use. */
+	align?: "start" | "center";
 	id?: string;
 	class?: string;
 	/** Removes the default top padding, for bands that butt against the one above. */
@@ -19,20 +24,25 @@ interface Props {
 }
 
 const {
+	badge,
 	eyebrow,
 	heading,
 	as: Heading = "h2",
+	align = "start",
 	id,
 	class: className,
 	flush = false,
 } = Astro.props;
+
+const hasHead = Boolean(badge || eyebrow || heading);
 ---
 
 <section id={id} class:list={["section", { flush }, className]}>
-	<div class="container-page">
+	<div class:list={["container-page", "inner", `align-${align}`]}>
 		{
-			(eyebrow || heading) && (
+			hasHead && (
 				<header class="section-head">
+					{badge && <p class="badge">{badge}</p>}
 					{eyebrow && <p class="eyebrow">{eyebrow}</p>}
 					{heading && <Heading class="section-heading">{heading}</Heading>}
 				</header>
@@ -44,28 +54,77 @@ const {
 
 <style>
 	.section {
-		padding-block: var(--space-section);
+		padding-block: 100px;
 	}
 
 	.section.flush {
 		padding-block-start: 0;
 	}
 
+	.inner {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.align-start {
+		align-items: stretch;
+	}
+
+	.align-center {
+		align-items: center;
+	}
+
 	.section-head {
-		margin-bottom: var(--space-10);
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+		margin-bottom: 64px;
+	}
+
+	/*
+	 * Centred sections centre the *block*, not the text: the heading box is
+	 * centred on the page while its lines stay left-aligned. The canvas
+	 * states 430px for this box but it renders at 534, which is what makes
+	 * the heading fall on two lines instead of three.
+	 */
+	.align-center .section-head {
+		align-items: center;
+	}
+
+	.align-center .badge {
+		align-self: center;
+	}
+
+	.badge {
+		display: inline-flex;
+		align-items: center;
+		align-self: flex-start;
+		height: 36px;
+		padding-inline: 24px;
+		border-radius: 100px;
+		background: var(--color-surface);
+		font-size: var(--text-sm);
+		font-weight: var(--weight-medium);
+		color: var(--color-text-soft);
 	}
 
 	.eyebrow {
 		font-size: var(--text-sm);
 		font-weight: var(--weight-medium);
 		color: var(--color-muted);
-		margin-bottom: var(--space-4);
 	}
 
 	.section-heading {
 		font-size: var(--text-heading);
 		line-height: var(--leading-heading);
 		font-weight: var(--weight-medium);
+	}
+
+	.align-center .section-heading {
+		max-width: 534px;
+	}
+
+	.align-start .section-heading {
 		max-width: 20ch;
 	}
 </style>

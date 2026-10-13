@@ -1,0 +1,75 @@
+---
+/**
+ * InfoCard — the About section's card shape, shared by the three prose
+ * cards and the career card.
+ *
+ * Measured: 700px wide, White-40% fill, 24px radius, 30px padding, 24px
+ * between the label row and the body. The label row is a 12px dot and a
+ * 16px/500 label, 16px apart.
+ */
+interface Props {
+	label: string;
+	/** The career card's label sits a step darker than the prose cards'. */
+	tone?: "muted" | "strong";
+	class?: string;
+}
+
+const { label, tone = "muted", class: className } = Astro.props;
+---
+
+<div class:list={["card", className]}>
+	<p class:list={["label", `tone-${tone}`]}>
+		<span class="dot" aria-hidden="true"></span>
+		{label}
+	</p>
+	<div class="body">
+		<slot />
+	</div>
+</div>
+
+<style>
+	.card {
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+		padding: 30px;
+		border-radius: 24px;
+		/* White 40% — the translucent fill the design uses for these cards. */
+		background: var(--white-40);
+	}
+
+	.label {
+		display: flex;
+		align-items: center;
+		gap: 16px;
+		font-size: var(--text-base);
+		font-weight: var(--weight-medium);
+	}
+
+	.tone-muted {
+		color: var(--color-subtle);
+	}
+
+	.tone-strong {
+		color: var(--color-muted);
+	}
+
+	.dot {
+		width: 12px;
+		height: 12px;
+		border-radius: 100%;
+		background: var(--color-subtle);
+		flex: 0 0 auto;
+	}
+
+	.body {
+		font-size: var(--text-lead);
+		line-height: var(--leading-normal);
+		font-weight: var(--weight-regular);
+		color: var(--color-subtle);
+	}
+
+	.body :global(p + p) {
+		margin-top: var(--space-5);
+	}
+</style>

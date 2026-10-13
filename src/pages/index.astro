@@ -2,7 +2,7 @@
 import ContactForm from "../components/blocks/ContactForm.astro";
 import Faq from "../components/blocks/Faq.astro";
 import Hero from "../components/blocks/Hero.astro";
-import IntroCard from "../components/blocks/IntroCard.astro";
+import AboutStack from "../components/blocks/AboutStack.astro";
 import Process from "../components/blocks/Process.astro";
 import ProjectsGrid from "../components/blocks/ProjectsGrid.astro";
 import Services from "../components/blocks/Services.astro";
@@ -58,12 +58,8 @@ const o = options.options;
 	*/}
 	<Hero options={o} projects={all.projects} />
 
-	<Section heading="Mindset, methods, & experience">
-		<IntroCard
-			intro={about?.data.intro}
-			content={about?.data.content}
-			roles={experience.items}
-		/>
+	<Section badge="About me" heading="Mindset, methods, & experience" align="center">
+		<AboutStack cards={about?.data.about_cards ?? []} roles={experience.items} />
 	</Section>
 
 	<Section heading="Designed, Built, & Shipped">

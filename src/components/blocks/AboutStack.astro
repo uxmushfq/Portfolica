@@ -1,0 +1,83 @@
+---
+/**
+ * AboutStack — the About section's 700px column: three prose cards followed
+ * by the career card, 20px apart.
+ *
+ * The prose cards are CMS-driven: their labels and bodies come from the
+ * `about_cards` repeater on the About page, so a buyer can rename, reorder
+ * or add them without touching this file.
+ */
+import InfoCard from "../cards/InfoCard.astro";
+
+interface Props {
+	cards: Array<{ label?: string; body?: string }>;
+	roles: Array<Record<string, any>>;
+	careerLabel?: string;
+}
+
+const { cards, roles, careerLabel = "Career" } = Astro.props;
+---
+
+<div class="stack">
+	{
+		cards.map((card) => (
+			<InfoCard label={card.label ?? ""}>
+				<p>{card.body}</p>
+			</InfoCard>
+		))
+	}
+
+	{
+		roles.length > 0 && (
+			<InfoCard label={careerLabel} tone="strong">
+				<dl class="roles">
+					{roles.map((role) => (
+						<div class="role">
+							<dt>{role.data.role}</dt>
+							<dd>{role.data.period}</dd>
+						</div>
+					))}
+				</dl>
+			</InfoCard>
+		)
+	}
+</div>
+
+<style>
+	.stack {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+		width: 100%;
+		max-width: 700px;
+	}
+
+	.roles {
+		display: flex;
+		flex-direction: column;
+		/* Measured row pitch is 52px against a 31.2px line box. */
+		gap: 20.8px;
+	}
+
+	.role {
+		display: flex;
+		align-items: baseline;
+		justify-content: space-between;
+		gap: var(--space-5);
+	}
+
+	dt {
+		font-size: var(--text-lead);
+		line-height: var(--leading-normal);
+		color: var(--color-muted);
+	}
+
+	dd {
+		font-size: var(--text-lead);
+		line-height: var(--leading-normal);
+		font-weight: var(--weight-medium);
+		color: var(--color-subtle);
+		white-space: nowrap;
+		font-variant-numeric: tabular-nums;
+	}
+</style>

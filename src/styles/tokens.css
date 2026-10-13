@@ -95,9 +95,14 @@
 		--weight-bold: 700;
 
 		/* Type scale. Only the two display sizes change across breakpoints;
-		   everything 24px and below is fixed at every width. */
-		--text-display: clamp(4.75rem, 6.7vw, 6rem); /* 76 → 96px */
-		--text-heading: clamp(2.5rem, 4.4vw, 4rem); /* 40 → 52 → 64px */
+		   everything 24px and below is fixed at every width.
+
+		   These step at the breakpoints rather than scaling fluidly, because
+		   that is what the source does: display 76/96/96 and heading
+		   40/52/64 at mobile/tablet/desktop. A clamp() lands between the
+		   steps at most widths and never quite hits them. */
+		--text-display: 4.75rem; /* 76px */
+		--text-heading: 2.5rem; /* 40px */
 		--text-lead: 1.5rem; /* 24px */
 		--text-body: 1.25rem; /* 20px */
 		--text-md: 1.125rem; /* 18px — FAQ questions */
@@ -206,6 +211,14 @@
 		:root {
 			--gutter: 1.875rem; /* 30px */
 			--space-section: 6.25rem; /* 100px */
+			--text-display: 6rem; /* 96px */
+			--text-heading: 3.25rem; /* 52px */
+		}
+	}
+
+	@media (min-width: 1200px) {
+		:root {
+			--text-heading: 4rem; /* 64px */
 		}
 	}
 }

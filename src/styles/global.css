@@ -121,7 +121,13 @@
 		font-family: var(--font-heading);
 		font-weight: var(--weight-medium);
 		line-height: var(--leading-heading);
-		text-wrap: balance;
+		/*
+		 * Deliberately NOT text-wrap: balance. The source wraps headings by
+		 * filling each line to the measure, and balancing redistributes the
+		 * words into a different number of lines — which changes the height
+		 * of every section below it. Fidelity wins over the nicer default.
+		 */
+		text-wrap: normal;
 	}
 
 	a {

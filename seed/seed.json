@@ -156,6 +156,31 @@
           "label": "Content",
           "type": "portableText",
           "searchable": true
+        },
+        {
+          "slug": "about_cards",
+          "label": "About cards",
+          "type": "repeater",
+          "ui": {
+            "helpText": "The labelled cards in the About section."
+          },
+          "validation": {
+            "maxItems": 8,
+            "subFields": [
+              {
+                "slug": "label",
+                "label": "Label",
+                "type": "string",
+                "required": true
+              },
+              {
+                "slug": "body",
+                "label": "Body",
+                "type": "text",
+                "required": true
+              }
+            ]
+          }
         }
       ]
     },
@@ -1182,6 +1207,20 @@
                   "text": "I believe good design starts with empathy. I ask questions, listen closely, and build brands that feel as good as they look — honest, beautiful and built to last."
                 }
               ]
+            }
+          ],
+          "about_cards": [
+            {
+              "label": "What I do",
+              "body": "I help brands find clarity and express it through strong, thoughtful design."
+            },
+            {
+              "label": "Background",
+              "body": "Originally from CDMX, I've been designing identities for 7+ years, working with startups, restaurants, hoteliers and creative teams across Mexico."
+            },
+            {
+              "label": "My Approach",
+              "body": "I believe good design starts with empathy. I ask questions, listen closely, and build brands that feel as good as they look — honest, beautiful and built to last."
             }
           ]
         }

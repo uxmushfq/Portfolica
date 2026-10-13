@@ -35,6 +35,7 @@ export interface Page {
   title: string;
   intro?: string;
   content?: PortableTextBlock[];
+  about_cards?: { "label": string; "body": string }[];
   createdAt: Date;
   updatedAt: Date;
   publishedAt: Date | null;
